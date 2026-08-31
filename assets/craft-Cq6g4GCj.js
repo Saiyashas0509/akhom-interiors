@@ -1,0 +1,1 @@
+var e=`/akhom-interiors/assets/craft-NLzZugxh.jpg`;export{e as t};
