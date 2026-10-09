@@ -1,0 +1,1 @@
+var e=`/akhom-interiors/assets/craft-CWSeJFgM.jpg`,t=`/akhom-interiors/assets/glimpse-1-DS1IUfwn.jpg`,n=`/akhom-interiors/assets/glimpse-3-C_W8Oc00.jpg`,r=`/akhom-interiors/assets/glimpse-4-BBMh-Z-T.jpg`;export{e as i,n,t as r,r as t};
