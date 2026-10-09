@@ -34,3 +34,4 @@ if (fs.existsSync(distClient)) {
 
   console.log("[postbuild] Compatibility files created successfully in dist and dist/client!");
 }
+
