@@ -9,13 +9,13 @@ import pujaCraft from "@/assets/puja-craft.jpg";
 
 const PORTFOLIO_ITEMS = [
   {
-    name: "Architectural Villa Living",
+    name: "Illuminated Walnut Joinery & Marble Living",
     category: "residential",
     style: "Warm Architectural",
     meta: "Custom Villa Concept — Hyderabad",
-    narrative: "A double-height living and dining space configured around honed travertine slabs and book-matched walnut panelling.",
+    narrative: "Full-height illuminated walnut display joinery framed by book-matched natural marble wall panelling and polished stone floors.",
     img: project1,
-    alt: "Double-height villa dining room with walnut table, travertine walls and bronze lighting",
+    alt: "Luxury living room with backlit custom walnut joinery and polished marble wall",
     span: "md:col-span-7",
   },
   {
@@ -39,13 +39,13 @@ const PORTFOLIO_ITEMS = [
     span: "md:col-span-5 md:mt-12",
   },
   {
-    name: "Executive Boardroom & Reception",
+    name: "Executive Suite & Fluted Glass Architecture",
     category: "corporate",
     style: "Contemporary Commercial",
-    meta: "Corporate Fit-Out — Hyderabad",
-    narrative: "Eleven metres of continuous walnut table with concealed MEP/IT wiring, acoustic timber slat screens, and perimeter lighting.",
+    meta: "Executive Fit-Out — Hyderabad",
+    narrative: "Architectural fluted glass partitions, bespoke marble-top credenza joinery, and monolithic stone flooring for corporate spaces.",
     img: project3,
-    alt: "Executive boardroom with long walnut table and slatted timber screens",
+    alt: "Executive commercial reception and suite with fluted glass doors and marble console",
     span: "md:col-span-7 md:-mt-10",
   },
 ];

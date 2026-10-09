@@ -54,16 +54,16 @@
 :root {
   --radius: 0.125rem;
 
-  /* Brand Palette */
+  /* Brand Palette - High Legibility & Crisp Contrast */
   --burgundy: #7D2652;
-  --burgundy-hover: #621D40;
+  --burgundy-hover: #5E1A3D;
   --burgundy-light: #D6A6BC;
-  --dark: #141212;
-  --ink: #141212;
-  --ivory: #F4F0EA;
+  --dark: #110F0F;
+  --ink: #110F0F;
+  --ivory: #F7F4EE;
   --stone: #E6DFD6;
-  --taupe: #8F857B;
-  --olive: #5B6157;
+  --taupe: #4A423B;
+  --olive: #4C5248;
 
   --background: var(--ivory);
   --foreground: var(--dark);
@@ -72,37 +72,37 @@
   --popover: var(--ivory);
   --popover-foreground: var(--dark);
   --primary: var(--burgundy);
-  --primary-foreground: var(--ivory);
+  --primary-foreground: #FFFFFF;
   --secondary: var(--stone);
   --secondary-foreground: var(--dark);
   --muted: var(--stone);
   --muted-foreground: var(--taupe);
   --accent: var(--burgundy);
-  --accent-foreground: var(--ivory);
+  --accent-foreground: #FFFFFF;
   --destructive: oklch(0.505 0.14 27);
-  --destructive-foreground: var(--ivory);
-  --border: rgba(20, 18, 18, 0.12);
-  --input: rgba(20, 18, 18, 0.12);
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(17, 15, 15, 0.15);
+  --input: rgba(17, 15, 15, 0.15);
   --ring: var(--burgundy);
 }
 
 .dark {
   --background: var(--dark);
-  --foreground: var(--ivory);
+  --foreground: #F8F5EF;
   --card: var(--dark);
-  --card-foreground: var(--ivory);
+  --card-foreground: #F8F5EF;
   --popover: var(--dark);
-  --popover-foreground: var(--ivory);
+  --popover-foreground: #F8F5EF;
   --primary: var(--burgundy);
-  --primary-foreground: var(--ivory);
+  --primary-foreground: #FFFFFF;
   --secondary: #1F1C1C;
-  --secondary-foreground: var(--ivory);
+  --secondary-foreground: #F8F5EF;
   --muted: #1F1C1C;
-  --muted-foreground: var(--taupe);
+  --muted-foreground: #C8BFB5;
   --accent: var(--burgundy);
-  --accent-foreground: var(--ivory);
-  --border: rgba(244, 240, 234, 0.14);
-  --input: rgba(244, 240, 234, 0.14);
+  --accent-foreground: #FFFFFF;
+  --border: rgba(248, 245, 239, 0.18);
+  --input: rgba(248, 245, 239, 0.18);
   --ring: var(--burgundy);
 }
 
@@ -119,25 +119,37 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-weight: 300;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+    letter-spacing: -0.015em;
   }
 }
 
 @utility eyebrow {
   font-size: 12px;
   line-height: 1;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 @utility display {
   font-family: var(--font-serif);
-  font-weight: 300;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+@utility char-highlight {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  letter-spacing: -0.01em;
+  font-weight: 500;
 }
 
 /* Custom Architectural Scrollbar */
