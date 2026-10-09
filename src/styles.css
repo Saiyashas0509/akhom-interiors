@@ -5,19 +5,24 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * AKHOM INTERIORS design system.
- * Palette: architectural black, stone, ivory, warm taupe, muted bronze, deep olive.
+ * AKHOM INTERIORS Design System
+ * Final Colour Palette:
+ * Burgundy #7D2652 | Dark #141212 | Ivory #F4F0EA | Stone #E6DFD6 | Light Burgundy #D6A6BC | Hover #621D40
  */
 
 @theme inline {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Cormorant Garamond", Georgia, serif;
 
+  --color-burgundy: var(--burgundy);
+  --color-burgundy-hover: var(--burgundy-hover);
+  --color-burgundy-light: var(--burgundy-light);
+  --color-dark: var(--dark);
   --color-ink: var(--ink);
   --color-stone: var(--stone);
   --color-ivory: var(--ivory);
   --color-taupe: var(--taupe);
-  --color-bronze: var(--bronze);
+  --color-bronze: var(--burgundy);
   --color-olive: var(--olive);
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -49,53 +54,56 @@
 :root {
   --radius: 0.125rem;
 
-  /* Brand palette */
-  --ink: oklch(0.145 0 0); /* #0B0B0B */
-  --stone: oklch(0.855 0.017 76); /* #D8D0C5 */
-  --ivory: oklch(0.949 0.011 84); /* #F3EFE8 */
-  --taupe: oklch(0.616 0.019 71); /* #9A8D80 */
-  --bronze: oklch(0.57 0.055 62); /* #9A7654 */
-  --olive: oklch(0.505 0.018 145); /* #687064 */
+  /* Brand Palette */
+  --burgundy: #7D2652;
+  --burgundy-hover: #621D40;
+  --burgundy-light: #D6A6BC;
+  --dark: #141212;
+  --ink: #141212;
+  --ivory: #F4F0EA;
+  --stone: #E6DFD6;
+  --taupe: #8F857B;
+  --olive: #5B6157;
 
   --background: var(--ivory);
-  --foreground: var(--ink);
+  --foreground: var(--dark);
   --card: var(--ivory);
-  --card-foreground: var(--ink);
+  --card-foreground: var(--dark);
   --popover: var(--ivory);
-  --popover-foreground: var(--ink);
-  --primary: var(--ink);
+  --popover-foreground: var(--dark);
+  --primary: var(--burgundy);
   --primary-foreground: var(--ivory);
   --secondary: var(--stone);
-  --secondary-foreground: var(--ink);
+  --secondary-foreground: var(--dark);
   --muted: var(--stone);
   --muted-foreground: var(--taupe);
-  --accent: var(--bronze);
+  --accent: var(--burgundy);
   --accent-foreground: var(--ivory);
   --destructive: oklch(0.505 0.14 27);
   --destructive-foreground: var(--ivory);
-  --border: oklch(0.145 0 0 / 12%);
-  --input: oklch(0.145 0 0 / 12%);
-  --ring: var(--bronze);
+  --border: rgba(20, 18, 18, 0.12);
+  --input: rgba(20, 18, 18, 0.12);
+  --ring: var(--burgundy);
 }
 
 .dark {
-  --background: var(--ink);
+  --background: var(--dark);
   --foreground: var(--ivory);
-  --card: var(--ink);
+  --card: var(--dark);
   --card-foreground: var(--ivory);
-  --popover: var(--ink);
+  --popover: var(--dark);
   --popover-foreground: var(--ivory);
-  --primary: var(--ivory);
-  --primary-foreground: var(--ink);
-  --secondary: oklch(0.24 0.005 80);
+  --primary: var(--burgundy);
+  --primary-foreground: var(--ivory);
+  --secondary: #1F1C1C;
   --secondary-foreground: var(--ivory);
-  --muted: oklch(0.24 0.005 80);
+  --muted: #1F1C1C;
   --muted-foreground: var(--taupe);
-  --accent: var(--bronze);
+  --accent: var(--burgundy);
   --accent-foreground: var(--ivory);
-  --border: oklch(0.949 0.011 84 / 14%);
-  --input: oklch(0.949 0.011 84 / 14%);
-  --ring: var(--bronze);
+  --border: rgba(244, 240, 234, 0.14);
+  --input: rgba(244, 240, 234, 0.14);
+  --ring: var(--burgundy);
 }
 
 @layer base {
@@ -118,7 +126,7 @@
 }
 
 @utility eyebrow {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -132,11 +140,6 @@
   letter-spacing: -0.03em;
 }
 
-/* Boomerang landing page display face */
-@utility font-mackinac {
-  font-family: "P22 Mackinac W01 Book", Georgia, serif;
-}
-
 /* Custom Architectural Scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
@@ -144,16 +147,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--ink);
+  background: var(--dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bronze);
+  background: var(--burgundy);
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b58d68;
+  background: var(--burgundy-hover);
 }
 
 @keyframes pulseGlow {
@@ -173,4 +176,3 @@
 .animate-float-slow {
   animation: floatSlow 6s ease-in-out infinite;
 }
-

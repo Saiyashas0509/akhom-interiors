@@ -225,7 +225,7 @@ function BoomerangPage() {
             <div className="border border-b-0 border-gray-200 bg-white/90 px-5 pt-8 pb-0 shadow-sm backdrop-blur-sm sm:px-8 sm:pt-12 md:px-12 md:pt-16">
               <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:gap-16">
                 <div>
-                  <span className="text-[11px] font-medium tracking-[0.2em] text-[#191919]/50 uppercase">
+                  <span className="text-[12px] font-medium tracking-[0.2em] text-[#191919]/50 uppercase">
                     What do we do?
                   </span>
                   <h2 className="font-mackinac mt-3 text-2xl leading-tight font-normal tracking-tight sm:text-3xl md:text-4xl">
@@ -271,7 +271,7 @@ function BoomerangPage() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12">
           {FEATURES.map((f) => (
             <div key={f.number}>
-              <span className="text-[11px] font-medium tracking-[0.2em] text-[#191919]/40 uppercase">
+              <span className="text-[12px] font-medium tracking-[0.2em] text-[#191919]/40 uppercase">
                 {f.number}
               </span>
               <h3 className="font-mackinac mt-3 text-xl font-normal tracking-tight text-[#191919] md:text-2xl">
@@ -290,7 +290,7 @@ function BoomerangPage() {
         className="border-y border-gray-200 bg-[#FAFAFA]"
       >
         <div className="mx-auto w-full max-w-5xl px-4 py-20 sm:px-6 md:py-28">
-          <span className="text-[11px] font-medium tracking-[0.2em] text-[#191919]/50 uppercase">
+          <span className="text-[12px] font-medium tracking-[0.2em] text-[#191919]/50 uppercase">
             Where teams deploy it
           </span>
           <h2 className="font-mackinac mt-3 max-w-xl text-3xl leading-tight font-normal tracking-tight text-[#191919] md:text-4xl">
@@ -313,7 +313,7 @@ function BoomerangPage() {
 
       {/* Pricing Section */}
       <section id="pricing" className="mx-auto w-full max-w-5xl px-4 py-20 sm:px-6 md:py-28">
-        <span className="text-[11px] font-medium tracking-[0.2em] text-[#191919]/50 uppercase">
+        <span className="text-[12px] font-medium tracking-[0.2em] text-[#191919]/50 uppercase">
           Flexible Plans
         </span>
         <h2 className="font-mackinac mt-3 max-w-xl text-3xl leading-tight font-normal tracking-tight text-[#191919] md:text-4xl">
@@ -331,7 +331,7 @@ function BoomerangPage() {
               }`}
             >
               {tier.popular && (
-                <span className="absolute -top-3 right-6 rounded-full bg-bronze px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-white">
+                <span className="absolute -top-3 right-6 rounded-full bg-bronze px-3 py-1 text-[12px] font-medium uppercase tracking-wider text-white">
                   Most Popular
                 </span>
               )}
@@ -377,7 +377,7 @@ function BoomerangPage() {
         className="border-t border-gray-200 bg-[#FAFAFA]"
       >
         <div className="mx-auto w-full max-w-5xl px-4 py-20 sm:px-6 md:py-28">
-          <span className="text-[11px] font-medium tracking-[0.2em] text-[#191919]/50 uppercase">
+          <span className="text-[12px] font-medium tracking-[0.2em] text-[#191919]/50 uppercase">
             Customers
           </span>
           <h2 className="font-mackinac mt-3 max-w-xl text-3xl leading-tight font-normal tracking-tight text-[#191919] md:text-4xl">

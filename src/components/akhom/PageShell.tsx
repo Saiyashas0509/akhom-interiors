@@ -42,7 +42,7 @@ export function PageShell({
 
           <div className="mx-auto w-full max-w-[1600px] px-6 pb-14 pt-40 md:px-10 md:pb-20 md:pt-52 lg:px-14">
             <Reveal>
-              <p className="eyebrow text-ivory/60">{eyebrow}</p>
+              <p className="eyebrow text-burgundy-light">{eyebrow}</p>
               <h1
                 className="display mt-6 max-w-[18ch] [text-shadow:0_2px_40px_rgba(0,0,0,0.55)]"
                 style={{ fontSize: "clamp(40px, 7vw, 104px)", lineHeight: 0.94, letterSpacing: "-0.035em" }}
@@ -51,7 +51,7 @@ export function PageShell({
                 {italic ? (
                   <>
                     <br />
-                    <em className="font-light italic">{italic}</em>
+                    <em className="font-light italic text-burgundy-light">{italic}</em>
                   </>
                 ) : null}
               </h1>
@@ -63,7 +63,7 @@ export function PageShell({
               {meta?.length ? (
                 <ul className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-ivory/15 pt-6">
                   {meta.map((m) => (
-                    <li key={m} className="text-[10px] uppercase tracking-[0.24em] text-ivory/55">
+                    <li key={m} className="text-[12px] uppercase tracking-[0.2em] text-ivory/70">
                       {m}
                     </li>
                   ))}

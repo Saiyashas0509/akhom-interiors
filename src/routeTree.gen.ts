@@ -14,10 +14,13 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as BoomerangRouteImport } from './routes/boomerang'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CorporateRouteImport } from './routes/corporate'
+import { Route as PriceCalculatorRouteImport } from './routes/price-calculator'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProcessRouteImport } from './routes/process'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ResidentialRouteImport } from './routes/residential'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TermsRouteImport } from './routes/terms'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -44,6 +47,16 @@ const CorporateRoute = CorporateRouteImport.update({
   path: '/corporate',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PriceCalculatorRoute = PriceCalculatorRouteImport.update({
+  id: '/price-calculator',
+  path: '/price-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProcessRoute = ProcessRouteImport.update({
   id: '/process',
   path: '/process',
@@ -64,6 +77,11 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -71,10 +89,13 @@ export interface FileRoutesByFullPath {
   '/boomerang': typeof BoomerangRoute
   '/contact': typeof ContactRoute
   '/corporate': typeof CorporateRoute
+  '/price-calculator': typeof PriceCalculatorRoute
+  '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
   '/residential': typeof ResidentialRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -82,10 +103,13 @@ export interface FileRoutesByTo {
   '/boomerang': typeof BoomerangRoute
   '/contact': typeof ContactRoute
   '/corporate': typeof CorporateRoute
+  '/price-calculator': typeof PriceCalculatorRoute
+  '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
   '/residential': typeof ResidentialRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -94,10 +118,13 @@ export interface FileRoutesById {
   '/boomerang': typeof BoomerangRoute
   '/contact': typeof ContactRoute
   '/corporate': typeof CorporateRoute
+  '/price-calculator': typeof PriceCalculatorRoute
+  '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRoute
   '/residential': typeof ResidentialRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -107,10 +134,13 @@ export interface FileRouteTypes {
     | '/boomerang'
     | '/contact'
     | '/corporate'
+    | '/price-calculator'
+    | '/privacy'
     | '/process'
     | '/projects'
     | '/residential'
     | '/services'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -118,10 +148,13 @@ export interface FileRouteTypes {
     | '/boomerang'
     | '/contact'
     | '/corporate'
+    | '/price-calculator'
+    | '/privacy'
     | '/process'
     | '/projects'
     | '/residential'
     | '/services'
+    | '/terms'
   id:
     | '__root__'
     | '/'
@@ -129,10 +162,13 @@ export interface FileRouteTypes {
     | '/boomerang'
     | '/contact'
     | '/corporate'
+    | '/price-calculator'
+    | '/privacy'
     | '/process'
     | '/projects'
     | '/residential'
     | '/services'
+    | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -141,10 +177,13 @@ export interface RootRouteChildren {
   BoomerangRoute: typeof BoomerangRoute
   ContactRoute: typeof ContactRoute
   CorporateRoute: typeof CorporateRoute
+  PriceCalculatorRoute: typeof PriceCalculatorRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProcessRoute: typeof ProcessRoute
   ProjectsRoute: typeof ProjectsRoute
   ResidentialRoute: typeof ResidentialRoute
   ServicesRoute: typeof ServicesRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -184,6 +223,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CorporateRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/price-calculator': {
+      id: '/price-calculator'
+      path: '/price-calculator'
+      fullPath: '/price-calculator'
+      preLoaderRoute: typeof PriceCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/process': {
       id: '/process'
       path: '/process'
@@ -212,6 +265,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -221,10 +281,13 @@ const rootRouteChildren: RootRouteChildren = {
   BoomerangRoute: BoomerangRoute,
   ContactRoute: ContactRoute,
   CorporateRoute: CorporateRoute,
+  PriceCalculatorRoute: PriceCalculatorRoute,
+  PrivacyRoute: PrivacyRoute,
   ProcessRoute: ProcessRoute,
   ProjectsRoute: ProjectsRoute,
   ResidentialRoute: ResidentialRoute,
   ServicesRoute: ServicesRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -2,11 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/akhom/PageShell";
 import heroProjects from "@/assets/hero-projects.jpg";
 import { SelectedWork } from "@/components/akhom/SelectedWork";
+import { ProjectGallery } from "@/components/akhom/ProjectGallery";
 import { FinalCta } from "@/components/akhom/FinalCta";
 
-const TITLE = "Selected Projects — Akhom Interiors Hyderabad";
+const TITLE = "Selected Projects & Architectural Portfolios — AKHOM INTERIORS";
 const DESCRIPTION =
-  "Villas, apartments, boardrooms and boutiques designed and built by Akhom Interiors across Jubilee Hills, Banjara Hills and the Financial District.";
+  "Curated architectural works, residential villas, commercial environments, healthcare suites, and custom workshop joinery by AKHOM INTERIORS in Hyderabad.";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -16,6 +17,7 @@ export const Route = createFileRoute("/projects")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://akhominteriors.com/projects" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
@@ -27,15 +29,16 @@ export const Route = createFileRoute("/projects")({
 function ProjectsPage() {
   return (
     <PageShell
-      eyebrow="Selected work"
-      title="A short list,"
-      italic="chosen carefully."
-      intro="Each project below is finished, occupied and photographed as built — no renders standing in for rooms."
+      eyebrow="Architectural Folios"
+      title="A curated selection,"
+      italic="crafted with intention."
+      intro="Our portfolio reflects our material discipline, in-house joinery capabilities, and meticulous architectural execution across Hyderabad."
       image={heroProjects}
       imageAlt="Walnut sideboard against a honed travertine wall in warm directional light"
-      meta={["Residential", "Corporate", "2016 — 2026"] as const}
+      meta={["Residential", "Commercial", "Healthcare", "Workshop Craft"] as const}
     >
       <SelectedWork />
+      <ProjectGallery />
       <FinalCta />
     </PageShell>
   );

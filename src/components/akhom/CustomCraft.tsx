@@ -1,5 +1,5 @@
 import { Parallax, Reveal } from "./ui";
-import craftImg from "@/assets/craft.jpg";
+import customCraftImg from "@/assets/custom-craft.jpg";
 
 export function CustomCraft() {
   return (
@@ -7,7 +7,7 @@ export function CustomCraft() {
       <div className="absolute inset-0">
         <Parallax className="h-full w-full" speed={-70} scale={1.18}>
           <img
-            src={craftImg}
+            src={customCraftImg}
             alt="Craftsman's hands fitting a walnut dovetail joint in the Akhom workshop"
             className="h-full w-full object-cover opacity-45"
             loading="lazy"
@@ -40,7 +40,7 @@ export function CustomCraft() {
             <div className="mt-10 grid grid-cols-2 gap-y-6 border-t border-ivory/15 pt-8 sm:grid-cols-4">
               {["Bespoke furniture", "Cabinetry & storage", "Doors & panelling", "Joinery & partitions"].map(
                 (t) => (
-                  <p key={t} className="pr-4 text-[10px] uppercase tracking-[0.18em] text-ivory/55">
+                  <p key={t} className="pr-4 text-[12px] uppercase tracking-[0.18em] text-ivory/70">
                     {t}
                   </p>
                 )

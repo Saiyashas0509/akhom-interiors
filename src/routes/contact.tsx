@@ -4,9 +4,9 @@ import heroContact from "@/assets/hero-contact.jpg";
 import { ConsultationForm } from "@/components/akhom/ConsultationForm";
 import { FinalCta } from "@/components/akhom/FinalCta";
 
-const TITLE = "Contact Akhom Interiors — Book a Consultation";
+const TITLE = "Contact AKHOM INTERIORS — Schedule an Architectural Consultation";
 const DESCRIPTION =
-  "Talk to the Akhom Interiors design lead about your villa, apartment or office fit-out in Hyderabad. Studio in Banjara Hills.";
+  "Book a 30-minute design consultation for your villa, penthouse, corporate office, or healthcare project in Hyderabad with AKHOM INTERIORS.";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -16,6 +16,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://akhominteriors.com/contact" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
@@ -27,17 +28,16 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <PageShell
-      eyebrow="Contact"
+      eyebrow="Consultation & Enquiries"
       title="Thirty minutes"
       italic="is usually enough."
-      intro="Tell us the address, the rooms and the timeline. We'll tell you honestly whether we're the right studio for it."
+      intro="Share details about your property, requirements, and target timeline. Our lead design team will review your scope and provide structured feedback on how we can collaborate."
       image={heroContact}
       imageAlt="Minimal meeting room with a stone table, leather chairs and a glowing sheer curtain"
-      meta={["Banjara Hills", "Mon — Sat", "hello@akhom.in"] as const}
+      meta={["Hyderabad, Telangana", "Mon — Sat", "info@akhominteriors.com"] as const}
     >
       <ConsultationForm />
       <FinalCta />
     </PageShell>
   );
 }
-

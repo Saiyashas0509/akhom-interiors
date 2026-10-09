@@ -11,6 +11,7 @@ const LINKS = [
   { label: "Projects", to: "/projects" },
   { label: "Our Process", to: "/process" },
   { label: "About", to: "/about" },
+  { label: "Price Calculator", to: "/price-calculator" },
 ] as const;
 
 export function Nav({ solid = false }: { solid?: boolean } = {}) {
@@ -26,8 +27,15 @@ export function Nav({ solid = false }: { solid?: boolean } = {}) {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    if (open) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [open]);
 
@@ -49,9 +57,9 @@ export function Nav({ solid = false }: { solid?: boolean } = {}) {
               <Link
                 key={l.to}
                 to={l.to}
-                activeProps={{ className: "opacity-100 font-normal border-b border-bronze pb-0.5" }}
+                activeProps={{ className: "opacity-100 font-normal border-b border-burgundy pb-0.5" }}
                 inactiveProps={{ className: "opacity-70 hover:opacity-100" }}
-                className="text-[11px] font-light uppercase tracking-[0.18em] transition-all duration-300"
+                className="text-[12px] font-light uppercase tracking-[0.18em] transition-all duration-300 hover:text-burgundy"
               >
                 {l.label}
               </Link>
@@ -61,10 +69,10 @@ export function Nav({ solid = false }: { solid?: boolean } = {}) {
           <div className="flex items-center gap-4">
             <Link
               to="/contact"
-              className={`hidden border px-6 py-3 text-[10px] font-medium uppercase tracking-[0.24em] transition-all duration-300 md:inline-block ${
+              className={`hidden border px-6 py-3 text-[12px] font-medium uppercase tracking-[0.24em] transition-all duration-300 md:inline-block ${
                 scrolled
-                  ? "border-ink/25 hover:border-bronze hover:bg-ink hover:text-ivory hover:shadow-[0_0_15px_rgba(154,118,84,0.3)]"
-                  : "border-ivory/40 hover:border-bronze hover:bg-ivory hover:text-ink hover:shadow-[0_0_15px_rgba(243,239,232,0.3)]"
+                  ? "border-burgundy/40 text-ink hover:border-burgundy hover:bg-burgundy hover:text-ivory hover:shadow-[0_0_15px_rgba(125,38,82,0.3)]"
+                  : "border-ivory/40 text-ivory hover:border-burgundy-light hover:bg-burgundy hover:text-ivory hover:shadow-[0_0_15px_rgba(125,38,82,0.4)]"
               }`}
             >
               Book a Consultation
@@ -73,42 +81,73 @@ export function Nav({ solid = false }: { solid?: boolean } = {}) {
               type="button"
               aria-label="Open menu"
               onClick={() => setOpen(true)}
-              className="lg:hidden"
+              className="lg:hidden p-2 text-current"
             >
-              <IconMenu className="h-5 w-5" />
+              <IconMenu className="h-6 w-6" />
             </button>
           </div>
         </div>
       </header>
 
       {open && (
-        <div className="fixed inset-0 z-[60] flex flex-col bg-ink text-ivory">
-          <div className="flex items-center justify-between px-6 py-5 md:px-10">
+        <div
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setOpen(false);
+          }}
+          className="fixed inset-0 z-[60] flex flex-col justify-between bg-dark/98 backdrop-blur-2xl text-ivory px-6 py-6 sm:px-10 overflow-y-auto"
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between border-b border-ivory/10 pb-5">
             <Logo variant="light" />
-            <button type="button" aria-label="Close menu" onClick={() => setOpen(false)}>
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-ivory/20 bg-ivory/[0.05] text-ivory/80 transition-colors hover:border-burgundy-light hover:text-ivory"
+            >
               <IconX className="h-5 w-5" />
             </button>
           </div>
-          <nav className="flex flex-1 flex-col justify-center gap-6 px-6 md:px-10">
-            {LINKS.map((l) => (
+
+          {/* Navigation Links */}
+          <nav className="my-auto flex flex-col py-8 space-y-1">
+            {LINKS.map((l, i) => (
               <Link
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="font-serif text-4xl font-light tracking-tight"
+                className="group flex items-center justify-between py-3.5 border-b border-ivory/8 transition-all duration-300 hover:border-burgundy-light/40 hover:pl-2"
               >
-                {l.label}
+                <div className="flex items-center gap-4">
+                  <span className="text-[12px] font-mono tracking-[0.2em] text-burgundy-light/80 group-hover:text-burgundy-light">
+                    0{i + 1}
+                  </span>
+                  <span className="font-serif text-xl sm:text-2xl font-light tracking-normal text-ivory/90 group-hover:text-ivory">
+                    {l.label}
+                  </span>
+                </div>
+                <span className="text-burgundy-light/60 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1">
+                  →
+                </span>
               </Link>
             ))}
           </nav>
-          <div className="px-6 pb-12 md:px-10">
+
+          {/* Bottom Actions & Studio Info */}
+          <div className="space-y-4 pt-6 border-t border-ivory/10">
             <Link
               to="/contact"
               onClick={() => setOpen(false)}
-              className="inline-block border border-ivory/40 px-6 py-4 text-[10px] uppercase tracking-[0.2em]"
+              className="block w-full text-center border border-burgundy bg-burgundy px-6 py-3.5 text-[12px] font-medium uppercase tracking-[0.24em] text-ivory shadow-[0_0_20px_rgba(125,38,82,0.3)] transition-all duration-300 hover:bg-burgundy-hover"
             >
               Book a Consultation
             </Link>
+            <div className="flex items-center justify-between text-[12px] uppercase tracking-[0.16em] text-ivory/50 pt-2">
+              <span>Hyderabad, Telangana</span>
+              <a href="mailto:info@akhominteriors.com" className="hover:text-ivory transition-colors">
+                info@akhominteriors.com
+              </a>
+            </div>
           </div>
         </div>
       )}

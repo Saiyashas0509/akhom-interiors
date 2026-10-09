@@ -321,3 +321,83 @@ export function IconSofa(props: IconProps) {
     </Base>
   );
 }
+
+// Healthcare cross / clinical shield
+export function IconHealthcare(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M12 4v16M4 12h16" />
+      <rect x="3" y="3" width="18" height="18" rx="3" strokeWidth={1.3} />
+    </Base>
+  );
+}
+
+// Hospitality cocktail / goblet / lounge
+export function IconHospitality(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M5 4h14l-7 8-7-8Z" />
+      <path d="M12 12v7" />
+      <path d="M8 20h8" />
+    </Base>
+  );
+}
+
+// Quality audit shield checkmark
+export function IconShieldCheck(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <path d="m9 12 2 2 4-4" />
+    </Base>
+  );
+}
+
+// Architectural apartment outline
+export function IconApartment(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M3 21h18M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2" />
+    </Base>
+  );
+}
+
+// Architectural villa outline
+export function IconVilla(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M2 11l10-7 10 7M4 10.5V21h16V10.5M9 21v-6h6v6" />
+    </Base>
+  );
+}
+
+// Architectural estate outline
+export function IconEstate(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M3 21h18M4 21V9l5-4 5 4v12M14 13l4-3 3 2.5V21" />
+      <path d="M8 12h2M8 16h2" />
+    </Base>
+  );
+}
+
+// Architectural office / commercial workspace outline
+export function IconOffice(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M4 21h16M6 21V7l8-4v18M14 9h4v12M10 11h-1M10 15h-1M10 19h-1" />
+    </Base>
+  );
+}
+
+// Architectural padlock outline
+export function IconLock(props: IconProps) {
+  return (
+    <Base {...props}>
+      <rect x="5" y="11" width="14" height="10" rx="2" />
+      <path d="M8 11V7a4 4 0 018 0v4" />
+    </Base>
+  );
+}
+
+

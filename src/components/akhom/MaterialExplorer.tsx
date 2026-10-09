@@ -56,8 +56,9 @@ const MATERIALS = [
 ];
 
 export function MaterialExplorer() {
-  const [activeId, setActiveId] = useState(MATERIALS[0].id);
-  const activeMat = MATERIALS.find((m) => m.id === activeId) || MATERIALS[0];
+  const defaultMat = MATERIALS[0]!;
+  const [activeId, setActiveId] = useState<string>(defaultMat.id);
+  const activeMat = MATERIALS.find((m) => m.id === activeId) ?? defaultMat;
 
   return (
     <section className="bg-ink px-6 py-24 text-ivory md:px-10 md:py-36 lg:px-14">
@@ -66,7 +67,7 @@ export function MaterialExplorer() {
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
               <div className="flex items-center gap-2">
-                <IconSparkles className="h-3.5 w-3.5 text-bronze" />
+                <IconSparkles className="h-3.5 w-3.5 text-burgundy-light" />
                 <p className="eyebrow text-ivory/45">Material Palette</p>
               </div>
               <h2
@@ -82,17 +83,17 @@ export function MaterialExplorer() {
           </div>
         </Reveal>
 
-        {/* Tab Buttons */}
+        {/* Tab Buttons per G18 */}
         <Reveal delay={1}>
-          <div className="mt-12 flex flex-wrap gap-2 border-b border-ivory/15 pb-6">
+          <div className="mt-12 flex gap-2.5 overflow-x-auto pb-4 border-b border-ivory/15 sm:flex-wrap">
             {MATERIALS.map((m) => (
               <button
                 key={m.id}
                 type="button"
                 onClick={() => setActiveId(m.id)}
-                className={`border px-5 py-3 text-[10px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${
+                className={`border px-5 py-3 text-[12px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${
                   activeId === m.id
-                    ? "border-bronze bg-bronze text-ivory shadow-lg"
+                    ? "border-burgundy bg-burgundy text-ivory shadow-lg"
                     : "border-ivory/20 bg-transparent text-ivory/70 hover:border-ivory/50 hover:text-ivory"
                 }`}
               >
@@ -112,14 +113,14 @@ export function MaterialExplorer() {
                 alt={activeMat.name}
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
               />
-              <div className="absolute top-4 left-4 border border-ivory/20 bg-ink/80 px-3 py-1 text-[9px] uppercase tracking-[0.24em] text-bronze">
+              <div className="absolute top-4 left-4 border border-ivory/20 bg-ink/80 px-3 py-1 text-[12px] uppercase tracking-[0.24em] text-burgundy-light">
                 {activeMat.category}
               </div>
             </div>
 
             <div className="flex flex-col justify-between md:col-span-6">
               <div>
-                <span className="text-[10px] uppercase tracking-[0.26em] text-bronze">
+                <span className="text-[12px] uppercase tracking-[0.26em] text-burgundy-light">
                   Tactile Specification
                 </span>
                 <h3 className="mt-3 font-serif text-3xl font-light tracking-tight text-ivory md:text-4xl">
@@ -131,13 +132,13 @@ export function MaterialExplorer() {
               </div>
 
               <div className="mt-8 border-t border-ivory/15 pt-6">
-                <p className="text-[10px] uppercase tracking-[0.22em] text-ivory/45">
+                <p className="text-[12px] uppercase tracking-[0.22em] text-ivory/45">
                   Architectural Features
                 </p>
                 <ul className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
                   {activeMat.specs.map((spec) => (
                     <li key={spec} className="flex items-center gap-2 text-xs font-light text-ivory/80">
-                      <span className="h-1.5 w-1.5 rounded-full bg-bronze shrink-0" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-burgundy-light shrink-0" />
                       {spec}
                     </li>
                   ))}

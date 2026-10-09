@@ -48,11 +48,11 @@ export function WhyAkhom() {
                   className="group grid w-full grid-cols-[auto_1fr_auto] items-baseline gap-x-6 border-b border-ivory/15 py-8 text-left md:gap-x-12 md:py-10"
                 >
                   <span className="flex flex-col items-start gap-3">
-                    <span className="text-[10px] tracking-[0.2em] text-bronze">0{i + 1}</span>
+                    <span className="text-[12px] font-mono tracking-[0.2em] text-burgundy-light">0{i + 1}</span>
                     <div className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${
                       active
-                        ? "border-bronze bg-bronze/20 text-bronze shadow-[0_0_15px_rgba(154,118,84,0.3)] scale-110"
-                        : "border-ivory/20 bg-ivory/[0.04] text-ivory/50 group-hover:border-bronze/50 group-hover:text-bronze"
+                        ? "border-burgundy-light bg-burgundy/30 text-burgundy-light shadow-[0_0_15px_rgba(125,38,82,0.4)] scale-110"
+                        : "border-ivory/20 bg-ivory/[0.04] text-ivory/50 group-hover:border-burgundy-light/50 group-hover:text-burgundy-light"
                     }`}>
                       <r.icon className="h-5 w-5" />
                     </div>
@@ -78,7 +78,7 @@ export function WhyAkhom() {
                   </span>
                   <IconArrowUpRight
                     className={`h-4 w-4 transition-all duration-300 ${
-                      active ? "rotate-90 text-bronze" : "text-ivory/40 group-hover:text-ivory/70"
+                      active ? "rotate-90 text-burgundy-light" : "text-ivory/40 group-hover:text-ivory/70"
                     }`}
                   />
                 </button>

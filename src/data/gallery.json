@@ -1,0 +1,856 @@
+[
+  {
+    "id": "gal-1",
+    "src": "/images/gallery/gallery_001.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "5628368f-21cc-4751-94e2-6d365c080594"
+  },
+  {
+    "id": "gal-2",
+    "src": "/images/gallery/gallery_002.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "c77a210c-0a4d-46bc-be2e-062d119a90af"
+  },
+  {
+    "id": "gal-3",
+    "src": "/images/gallery/gallery_003.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "cdd39673-7b7c-4e15-ae10-9b5e084b5dad"
+  },
+  {
+    "id": "gal-4",
+    "src": "/images/gallery/gallery_004.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "f309d2d3-0c22-4590-ab1a-7704104439901"
+  },
+  {
+    "id": "gal-5",
+    "src": "/images/gallery/gallery_005.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "10"
+  },
+  {
+    "id": "gal-6",
+    "src": "/images/gallery/gallery_006.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "11"
+  },
+  {
+    "id": "gal-7",
+    "src": "/images/gallery/gallery_007.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "12"
+  },
+  {
+    "id": "gal-8",
+    "src": "/images/gallery/gallery_008.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "13"
+  },
+  {
+    "id": "gal-9",
+    "src": "/images/gallery/gallery_009.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "14"
+  },
+  {
+    "id": "gal-10",
+    "src": "/images/gallery/gallery_010.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "16"
+  },
+  {
+    "id": "gal-11",
+    "src": "/images/gallery/gallery_011.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "17"
+  },
+  {
+    "id": "gal-12",
+    "src": "/images/gallery/gallery_012.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "18"
+  },
+  {
+    "id": "gal-13",
+    "src": "/images/gallery/gallery_013.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "19"
+  },
+  {
+    "id": "gal-14",
+    "src": "/images/gallery/gallery_014.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "2"
+  },
+  {
+    "id": "gal-15",
+    "src": "/images/gallery/gallery_015.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "20"
+  },
+  {
+    "id": "gal-16",
+    "src": "/images/gallery/gallery_016.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "3"
+  },
+  {
+    "id": "gal-17",
+    "src": "/images/gallery/gallery_017.png",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "4"
+  },
+  {
+    "id": "gal-18",
+    "src": "/images/gallery/gallery_018.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "AKHOM_Interior_09 1"
+  },
+  {
+    "id": "gal-19",
+    "src": "/images/gallery/gallery_019.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "AKHOM_Interior_Enhanced_04"
+  },
+  {
+    "id": "gal-20",
+    "src": "/images/gallery/gallery_020.png",
+    "categoryName": "False Ceilings & Lighting",
+    "categoryKey": "ceilings",
+    "title": "1"
+  },
+  {
+    "id": "gal-21",
+    "src": "/images/gallery/gallery_021.png",
+    "categoryName": "False Ceilings & Lighting",
+    "categoryKey": "ceilings",
+    "title": "2"
+  },
+  {
+    "id": "gal-22",
+    "src": "/images/gallery/gallery_022.png",
+    "categoryName": "False Ceilings & Lighting",
+    "categoryKey": "ceilings",
+    "title": "3"
+  },
+  {
+    "id": "gal-23",
+    "src": "/images/gallery/gallery_023.jpeg",
+    "categoryName": "False Ceilings & Lighting",
+    "categoryKey": "ceilings",
+    "title": "4"
+  },
+  {
+    "id": "gal-24",
+    "src": "/images/gallery/gallery_024.jpeg",
+    "categoryName": "False Ceilings & Lighting",
+    "categoryKey": "ceilings",
+    "title": "5"
+  },
+  {
+    "id": "gal-25",
+    "src": "/images/gallery/gallery_025.jpeg",
+    "categoryName": "False Ceilings & Lighting",
+    "categoryKey": "ceilings",
+    "title": "6"
+  },
+  {
+    "id": "gal-26",
+    "src": "/images/gallery/gallery_026.jpeg",
+    "categoryName": "False Ceilings & Lighting",
+    "categoryKey": "ceilings",
+    "title": "7"
+  },
+  {
+    "id": "gal-27",
+    "src": "/images/gallery/gallery_027.png",
+    "categoryName": "False Ceilings & Lighting",
+    "categoryKey": "ceilings",
+    "title": "8"
+  },
+  {
+    "id": "gal-28",
+    "src": "/images/gallery/gallery_028.jpg",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "IMG_0005"
+  },
+  {
+    "id": "gal-29",
+    "src": "/images/gallery/gallery_029.jpg",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "IMG_0444"
+  },
+  {
+    "id": "gal-30",
+    "src": "/images/gallery/gallery_030.jpg",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "IMG_0445"
+  },
+  {
+    "id": "gal-31",
+    "src": "/images/gallery/gallery_031.jpg",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "IMG_0446"
+  },
+  {
+    "id": "gal-32",
+    "src": "/images/gallery/gallery_032.jpg",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "IMG_0447"
+  },
+  {
+    "id": "gal-33",
+    "src": "/images/gallery/gallery_033.jpg",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "IMG_0448"
+  },
+  {
+    "id": "gal-34",
+    "src": "/images/gallery/gallery_034.jpg",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "IMG_0449"
+  },
+  {
+    "id": "gal-35",
+    "src": "/images/gallery/gallery_035.jpg",
+    "categoryName": "Corporate & Fit-Outs",
+    "categoryKey": "commercial",
+    "title": "IMG_0451 1"
+  },
+  {
+    "id": "gal-36",
+    "src": "/images/gallery/gallery_036.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "IMG_0005_enhanced"
+  },
+  {
+    "id": "gal-37",
+    "src": "/images/gallery/gallery_037.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "IMG_0166_enhanced"
+  },
+  {
+    "id": "gal-38",
+    "src": "/images/gallery/gallery_038.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "IMG_0200_enhanced"
+  },
+  {
+    "id": "gal-39",
+    "src": "/images/gallery/gallery_039.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "IMG_0383_enhanced"
+  },
+  {
+    "id": "gal-40",
+    "src": "/images/gallery/gallery_040.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "IMG_0386_enhanced 1"
+  },
+  {
+    "id": "gal-41",
+    "src": "/images/gallery/gallery_041.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "IMG_0438_enhanced"
+  },
+  {
+    "id": "gal-42",
+    "src": "/images/gallery/gallery_042.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "IMG_0439_enhanced"
+  },
+  {
+    "id": "gal-43",
+    "src": "/images/gallery/gallery_043.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "IMG_0440_enhanced"
+  },
+  {
+    "id": "gal-44",
+    "src": "/images/gallery/gallery_044.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "IMG_0449_enhanced"
+  },
+  {
+    "id": "gal-45",
+    "src": "/images/gallery/gallery_045.jpg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "IMG_0451_enhanced"
+  },
+  {
+    "id": "gal-46",
+    "src": "/images/gallery/gallery_046.png",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "Modern Kitchen with Black Glass Loft Cabinets"
+  },
+  {
+    "id": "gal-47",
+    "src": "/images/gallery/gallery_047.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124303 PM"
+  },
+  {
+    "id": "gal-48",
+    "src": "/images/gallery/gallery_048.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124312 PM 1"
+  },
+  {
+    "id": "gal-49",
+    "src": "/images/gallery/gallery_049.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124312 PM"
+  },
+  {
+    "id": "gal-50",
+    "src": "/images/gallery/gallery_050.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124456 PM"
+  },
+  {
+    "id": "gal-51",
+    "src": "/images/gallery/gallery_051.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124532 PM"
+  },
+  {
+    "id": "gal-52",
+    "src": "/images/gallery/gallery_052.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124534 PM"
+  },
+  {
+    "id": "gal-53",
+    "src": "/images/gallery/gallery_053.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124535 PM"
+  },
+  {
+    "id": "gal-54",
+    "src": "/images/gallery/gallery_054.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124536 PM"
+  },
+  {
+    "id": "gal-55",
+    "src": "/images/gallery/gallery_055.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124552 PM 1"
+  },
+  {
+    "id": "gal-56",
+    "src": "/images/gallery/gallery_056.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124552 PM"
+  },
+  {
+    "id": "gal-57",
+    "src": "/images/gallery/gallery_057.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124553 PM 1"
+  },
+  {
+    "id": "gal-58",
+    "src": "/images/gallery/gallery_058.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124553 PM"
+  },
+  {
+    "id": "gal-59",
+    "src": "/images/gallery/gallery_059.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-09-30 at 124554 PM 1"
+  },
+  {
+    "id": "gal-61",
+    "src": "/images/gallery/gallery_061.png",
+    "categoryName": "Puja Mandirs & Sacred Craft",
+    "categoryKey": "puja",
+    "title": "3"
+  },
+  {
+    "id": "gal-62",
+    "src": "/images/gallery/gallery_062.png",
+    "categoryName": "Puja Mandirs & Sacred Craft",
+    "categoryKey": "puja",
+    "title": "4"
+  },
+  {
+    "id": "gal-63",
+    "src": "/images/gallery/gallery_063.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 124542 PM"
+  },
+  {
+    "id": "gal-64",
+    "src": "/images/gallery/gallery_064.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 124544 PM"
+  },
+  {
+    "id": "gal-65",
+    "src": "/images/gallery/gallery_065.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 124545 PM"
+  },
+  {
+    "id": "gal-66",
+    "src": "/images/gallery/gallery_066.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 124546 PM"
+  },
+  {
+    "id": "gal-67",
+    "src": "/images/gallery/gallery_067.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 124547 PM 1"
+  },
+  {
+    "id": "gal-68",
+    "src": "/images/gallery/gallery_068.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 124547 PM 2"
+  },
+  {
+    "id": "gal-69",
+    "src": "/images/gallery/gallery_069.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 124547 PM"
+  },
+  {
+    "id": "gal-70",
+    "src": "/images/gallery/gallery_070.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 124548 PM 1"
+  },
+  {
+    "id": "gal-71",
+    "src": "/images/gallery/gallery_071.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 124548 PM"
+  },
+  {
+    "id": "gal-72",
+    "src": "/images/gallery/gallery_072.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 62727 PM 1"
+  },
+  {
+    "id": "gal-73",
+    "src": "/images/gallery/gallery_073.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 62728 PM 1"
+  },
+  {
+    "id": "gal-74",
+    "src": "/images/gallery/gallery_074.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 62728 PM 2"
+  },
+  {
+    "id": "gal-75",
+    "src": "/images/gallery/gallery_075.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 62729 PM 1"
+  },
+  {
+    "id": "gal-76",
+    "src": "/images/gallery/gallery_076.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 62729 PM 2"
+  },
+  {
+    "id": "gal-77",
+    "src": "/images/gallery/gallery_077.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 62730 PM 1"
+  },
+  {
+    "id": "gal-78",
+    "src": "/images/gallery/gallery_078.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 62730 PM 2"
+  },
+  {
+    "id": "gal-79",
+    "src": "/images/gallery/gallery_079.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 62731 PM 1"
+  },
+  {
+    "id": "gal-80",
+    "src": "/images/gallery/gallery_080.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 62731 PM"
+  },
+  {
+    "id": "gal-81",
+    "src": "/images/gallery/gallery_081.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "10"
+  },
+  {
+    "id": "gal-82",
+    "src": "/images/gallery/gallery_082.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "11"
+  },
+  {
+    "id": "gal-83",
+    "src": "/images/gallery/gallery_083.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "12"
+  },
+  {
+    "id": "gal-84",
+    "src": "/images/gallery/gallery_084.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "13"
+  },
+  {
+    "id": "gal-85",
+    "src": "/images/gallery/gallery_085.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "14"
+  },
+  {
+    "id": "gal-86",
+    "src": "/images/gallery/gallery_086.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "15"
+  },
+  {
+    "id": "gal-87",
+    "src": "/images/gallery/gallery_087.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "16"
+  },
+  {
+    "id": "gal-88",
+    "src": "/images/gallery/gallery_088.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "17"
+  },
+  {
+    "id": "gal-89",
+    "src": "/images/gallery/gallery_089.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "18"
+  },
+  {
+    "id": "gal-90",
+    "src": "/images/gallery/gallery_090.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "19"
+  },
+  {
+    "id": "gal-91",
+    "src": "/images/gallery/gallery_091.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "2"
+  },
+  {
+    "id": "gal-92",
+    "src": "/images/gallery/gallery_092.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "20"
+  },
+  {
+    "id": "gal-93",
+    "src": "/images/gallery/gallery_093.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "21"
+  },
+  {
+    "id": "gal-94",
+    "src": "/images/gallery/gallery_094.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "3"
+  },
+  {
+    "id": "gal-95",
+    "src": "/images/gallery/gallery_095.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "4"
+  },
+  {
+    "id": "gal-96",
+    "src": "/images/gallery/gallery_096.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "5"
+  },
+  {
+    "id": "gal-97",
+    "src": "/images/gallery/gallery_097.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "6"
+  },
+  {
+    "id": "gal-98",
+    "src": "/images/gallery/gallery_098.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "7"
+  },
+  {
+    "id": "gal-99",
+    "src": "/images/gallery/gallery_099.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "8"
+  },
+  {
+    "id": "gal-100",
+    "src": "/images/gallery/gallery_100.png",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "9"
+  },
+  {
+    "id": "gal-101",
+    "src": "/images/gallery/gallery_101.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_01"
+  },
+  {
+    "id": "gal-102",
+    "src": "/images/gallery/gallery_102.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_02"
+  },
+  {
+    "id": "gal-103",
+    "src": "/images/gallery/gallery_103.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_03"
+  },
+  {
+    "id": "gal-104",
+    "src": "/images/gallery/gallery_104.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_04"
+  },
+  {
+    "id": "gal-105",
+    "src": "/images/gallery/gallery_105.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_05"
+  },
+  {
+    "id": "gal-106",
+    "src": "/images/gallery/gallery_106.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_06"
+  },
+  {
+    "id": "gal-107",
+    "src": "/images/gallery/gallery_107.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_07"
+  },
+  {
+    "id": "gal-108",
+    "src": "/images/gallery/gallery_108.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_08"
+  },
+  {
+    "id": "gal-109",
+    "src": "/images/gallery/gallery_109.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_10"
+  },
+  {
+    "id": "gal-110",
+    "src": "/images/gallery/gallery_110.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_11"
+  },
+  {
+    "id": "gal-111",
+    "src": "/images/gallery/gallery_111.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_12"
+  },
+  {
+    "id": "gal-112",
+    "src": "/images/gallery/gallery_112.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_13"
+  },
+  {
+    "id": "gal-113",
+    "src": "/images/gallery/gallery_113.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_Enhanced_01"
+  },
+  {
+    "id": "gal-114",
+    "src": "/images/gallery/gallery_114.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_Enhanced_02"
+  },
+  {
+    "id": "gal-115",
+    "src": "/images/gallery/gallery_115.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_Enhanced_03"
+  },
+  {
+    "id": "gal-116",
+    "src": "/images/gallery/gallery_116.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_Enhanced_05"
+  },
+  {
+    "id": "gal-117",
+    "src": "/images/gallery/gallery_117.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_Enhanced_06"
+  },
+  {
+    "id": "gal-118",
+    "src": "/images/gallery/gallery_118.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_Enhanced_07"
+  },
+  {
+    "id": "gal-119",
+    "src": "/images/gallery/gallery_119.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_Enhanced_08"
+  },
+  {
+    "id": "gal-120",
+    "src": "/images/gallery/gallery_120.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_Enhanced_09"
+  },
+  {
+    "id": "gal-121",
+    "src": "/images/gallery/gallery_121.jpg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "AKHOM_Interior_Enhanced_10"
+  },
+  {
+    "id": "gal-122",
+    "src": "/images/gallery/gallery_122.jpeg",
+    "categoryName": "Villas & Residences",
+    "categoryKey": "villas",
+    "title": "WhatsApp Image 2026-09-30 at 124554 PM"
+  },
+  {
+    "id": "gal-123",
+    "src": "/images/gallery/gallery_123.jpeg",
+    "categoryName": "Curated Archives",
+    "categoryKey": "archives",
+    "title": "WhatsApp Image 2026-10-02 at 21230 PM"
+  }
+]

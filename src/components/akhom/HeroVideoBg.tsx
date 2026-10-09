@@ -231,7 +231,7 @@ export function HeroVideoBg() {
             poster={POSTER}
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             className="relative h-full w-full object-cover"
             style={ready ? { display: "none" } : undefined}
           >

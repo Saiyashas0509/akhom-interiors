@@ -3,10 +3,11 @@ import { PageShell } from "@/components/akhom/PageShell";
 import heroAbout from "@/assets/hero-about.jpg";
 import { Approach } from "@/components/akhom/Approach";
 import { WhyAkhom } from "@/components/akhom/WhyAkhom";
+import { FinalCta } from "@/components/akhom/FinalCta";
 
-const TITLE = "About Akhom Interiors — Studio & Design Philosophy";
+const TITLE = "About AKHOM INTERIORS — Hyderabad Design & Build Studio";
 const DESCRIPTION =
-  "How Akhom Interiors works: material honesty, textural narrative and a timeless palette, delivered by one accountable Hyderabad studio.";
+  "How AKHOM INTERIORS works: material honesty, textural narrative and a timeless architectural palette, delivered by one accountable Hyderabad studio.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -16,6 +17,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://akhominteriors.com/about" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
@@ -27,16 +29,17 @@ export const Route = createFileRoute("/about")({
 function AboutPage() {
   return (
     <PageShell
-      eyebrow="The studio"
+      eyebrow="The Studio"
       title="Rooms decided"
       italic="long before furnishing."
-      intro="Akhom Interiors is a Hyderabad design and build studio. Drawings, materials, joinery and site work stay under one roof, so what is promised on paper is what gets handed over."
+      intro="AKHOM INTERIORS is an architectural interior design and turnkey fit-out studio based in Hyderabad. Architectural drawings, material procurement, workshop joinery, and site execution remain under one roof."
       image={heroAbout}
       imageAlt="Design studio interior with drawings pinned to the wall and material samples on an oak worktable"
-      meta={["Founded 2016", "Hyderabad", "Design + build"] as const}
+      meta={["In-House Joinery", "Hyderabad Studio", "Design + Build"] as const}
     >
       <Approach />
       <WhyAkhom />
+      <FinalCta />
     </PageShell>
   );
 }

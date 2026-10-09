@@ -226,7 +226,7 @@ export function ScrollProgress() {
   return (
     <div className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[2px] bg-transparent">
       <div
-        className="h-full origin-left bg-gradient-to-r from-bronze to-amber-400 shadow-[0_0_8px_rgba(154,118,84,0.8)]"
+        className="h-full origin-left bg-gradient-to-r from-burgundy to-burgundy-light shadow-[0_0_8px_rgba(125,38,82,0.8)]"
         style={{ transform: `scaleX(${p})`, transition: "transform 120ms linear" }}
       />
     </div>
@@ -268,7 +268,12 @@ export function LightboxModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 backdrop-blur-md transition-all duration-300">
+    <div
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 backdrop-blur-md transition-all duration-300"
+    >
       {/* Close button */}
       <button
         type="button"
@@ -290,7 +295,7 @@ export function LightboxModal({
         {(title || subtitle || description) && (
           <div className="flex w-full flex-col justify-center border-t border-ivory/15 bg-ink p-6 text-ivory md:w-80 md:border-t-0 md:border-l md:p-8">
             {subtitle && (
-              <p className="text-[10px] uppercase tracking-[0.24em] text-bronze">{subtitle}</p>
+              <p className="text-[12px] uppercase tracking-[0.24em] text-burgundy-light">{subtitle}</p>
             )}
             {title && (
               <h3 className="mt-3 font-serif text-2xl font-light tracking-tight text-ivory">

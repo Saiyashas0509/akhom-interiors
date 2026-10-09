@@ -4,9 +4,9 @@ import heroProcess from "@/assets/hero-process.jpg";
 import { Process } from "@/components/akhom/Process";
 import { FinalCta } from "@/components/akhom/FinalCta";
 
-const TITLE = "Our Process — How Akhom Interiors Delivers";
+const TITLE = "Seven Stages Delivery Process — AKHOM INTERIORS Hyderabad";
 const DESCRIPTION =
-  "Consultation, design, material selection, execution and handover — the Akhom Interiors process, stage by stage, with dates you can hold us to.";
+  "Consultation, concept, design development, materials, execution, quality audit, and handover — the structured seven-stage delivery process of AKHOM INTERIORS.";
 
 export const Route = createFileRoute("/process")({
   head: () => ({
@@ -16,6 +16,7 @@ export const Route = createFileRoute("/process")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://akhominteriors.com/process" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
@@ -27,13 +28,13 @@ export const Route = createFileRoute("/process")({
 function ProcessPage() {
   return (
     <PageShell
-      eyebrow="Our process"
+      eyebrow="Our Methodology"
       title="A schedule,"
       italic="not an estimate."
-      intro="Every stage has an owner, a drawing set and a date. You always know what is happening on site this week."
+      intro="Every stage has a dedicated owner, an architectural drawing package, and committed milestones. You always know what is occurring on site this week."
       image={heroProcess}
       imageAlt="New walnut joinery under protective film with a plumb line and chalk marks on plaster"
-      meta={["Six stages", "One team", "Fixed dates"] as const}
+      meta={["Seven stages", "One team", "Fixed dates"] as const}
     >
       <Process />
       <FinalCta />
