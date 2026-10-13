@@ -8,7 +8,7 @@ import {
   IconSofa,
   IconBrush,
 } from "./icons";
-import { Reveal } from "./ui";
+import { Reveal, RevealRule } from "./ui";
 
 const SERVICES = [
   {
@@ -82,50 +82,62 @@ export function Services() {
     <section id="services" className="bg-ivory px-6 py-24 md:px-10 md:py-36 lg:px-14">
       <div className="mx-auto max-w-[1600px]">
         <Reveal>
-          <p className="eyebrow text-burgundy">Eight Service Pillars</p>
-          <h2
-            className="display mt-6 max-w-[18ch] text-ink"
-            style={{ fontSize: "clamp(34px, 4.4vw, 68px)", lineHeight: 0.98, letterSpacing: "-0.03em" }}
-          >
-            Everything a finished space needs, in one contract.
-          </h2>
+          <div className="flex flex-col gap-8 border-b border-ink/12 pb-10 md:flex-row md:items-end md:justify-between">
+            <div>
+              <span className="section-index text-burgundy">SERVICES / 08</span>
+              <h2
+                className="display mt-5 max-w-[18ch] text-ink"
+                style={{ fontSize: "clamp(34px, 4.4vw, 68px)", lineHeight: 0.98, letterSpacing: "-0.03em" }}
+              >
+                Everything a finished space needs, in one contract.
+              </h2>
+            </div>
+            <p className="max-w-[36ch] text-[14px] font-light leading-relaxed text-ink/60 md:text-right">
+              Eight capabilities, one team and a single contract — drawn, crafted and executed under
+              one roof in Hyderabad.
+            </p>
+          </div>
         </Reveal>
 
+        {/* Hairline matrix: a single ivory surface scored by rules, not a row of boxes. */}
         <div className="mt-14 grid grid-cols-1 gap-px bg-ink/10 md:mt-20 md:grid-cols-2 lg:grid-cols-4">
-          {SERVICES.map((s, i) => (
-            <Reveal key={s.n} delay={(((i % 4) + 1) as 1 | 2 | 3) || 1} className="bg-ivory">
-              <div className="group flex h-full flex-col p-8 transition-colors duration-300 hover:bg-stone/50 md:p-10">
-                <div className="flex items-center justify-between">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-burgundy/10 text-burgundy transition-colors group-hover:bg-burgundy group-hover:text-ivory">
-                    <s.icon className="h-5 w-5" strokeWidth={1.4} />
-                  </div>
-                  <span className="text-[12px] font-mono tracking-[0.2em] text-burgundy">{s.n}</span>
-                </div>
-                <div className="mt-4">
-                  <span className="inline-block text-[12px] font-medium uppercase tracking-[0.16em] text-burgundy">
-                    {s.badge}
-                  </span>
-                </div>
-                <h3 className="mt-2 font-serif text-2xl font-light text-ink md:text-[1.5rem] leading-snug">{s.t}</h3>
-                <p className="mt-4 flex-1 text-[13px] font-light leading-relaxed text-ink/75">{s.d}</p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {s.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="border border-ink/20 px-2.5 py-1 text-[12px] uppercase tracking-[0.14em] text-ink/70 transition-colors group-hover:border-burgundy/50 group-hover:text-ink"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
+          {SERVICES.map((s) => (
+            <div
+              key={s.n}
+              className="group relative flex flex-col bg-ivory p-8 transition-colors duration-500 hover:bg-stone/50 md:p-9"
+            >
+              <div className="flex items-start justify-between">
+                <span className="font-serif text-5xl font-light leading-none text-ink/15 transition-colors duration-500 group-hover:text-burgundy/40">
+                  {s.n}
+                </span>
+                <s.icon
+                  className="h-5 w-5 text-burgundy opacity-70 transition-opacity duration-500 group-hover:opacity-100"
+                  strokeWidth={1.4}
+                />
               </div>
-            </Reveal>
+              <span className="mt-7 text-[12px] font-medium uppercase tracking-[0.18em] text-burgundy">
+                {s.badge}
+              </span>
+              <h3 className="mt-3 font-serif text-2xl font-light leading-snug text-ink">{s.t}</h3>
+              <p className="mt-4 flex-1 text-[13px] font-light leading-relaxed text-ink/70">{s.d}</p>
+              <div className="mt-7 flex flex-wrap gap-x-3 gap-y-2 border-t border-ink/10 pt-5">
+                {s.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[12px] uppercase tracking-[0.14em] text-ink/55 transition-colors duration-300 group-hover:text-ink/80"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
 
-        <Reveal delay={2}>
-          <div className="mt-12 text-center border-t border-ink/10 pt-8">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink/60">
+        <Reveal>
+          <div className="mt-16">
+            <RevealRule className="text-ink/15" />
+            <p className="mt-6 text-[12px] uppercase tracking-[0.2em] text-ink/50">
               Pricing and timelines are agreed per project.
             </p>
           </div>

@@ -9,7 +9,7 @@ export function FinalCta() {
         <div className="grid grid-cols-1 gap-14 md:grid-cols-12 md:gap-x-10">
           <div className="md:col-span-7">
             <Reveal>
-              <p className="eyebrow text-burgundy-light">Start a project</p>
+              <span className="section-index text-burgundy-light">START A PROJECT</span>
               <h2
                 aria-label="Tell us about the space. We'll tell you the truth."
                 className="display mt-6 max-w-[18ch]"

@@ -57,40 +57,49 @@ const STEPS = [
 export function Process() {
   return (
     <section id="process" className="bg-dark px-6 py-24 text-ivory md:px-10 md:py-36 lg:px-14">
-      <div className="mx-auto max-w-[1600px]">
-        <Reveal>
-          <p className="eyebrow text-burgundy-light">Our Methodology</p>
-          <h2
-            className="display mt-6 max-w-[18ch] text-ivory"
-            style={{ fontSize: "clamp(34px, 4.4vw, 68px)", lineHeight: 0.98, letterSpacing: "-0.03em" }}
-          >
-            Seven stages. You always know which one you're in.
-          </h2>
-        </Reveal>
-
-        <div className="mt-14 grid grid-cols-1 gap-x-10 gap-y-12 md:mt-20 md:grid-cols-2 lg:grid-cols-4">
-          {STEPS.map((s, i) => (
-            <Reveal key={s.n} delay={(((i % 4) + 1) as 1 | 2 | 3) || 1}>
-              <div className="border-t border-ivory/15 pt-6 transition-all duration-300 hover:border-burgundy-light">
-                <div className="flex items-center justify-between">
-                  <span className="text-[12px] font-mono tracking-[0.2em] text-burgundy-light">{s.n}</span>
-                  <span className="h-px flex-1 mx-4 bg-ivory/10" />
-                  <s.icon className="h-5 w-5 text-burgundy-light" strokeWidth={1.4} />
-                </div>
-                <h3 className="mt-4 font-serif text-2xl font-light text-ivory">{s.t}</h3>
-                <p className="mt-3 max-w-[46ch] text-[13px] font-light leading-relaxed text-ivory/70">{s.d}</p>
-              </div>
+      <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-4">
+          <div className="lg:sticky lg:top-28">
+            <Reveal>
+              <span className="section-index text-burgundy-light">PROCESS / 07</span>
+              <h2
+                className="display mt-5 max-w-[14ch] text-ivory"
+                style={{ fontSize: "clamp(34px, 4.4vw, 68px)", lineHeight: 0.98, letterSpacing: "-0.03em" }}
+              >
+                Seven stages. You always know which one you're in.
+              </h2>
+              <p className="mt-6 max-w-[40ch] text-[14px] font-light leading-relaxed text-ivory/60">
+                Every stage has a dedicated owner, a fixed set of drawings, and a date on the
+                calendar — so progress is something you can see, not assume.
+              </p>
             </Reveal>
-          ))}
+          </div>
         </div>
 
-        <Reveal delay={2}>
-          <div className="mt-12 text-center border-t border-ivory/10 pt-8">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-ivory/60">
-              Pricing and timelines are agreed per project.
-            </p>
-          </div>
-        </Reveal>
+        <div className="lg:col-span-8">
+          <ol className="border-t border-ivory/15">
+            {STEPS.map((s) => (
+              <li key={s.n} className="group">
+                <Reveal>
+                  <div className="flex gap-6 border-b border-ivory/15 py-8 transition-colors duration-500 md:gap-10 md:py-10">
+                    <span className="w-10 shrink-0 font-serif text-3xl font-light leading-none text-burgundy-light/70 transition-colors duration-500 group-hover:text-burgundy-light md:text-4xl">
+                      {s.n}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-3">
+                        <s.icon className="h-5 w-5 text-burgundy-light" strokeWidth={1.4} />
+                        <h3 className="font-serif text-2xl font-light text-ivory">{s.t}</h3>
+                      </div>
+                      <p className="mt-3 max-w-[56ch] text-[13px] font-light leading-relaxed text-ivory/65">
+                        {s.d}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );

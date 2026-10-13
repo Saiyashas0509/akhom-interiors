@@ -12,7 +12,7 @@ export function Renovation() {
             <Reveal>
               <div className="flex items-center gap-2 text-burgundy">
                 <IconBrush className="h-4 w-4" />
-                <p className="eyebrow text-burgundy">Renovation & Remodelling</p>
+                <p className="section-index text-burgundy">RENOVATION & REMODELLING</p>
               </div>
               <h2
                 className="display mt-4 max-w-[16ch] text-ink"

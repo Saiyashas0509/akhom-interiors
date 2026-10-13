@@ -1,162 +1,127 @@
 import { Link } from "@tanstack/react-router";
-import { IconPen, IconRuler, IconSofa, IconHelmet, IconArrowRight } from "./icons";
+import { motion } from "framer-motion";
 import { HeroVideoBg } from "./HeroVideoBg";
+import { IconArrowRight, IconArrowUpRight } from "./icons";
+import { Magnetic, useReducedMotion } from "./ui";
 
-const PILLARS = [
-  {
-    n: "01",
-    t: "DESIGN",
-    d: "Interior architecture, space planning and 3D visualisation — before a single wall is touched.",
-    to: "/services",
-    icon: IconPen,
-  },
-  {
-    n: "02",
-    t: "DETAIL",
-    d: "Material and colour selection, lighting design, Vastu-aligned layouts where they matter to you.",
-    to: "/services",
-    icon: IconRuler,
-  },
-  {
-    n: "03",
-    t: "CUSTOM CRAFT",
-    d: "Bespoke furniture, joinery, panelling and wardrobes made for your space, not the catalogue.",
-    to: "/services",
-    icon: IconSofa,
-  },
-  {
-    n: "04",
-    t: "EXECUTION",
-    d: "Civil works, MEP coordination and site supervision by one accountable team, through to handover.",
-    to: "/process",
-    icon: IconHelmet,
-  },
-];
+const DISCIPLINES = [
+  { n: "01", t: "DESIGN", to: "/services" },
+  { n: "02", t: "DETAIL", to: "/services" },
+  { n: "03", t: "CUSTOM CRAFT", to: "/services" },
+  { n: "04", t: "EXECUTION", to: "/process" },
+] as const;
+
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function Hero() {
-  return (
-    <section
-      id="top"
-      className="relative flex min-h-[100svh] flex-col overflow-hidden text-ivory"
-    >
-      <HeroVideoBg />
-      <div className="absolute inset-0 z-[1] bg-dark/60" />
-      <div className="absolute inset-x-0 top-0 z-[1] h-40 bg-gradient-to-b from-dark/80 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 z-[1] h-2/3 bg-gradient-to-t from-dark/85 to-transparent" />
+  const reduced = useReducedMotion();
 
-      {/* Centred hero copy */}
-      <div className="relative z-10 flex w-full flex-1 flex-col items-center justify-center px-5 pt-28 pb-10 text-center sm:px-6 sm:pt-32 md:pt-36">
-        <p className="eyebrow text-burgundy-light tracking-[0.28em]" style={{ textShadow: "0 2px 16px rgba(11,11,11,0.8)" }}>
-          AKHOM INTERIORS / HYDERABAD
-        </p>
-        <h1
-          className="display mt-5 max-w-[15ch] md:mt-7 text-ivory"
-          style={{
-            fontSize: "clamp(44px, 11vw, 120px)",
-            lineHeight: 0.94,
-            letterSpacing: "-0.04em",
-            textShadow: "0 4px 40px rgba(11,11,11,0.85), 0 1px 8px rgba(11,11,11,0.6)",
-          }}
+  const stage = {
+    hidden: {},
+    show: { transition: { staggerChildren: reduced ? 0 : 0.11, delayChildren: 0.15 } },
+  };
+  const line = {
+    hidden: reduced ? { opacity: 0 } : { y: "112%" },
+    show: { y: "0%", opacity: 1, transition: { duration: 1.05, ease: EASE } },
+  };
+  const fade = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { duration: 0.9, ease: EASE } },
+  };
+
+  return (
+    <section id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden bg-dark text-ivory">
+      <HeroVideoBg />
+
+      {/* Layered scrims: readable type over a moving image. */}
+      <div className="absolute inset-0 z-[1] bg-ink/60" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 z-[1] h-44 bg-gradient-to-b from-ink/80 to-transparent" aria-hidden="true" />
+      <div className="absolute inset-x-0 bottom-0 z-[1] h-2/3 bg-gradient-to-t from-ink via-ink/60 to-transparent" aria-hidden="true" />
+
+      <motion.div
+        variants={stage}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 mx-auto flex w-full max-w-[1360px] flex-1 flex-col justify-center px-6 pt-28 pb-12 sm:px-10 md:pt-32 lg:px-14"
+      >
+        <motion.p
+          variants={fade}
+          className="text-[12px] font-medium uppercase tracking-[0.28em] text-burgundy-light [text-shadow:0_2px_16px_rgba(11,11,11,0.8)]"
         >
-          Timeless designs.
-          <br />
-          <em className="font-light italic text-ivory/95">Thoughtful spaces.</em>
+          AKHOM INTERIORS / HYDERABAD
+        </motion.p>
+
+        <h1
+          className="display mt-6 text-ivory [text-shadow:0_4px_44px_rgba(11,11,11,0.75)]"
+          style={{ fontSize: "clamp(46px, 10.5vw, 118px)", lineHeight: 0.94, letterSpacing: "-0.04em" }}
+        >
+          <span className="block overflow-hidden pb-[0.06em]">
+            <motion.span variants={line} className="block will-change-transform">
+              Timeless designs.
+            </motion.span>
+          </span>
+          <span className="block overflow-hidden pb-[0.06em]">
+            <motion.span variants={line} className="block italic font-light will-change-transform">
+              Thoughtful spaces.
+            </motion.span>
+          </span>
         </h1>
 
-        <p
-          className="mx-auto mt-6 max-w-[34ch] text-[15px] font-normal leading-relaxed text-ivory/80 sm:max-w-[54ch] md:mt-8 md:text-base"
-          style={{ textShadow: "0 2px 20px rgba(11,11,11,0.85)" }}
+        <motion.p
+          variants={fade}
+          className="mt-7 max-w-[46ch] text-[15px] font-light leading-relaxed text-ivory/80 [text-shadow:0_2px_20px_rgba(11,11,11,0.85)] md:text-base"
         >
-          Luxury residences, corporate workplaces, healthcare facilities and hospitality spaces across Hyderabad — one team, from first sketch to final handover.
-        </p>
+          Luxury residences, workplaces, healthcare and hospitality interiors across Hyderabad —
+          designed, crafted and executed by one accountable studio.
+        </motion.p>
 
-        <div className="mt-8 flex w-full flex-col items-center gap-5 sm:w-auto sm:flex-row sm:gap-8 md:mt-10">
-          <Link
-            to="/contact"
-            className="group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden border border-burgundy bg-burgundy px-8 py-4 text-[12px] font-medium uppercase tracking-[0.24em] text-ivory transition-all duration-500 hover:bg-burgundy-hover hover:shadow-[0_0_25px_rgba(125,38,82,0.4)] sm:w-auto"
-          >
-            <span className="relative z-10 flex items-center gap-3">
-              Book a Consultation
-              <IconArrowRight
-                className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </span>
-          </Link>
+        <motion.div variants={fade} className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-5">
+          <Magnetic strength={0.22} radius={90}>
+            <Link
+              to="/contact"
+              className="group relative inline-flex items-center gap-3 overflow-hidden bg-burgundy px-8 py-4 text-[12px] font-medium uppercase tracking-[0.22em] text-ivory transition-colors duration-500 hover:bg-burgundy-hover"
+            >
+              <span className="sheen" aria-hidden="true" />
+              <span className="relative z-10">Book a Consultation</span>
+              <IconArrowRight className="relative z-10 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </Magnetic>
+
           <Link
             to="/projects"
-            className="group inline-flex items-center gap-2 border-b border-ivory/40 pb-1 text-[12px] uppercase tracking-[0.24em] text-ivory transition-all duration-300 hover:border-burgundy-light hover:text-burgundy-light"
+            className="link-rule inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.22em] text-ivory/90"
           >
-            View Selected Projects
-            <IconArrowRight className="h-3 w-3 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
+            View Selected Work
+            <IconArrowUpRight className="h-3.5 w-3.5" />
           </Link>
-        </div>
+        </motion.div>
+      </motion.div>
 
-        {/* Scroll cue — mobile only */}
-        <div className="mt-10 flex flex-col items-center gap-2 sm:hidden" aria-hidden="true">
-          <span className="text-[12px] uppercase tracking-[0.24em] text-ivory/50">Scroll</span>
-          <span className="h-8 w-px animate-pulse bg-gradient-to-b from-burgundy-light to-transparent" />
-        </div>
-      </div>
-
-      {/* Bottom glass panel, flush to the fold */}
-      <div className="relative z-10 mx-auto w-full max-w-[1240px] px-4 pb-0 sm:px-6">
-        <div className="relative overflow-hidden rounded-t-[28px] border border-b-0 border-ivory/20 bg-dark/80 px-5 pt-7 text-ivory shadow-[0_-40px_100px_-40px_rgba(11,11,11,0.95),inset_0_1px_0_rgba(243,239,232,0.22),inset_0_-1px_0_rgba(243,239,232,0.06)] backdrop-blur-[28px] backdrop-saturate-[180%] sm:rounded-t-[36px] sm:px-8 sm:pt-10 md:rounded-t-[44px] md:px-12 md:pt-12">
-          {/* Subtle sheen */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ivory/15 to-transparent sm:h-36" aria-hidden="true" />
-          <div className="pointer-events-none absolute -top-28 left-1/2 h-56 w-[130%] -translate-x-1/2 rounded-[100%] bg-burgundy/[0.15] blur-3xl" aria-hidden="true" />
-          <div className="pointer-events-none absolute inset-x-6 top-2 h-px bg-gradient-to-r from-transparent via-ivory/35 to-transparent sm:inset-x-10" aria-hidden="true" />
-
-          <div className="relative grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-16">
-            <div>
-              <span className="text-[12px] font-medium uppercase tracking-[0.24em] text-burgundy-light">
-                What we do
-              </span>
-              <h2
-                className="display mt-3 text-ivory"
-                style={{ fontSize: "clamp(26px, 4vw, 40px)", lineHeight: 1.02, letterSpacing: "-0.03em" }}
-              >
-                Four disciplines,
-                <br className="hidden sm:block" /> one accountable team
-              </h2>
-            </div>
-            <div className="flex items-end">
-              <p className="text-sm leading-relaxed text-ivory/70 md:text-[15px]">
-                Design, detail, custom craft and execution held under one roof — so drawings, materials and site work never drift apart.
-              </p>
-            </div>
-          </div>
-
-          <div className="relative mt-7 h-px w-full bg-ivory/15 md:mt-10" />
-
-          <div className="relative grid grid-cols-1 py-4 sm:grid-cols-2 sm:gap-3 sm:py-6 lg:grid-cols-4">
-            {PILLARS.map((p) => (
+      {/* Frosted base plate: location + the four disciplines, stated once. */}
+      <motion.div
+        initial={reduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.75, ease: EASE }}
+        className="relative z-10 border-t border-ivory/15 bg-dark/40 backdrop-blur-xl"
+      >
+        <div className="mx-auto flex max-w-[1360px] flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-14">
+          <span className="text-[12px] uppercase tracking-[0.24em] text-ivory/55">
+            Hyderabad, Telangana
+          </span>
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-2">
+            {DISCIPLINES.map((d) => (
               <Link
-                key={p.n}
-                to={p.to}
-                className="group flex items-center justify-between gap-3 border-t border-ivory/12 px-1 py-4 transition-colors duration-300 first:border-t-0 hover:bg-ivory/[0.06] sm:flex-col sm:items-start sm:gap-2 sm:border-t-0 sm:bg-ivory/[0.04] sm:px-5 sm:py-5 sm:hover:bg-ivory/[0.09]"
+                key={d.n}
+                to={d.to}
+                className="group inline-flex items-baseline gap-2 text-[12px] uppercase tracking-[0.2em] text-ivory/60 transition-colors hover:text-ivory"
               >
-                <span className="flex items-center gap-3 sm:flex-col sm:items-start sm:gap-3">
-                  <span className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-burgundy/40 bg-burgundy/20 text-burgundy-light shadow-[0_0_12px_rgba(125,38,82,0.3)] transition-all duration-300 group-hover:scale-110 group-hover:bg-burgundy">
-                      <p.icon className="h-4.5 w-4.5 text-ivory" />
-                    </div>
-                    <span className="text-[12px] font-mono tracking-[0.2em] text-ivory/50">{p.n}</span>
-                  </span>
-                  <span className="text-[12px] font-medium uppercase tracking-[0.18em] text-ivory">
-                    {p.t}
-                  </span>
-                </span>
-                <span className="hidden text-sm font-light leading-relaxed text-ivory/65 sm:block">
-                  {p.d}
-                </span>
-                <IconArrowRight
-                  className="h-4 w-4 shrink-0 text-ivory/35 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-ivory sm:mt-1"
-                />
+                <span className="font-light tabular-nums text-burgundy-light/70">{d.n}</span>
+                <span>{d.t}</span>
               </Link>
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

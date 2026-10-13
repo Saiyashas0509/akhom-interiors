@@ -90,7 +90,7 @@ export function SelectedWork() {
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-6 border-b border-ink/12 pb-8">
             <div>
-              <p className="eyebrow text-burgundy">Portfolio & Craft</p>
+              <span className="section-index text-burgundy">PORTFOLIO / CRAFT</span>
               <h2
                 className="display mt-4 max-w-[16ch] text-ink"
                 style={{ fontSize: "clamp(34px, 4.4vw, 68px)", lineHeight: 0.98, letterSpacing: "-0.03em" }}

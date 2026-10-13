@@ -56,14 +56,20 @@
 
   /* Brand Palette - High Legibility & Crisp Contrast */
   --burgundy: #7D2652;
-  --burgundy-hover: #5E1A3D;
+  --burgundy-hover: #621D40;
   --burgundy-light: #D6A6BC;
-  --dark: #110F0F;
-  --ink: #110F0F;
-  --ivory: #F7F4EE;
+  --dark: #141212;
+  --ink: #141212;
+  --ivory: #F4F0EA;
   --stone: #E6DFD6;
   --taupe: #4A423B;
   --olive: #4C5248;
+
+  /* Motion language - restrained, architectural */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
   --background: var(--ivory);
   --foreground: var(--dark);
@@ -81,14 +87,14 @@
   --accent-foreground: #FFFFFF;
   --destructive: oklch(0.505 0.14 27);
   --destructive-foreground: #FFFFFF;
-  --border: rgba(17, 15, 15, 0.15);
-  --input: rgba(17, 15, 15, 0.15);
+  --border: rgba(20, 18, 18, 0.12);
+  --input: rgba(20, 18, 18, 0.12);
   --ring: var(--burgundy);
 }
 
 .dark {
   --background: var(--dark);
-  --foreground: #F8F5EF;
+  --foreground: var(--ivory);
   --card: var(--dark);
   --card-foreground: #F8F5EF;
   --popover: var(--dark);
@@ -101,8 +107,8 @@
   --muted-foreground: #C8BFB5;
   --accent: var(--burgundy);
   --accent-foreground: #FFFFFF;
-  --border: rgba(248, 245, 239, 0.18);
-  --input: rgba(248, 245, 239, 0.18);
+  --border: rgba(244, 240, 234, 0.14);
+  --input: rgba(244, 240, 234, 0.14);
   --ring: var(--burgundy);
 }
 
@@ -187,4 +193,136 @@
 
 .animate-float-slow {
   animation: floatSlow 6s ease-in-out infinite;
+}
+
+@keyframes marqueeX {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes sheen {
+  from { transform: translate3d(-120%, 0, 0); }
+  to { transform: translate3d(220%, 0, 0); }
+}
+
+@keyframes ruleDraw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes softPulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+/* Animated hairline link — underline draws in from the left on hover. */
+@utility link-rule {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.link-rule::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 620ms var(--ease-out-expo);
+}
+
+.link-rule:hover::after,
+.link-rule:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Marquees translate the track by half (content duplicated in markup). */
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marqueeX var(--marquee-duration, 42s) linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Button sheen — a single light pass, not a looping glow. */
+.sheen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sheen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  transform: translate3d(-120%, 0, 0);
+}
+
+.group:hover .sheen::before {
+  animation: sheen 900ms var(--ease-out-expo);
+}
+
+/* Fine film grain, applied only to fixed pointer-events-none layers. */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Eyebrow-free section label: a small mono index with a rule, used sparingly. */
+@utility section-index {
+  font-family: var(--font-sans, ui-sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: rgba(125, 38, 82, 0.9);
+  color: var(--ivory);
+}
+
+:focus-visible {
+  outline: 2px solid var(--burgundy);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
 }

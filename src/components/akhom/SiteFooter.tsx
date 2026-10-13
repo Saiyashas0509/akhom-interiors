@@ -114,7 +114,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-ivory/10 pt-8 text-[12px] uppercase tracking-[0.2em] text-ivory/40 md:flex-row md:items-center">
-          <p>© {new Date().getFullYear()} AKHOM INTERIORS. All rights reserved.</p>
+          <p>© 2026 AKHOM INTERIORS. All rights reserved.</p>
           <div className="flex flex-wrap gap-6">
             <Link to="/privacy" className="hover:text-ivory transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-ivory transition-colors">Terms of Service</Link>

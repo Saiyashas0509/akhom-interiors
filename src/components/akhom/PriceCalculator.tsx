@@ -4,7 +4,6 @@ import {
   IconArrowRight,
   IconMessage,
   IconCheck,
-  IconSparkles,
   IconApartment,
   IconHome,
   IconVilla,
@@ -141,45 +140,36 @@ export function PriceCalculator() {
     setSubmitted(true);
   };
 
+  const stepLabels = ["Property type", "Area & scope", "Material tier", "Timeline", "Your estimate"];
+
   return (
     <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
-      {/* Radiant Bright Card Wrapper */}
-      <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-b from-white via-amber-50/20 to-white p-6 sm:p-10 md:p-14 shadow-[0_25px_70px_-15px_rgba(128,0,32,0.12)] border-2 border-burgundy/15">
-        
-        {/* Subtle decorative glowing background blurs */}
-        <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-amber-200/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-burgundy/10 blur-3xl" />
-
+      <div className="border border-ink/12 bg-ivory p-6 sm:p-10 md:p-14">
         {/* Header */}
-        <div className="relative z-10 mb-10 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-burgundy/25 bg-burgundy/5 px-4 py-1.5 shadow-sm">
-            <IconSparkles className="h-4 w-4 text-burgundy" />
-            <span className="text-[12px] font-mono uppercase tracking-[0.22em] text-burgundy font-semibold">
-              Instant Architectural Price Estimator
-            </span>
-          </div>
+        <div className="mb-10 text-center">
+          <span className="section-index text-burgundy">PRICE ESTIMATOR</span>
 
           <h2
-            className="mt-4 font-serif text-3xl font-normal text-slate-900 md:text-5xl"
-            style={{ letterSpacing: "-0.03em" }}
+            className="display mt-5 text-ink"
+            style={{ fontSize: "clamp(30px, 4.2vw, 60px)", lineHeight: 0.98, letterSpacing: "-0.03em" }}
           >
-            Estimate Your Interior Investment
+            Estimate your interior investment.
           </h2>
-          <p className="mx-auto mt-3 max-w-[62ch] text-sm md:text-base font-normal text-slate-600">
+          <p className="mx-auto mt-4 max-w-[62ch] text-sm font-light leading-relaxed text-ink/70 md:text-[15px]">
             Real-time, transparent calculation based on verified Hyderabad turnkey execution rates. Compare finishes and budget instantly.
           </p>
 
           {/* Stepper & Progress */}
           <div className="mx-auto mt-8 max-w-xl">
-            <div className="flex items-center justify-between text-xs font-mono uppercase tracking-widest text-slate-500 mb-2 font-medium">
-              <span className="text-burgundy font-bold">
-                {submitted ? "Estimate Unlocked" : `Step ${step} of 5`}
+            <div className="mb-3 flex items-center justify-between text-[12px] uppercase tracking-[0.18em] text-ink/60">
+              <span className="font-medium text-burgundy">
+                {submitted ? "Estimate unlocked" : `Step ${step} of 5`}
               </span>
-              <span>{submitted ? "Completed" : ["Property Type", "Area & Scope", "Material Tier", "Timeline", "Your Estimate"][step - 1]}</span>
+              <span>{submitted ? "Completed" : stepLabels[step - 1]}</span>
             </div>
-            <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 p-0.5 border border-slate-200">
+            <div className="h-px w-full bg-ink/12">
               <motion.div
-                className="h-full rounded-full bg-gradient-to-r from-burgundy via-amber-700 to-burgundy shadow-sm"
+                className="h-px bg-burgundy"
                 initial={{ width: "20%" }}
                 animate={{ width: submitted ? "100%" : `${(step / 5) * 100}%` }}
                 transition={{ duration: 0.4 }}
@@ -189,7 +179,7 @@ export function PriceCalculator() {
         </div>
 
         {/* Steps Card */}
-        <div className="relative z-10 rounded-3xl bg-white p-6 sm:p-10 shadow-lg border border-slate-100">
+        <div className="border border-ink/12 bg-white p-6 sm:p-10">
           <AnimatePresence mode="wait">
             {/* STEP 1: Property Type */}
             {step === 1 && (
@@ -202,15 +192,15 @@ export function PriceCalculator() {
                 className="space-y-6"
               >
                 <div className="text-center">
-                  <h3 className="font-serif text-2xl font-normal text-slate-900 md:text-3xl">
+                  <h3 className="font-serif text-2xl font-light text-ink md:text-3xl">
                     1. What type of space are you designing?
                   </h3>
-                  <p className="mt-1 text-sm text-slate-500">
+                  <p className="mt-2 text-sm font-light text-ink/60">
                     Select your layout to load standard floor plan benchmarks
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 pt-2">
+                <div className="grid grid-cols-1 gap-4 pt-2 sm:grid-cols-2 md:grid-cols-3">
                   {CONFIG.types.map((t) => {
                     const active = projectType === t.id;
                     const IconComp = t.iconComponent;
@@ -219,28 +209,34 @@ export function PriceCalculator() {
                         key={t.id}
                         type="button"
                         onClick={() => handleSelectType(t)}
-                        className={`group relative flex flex-col items-start rounded-2xl border-2 p-6 text-left transition-all duration-300 ${
+                        className={`group relative flex flex-col items-start border p-6 text-left transition-all duration-300 ${
                           active
-                            ? "border-burgundy bg-gradient-to-br from-burgundy/[0.04] to-amber-50/40 shadow-md ring-2 ring-burgundy/20"
-                            : "border-slate-200 bg-white hover:border-burgundy/50 hover:shadow-md hover:bg-slate-50/50"
+                            ? "border-burgundy bg-burgundy/5"
+                            : "border-ink/12 bg-white hover:border-burgundy/40 hover:bg-stone/30"
                         }`}
                       >
                         <div className="flex w-full items-center justify-between">
-                          <div className={`p-2.5 rounded-xl border transition-colors ${active ? "border-burgundy bg-burgundy/10 text-burgundy" : "border-slate-200 bg-slate-50 text-slate-700 group-hover:border-burgundy/40 group-hover:text-burgundy"}`}>
+                          <div
+                            className={`border p-2.5 transition-colors ${
+                              active
+                                ? "border-burgundy text-burgundy"
+                                : "border-ink/12 text-ink/60 group-hover:border-burgundy/40 group-hover:text-burgundy"
+                            }`}
+                          >
                             <IconComp className="h-6 w-6" />
                           </div>
-                          <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-mono font-medium text-slate-600 group-hover:bg-burgundy/10 group-hover:text-burgundy transition-colors">
+                          <span className="text-[12px] uppercase tracking-[0.14em] text-ink/50 group-hover:text-burgundy transition-colors">
                             {t.sub}
                           </span>
                         </div>
-                        <h4 className="mt-4 font-serif text-2xl font-normal text-slate-900 group-hover:text-burgundy transition-colors">
+                        <h4 className="mt-4 font-serif text-2xl font-light text-ink transition-colors group-hover:text-burgundy">
                           {t.label}
                         </h4>
-                        <p className="mt-1 text-xs text-slate-500">
-                          Average scale: <strong className="text-slate-700">{t.defaultSqft} sq.ft</strong>
+                        <p className="mt-1 text-[12px] font-light text-ink/60">
+                          Average scale: <strong className="font-medium text-ink/80">{t.defaultSqft} sq.ft</strong>
                         </p>
-                        <div className="mt-5 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-burgundy">
-                          <span>Select Plan</span>
+                        <div className="mt-5 flex items-center gap-1.5 text-[12px] font-medium uppercase tracking-[0.16em] text-burgundy">
+                          <span>Select plan</span>
                           <IconArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                         </div>
                       </button>
@@ -261,25 +257,25 @@ export function PriceCalculator() {
                 className="space-y-8"
               >
                 <div className="text-center">
-                  <h3 className="font-serif text-2xl font-normal text-slate-900 md:text-3xl">
-                    2. Adjust Floor Area & Scope of Work
+                  <h3 className="font-serif text-2xl font-light text-ink md:text-3xl">
+                    2. Adjust floor area & scope of work
                   </h3>
-                  <p className="mt-1 text-sm text-slate-500">
+                  <p className="mt-2 text-sm font-light text-ink/60">
                     Fine-tune carpet / super built-up square footage
                   </p>
                 </div>
 
-                {/* Bright Slider Box */}
-                <div className="mx-auto max-w-xl space-y-4 rounded-2xl border-2 border-amber-200/80 bg-gradient-to-br from-amber-50/40 to-white p-6 sm:p-8 shadow-sm">
+                {/* Slider Box */}
+                <div className="mx-auto max-w-xl space-y-4 border border-ink/12 bg-stone/20 p-6 sm:p-8">
                   <div className="flex items-center justify-between">
-                    <label htmlFor="sqft-range" className="text-xs font-mono font-bold uppercase tracking-wider text-slate-700">
-                      Total Floor Area
+                    <label htmlFor="sqft-range" className="text-[12px] uppercase tracking-[0.16em] text-ink/70">
+                      Total floor area
                     </label>
-                    <div className="rounded-xl border border-burgundy/30 bg-white px-4 py-1.5 shadow-sm">
-                      <span className="font-serif text-3xl font-normal text-burgundy">
+                    <div className="border border-burgundy/30 bg-white px-4 py-1.5">
+                      <span className="font-serif text-3xl font-light text-burgundy">
                         {sqft.toLocaleString()}
                       </span>
-                      <span className="ml-1 text-xs font-medium text-slate-500">sq.ft</span>
+                      <span className="ml-1 text-[12px] font-light text-ink/50">sq.ft</span>
                     </div>
                   </div>
                   <input
@@ -290,9 +286,9 @@ export function PriceCalculator() {
                     step={50}
                     value={sqft}
                     onChange={(e) => setSqft(Number(e.target.value))}
-                    className="h-2.5 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-burgundy"
+                    className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-ink/15 accent-burgundy"
                   />
-                  <div className="flex justify-between text-xs font-mono font-medium text-slate-400">
+                  <div className="flex justify-between text-[12px] font-light text-ink/50">
                     <span>Min: {selectedTypeObj.minSqft} sq.ft</span>
                     <span>Max: {selectedTypeObj.minSqft * 3} sq.ft</span>
                   </div>
@@ -300,8 +296,8 @@ export function PriceCalculator() {
 
                 {/* Scope selector */}
                 <div className="space-y-3">
-                  <p className="text-center text-xs font-mono font-bold uppercase tracking-wider text-slate-700">
-                    Select Scope of Execution
+                  <p className="text-center text-[12px] uppercase tracking-[0.16em] text-ink/70">
+                    Select scope of execution
                   </p>
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                     {CONFIG.scopes.map((sc) => {
@@ -311,37 +307,37 @@ export function PriceCalculator() {
                           key={sc.id}
                           type="button"
                           onClick={() => setScope(sc.id)}
-                          className={`rounded-2xl border-2 p-5 text-left transition-all ${
+                          className={`border p-5 text-left transition-all ${
                             active
-                              ? "border-burgundy bg-gradient-to-br from-burgundy/[0.04] to-amber-50/50 shadow-md ring-2 ring-burgundy/20"
-                              : "border-slate-200 bg-white hover:border-burgundy/40 hover:bg-slate-50"
+                              ? "border-burgundy bg-burgundy/5"
+                              : "border-ink/12 bg-white hover:border-burgundy/40 hover:bg-stone/30"
                           }`}
                         >
-                          <span className="inline-block rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-slate-600 mb-2">
+                          <span className="mb-2 inline-block text-[12px] uppercase tracking-[0.14em] text-ink/50">
                             {sc.badge}
                           </span>
-                          <h4 className="font-serif text-xl font-normal text-slate-900">{sc.label}</h4>
-                          <p className="mt-2 text-xs leading-relaxed text-slate-600">{sc.desc}</p>
+                          <h4 className="font-serif text-xl font-light text-ink">{sc.label}</h4>
+                          <p className="mt-2 text-[12px] font-light leading-relaxed text-ink/60">{sc.desc}</p>
                         </button>
                       );
                     })}
                   </div>
                 </div>
 
-                <div className="flex justify-between border-t border-slate-100 pt-6">
+                <div className="flex justify-between border-t border-ink/12 pt-6">
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="rounded-xl border border-slate-300 bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-700 hover:bg-slate-50 transition-colors"
+                    className="border border-ink/20 bg-white px-6 py-3.5 text-[12px] uppercase tracking-[0.18em] text-ink/70 transition-colors hover:bg-ink hover:text-ivory"
                   >
                     ← Back
                   </button>
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="rounded-xl bg-burgundy px-8 py-3 text-xs font-bold uppercase tracking-widest text-white hover:bg-burgundy-hover shadow-md transition-colors"
+                    className="bg-burgundy px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-burgundy-hover"
                   >
-                    Select Finish Tier →
+                    Select finish tier →
                   </button>
                 </div>
               </motion.div>
@@ -358,10 +354,10 @@ export function PriceCalculator() {
                 className="space-y-8"
               >
                 <div className="text-center">
-                  <h3 className="font-serif text-2xl font-normal text-slate-900 md:text-3xl">
-                    3. Choose Material & Finish Quality
+                  <h3 className="font-serif text-2xl font-light text-ink md:text-3xl">
+                    3. Choose material & finish quality
                   </h3>
-                  <p className="mt-1 text-sm text-slate-500">
+                  <p className="mt-2 text-sm font-light text-ink/60">
                     Transparent rates with factory certifications and architectural guarantees
                   </p>
                 </div>
@@ -373,39 +369,36 @@ export function PriceCalculator() {
                       <div
                         key={t.id}
                         onClick={() => setTier(t.id)}
-                        className={`relative flex cursor-pointer flex-col justify-between rounded-2xl border-2 p-6 transition-all duration-300 ${
+                        className={`relative flex cursor-pointer flex-col justify-between border p-6 transition-all duration-300 ${
                           active
-                            ? "border-burgundy bg-gradient-to-br from-burgundy/[0.04] via-amber-50/40 to-white shadow-xl ring-2 ring-burgundy/20"
-                            : "border-slate-200 bg-white hover:border-burgundy/40 hover:shadow-md"
+                            ? "border-burgundy bg-burgundy/5"
+                            : "border-ink/12 bg-white hover:border-burgundy/40"
                         }`}
                       >
                         {t.popular && (
-                          <span className="absolute -top-3.5 right-6 inline-flex items-center gap-1 rounded-full bg-burgundy px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-sm">
-                            <IconSparkles className="h-3 w-3" />
-                            Most Popular
+                          <span className="absolute -top-3 right-6 inline-block bg-burgundy px-3 py-1 text-[12px] font-medium uppercase tracking-[0.14em] text-ivory">
+                            Most popular
                           </span>
                         )}
                         <div>
                           <div className="flex items-center justify-between">
-                            <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-slate-600">
+                            <span className="text-[12px] uppercase tracking-[0.14em] text-ink/50">
                               {t.badge}
                             </span>
-                            {active && <span className="text-xs font-bold text-burgundy">Selected</span>}
+                            {active && <span className="text-[12px] font-medium text-burgundy">Selected</span>}
                           </div>
 
-                          <h4 className="mt-3 font-serif text-2xl font-normal text-slate-900">{t.name}</h4>
-                          <p className="mt-2 text-xs leading-relaxed text-slate-600">{t.tagline}</p>
+                          <h4 className="mt-3 font-serif text-2xl font-light text-ink">{t.name}</h4>
+                          <p className="mt-2 text-[12px] font-light leading-relaxed text-ink/60">{t.tagline}</p>
 
-                          <div className="mt-5 border-t border-slate-100 pt-4">
-                            <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400">
+                          <div className="mt-5 border-t border-ink/12 pt-4">
+                            <p className="text-[12px] uppercase tracking-[0.14em] text-ink/50">
                               Includes in this tier:
                             </p>
-                            <ul className="mt-2.5 space-y-2 text-xs text-slate-700">
+                            <ul className="mt-3 space-y-2 text-[12px] font-light text-ink/75">
                               {t.includes.map((inc) => (
                                 <li key={inc} className="flex items-start gap-2">
-                                  <span className="text-burgundy font-bold">
-                                    <IconCheck className="h-3.5 w-3.5 mt-0.5 inline" />
-                                  </span>
+                                  <IconCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-burgundy" />
                                   <span>{inc}</span>
                                 </li>
                               ))}
@@ -413,13 +406,13 @@ export function PriceCalculator() {
                           </div>
                         </div>
 
-                        <div className="mt-6 border-t border-slate-100 pt-4 bg-slate-50/60 -mx-6 -mb-6 p-6 rounded-b-2xl">
-                          <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider">
-                            Benchmark Rate:
+                        <div className="-mx-6 -mb-6 mt-6 border-t border-ink/12 bg-stone/30 p-6">
+                          <span className="text-[12px] uppercase tracking-[0.14em] text-ink/50">
+                            Benchmark rate:
                           </span>
-                          <p className="mt-0.5 font-serif text-2xl font-normal text-burgundy">
+                          <p className="mt-1 font-serif text-2xl font-light text-burgundy">
                             ₹{t.rateRange[0]} – ₹{t.rateRange[1]}{" "}
-                            <span className="text-xs font-sans text-slate-500">/ sq.ft</span>
+                            <span className="text-[12px] font-sans text-ink/50">/ sq.ft</span>
                           </p>
                         </div>
                       </div>
@@ -427,18 +420,18 @@ export function PriceCalculator() {
                   })}
                 </div>
 
-                <div className="flex justify-between border-t border-slate-100 pt-6">
+                <div className="flex justify-between border-t border-ink/12 pt-6">
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="rounded-xl border border-slate-300 bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-700 hover:bg-slate-50 transition-colors"
+                    className="border border-ink/20 bg-white px-6 py-3.5 text-[12px] uppercase tracking-[0.18em] text-ink/70 transition-colors hover:bg-ink hover:text-ivory"
                   >
                     ← Back
                   </button>
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="rounded-xl bg-burgundy px-8 py-3 text-xs font-bold uppercase tracking-widest text-white hover:bg-burgundy-hover shadow-md transition-colors"
+                    className="bg-burgundy px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-burgundy-hover"
                   >
                     Next: Timeline →
                   </button>
@@ -457,23 +450,23 @@ export function PriceCalculator() {
                 className="space-y-8"
               >
                 <div className="text-center">
-                  <h3 className="font-serif text-2xl font-normal text-slate-900 md:text-3xl">
-                    4. Project Location & Preferred Start
+                  <h3 className="font-serif text-2xl font-light text-ink md:text-3xl">
+                    4. Project location & preferred start
                   </h3>
-                  <p className="mt-1 text-sm text-slate-500">
+                  <p className="mt-2 text-sm font-light text-ink/60">
                     Ensures site supervision and dedicated turnkey engineer availability
                   </p>
                 </div>
 
                 <div className="mx-auto max-w-xl space-y-6">
                   <div>
-                    <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
+                    <label className="mb-2 block text-[12px] uppercase tracking-[0.16em] text-ink/70">
                       Location in Hyderabad
                     </label>
                     <select
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
-                      className="w-full rounded-xl border-2 border-slate-200 bg-white p-3.5 text-sm text-slate-800 outline-none focus:border-burgundy shadow-sm"
+                      className="w-full border border-ink/12 bg-white p-3.5 text-sm text-ink outline-none transition-colors focus:border-burgundy"
                     >
                       <option value="Hyderabad (Gachibowli / Kokapet / Financial District)">
                         Gachibowli, Kokapet, Financial District, Narsingi
@@ -495,7 +488,7 @@ export function PriceCalculator() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
+                    <label className="mb-2 block text-[12px] uppercase tracking-[0.16em] text-ink/70">
                       When are you planning to begin?
                     </label>
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
@@ -508,10 +501,10 @@ export function PriceCalculator() {
                           key={st}
                           type="button"
                           onClick={() => setStartDate(st)}
-                          className={`rounded-xl border-2 p-3.5 text-center text-xs font-medium transition-all ${
+                          className={`border p-3.5 text-center text-[12px] font-light transition-all ${
                             startDate === st
-                              ? "border-burgundy bg-burgundy/5 text-burgundy shadow-sm ring-1 ring-burgundy/30"
-                              : "border-slate-200 bg-white text-slate-600 hover:border-burgundy/40"
+                              ? "border-burgundy bg-burgundy/5 text-burgundy"
+                              : "border-ink/12 bg-white text-ink/70 hover:border-burgundy/40"
                           }`}
                         >
                           {st}
@@ -521,20 +514,20 @@ export function PriceCalculator() {
                   </div>
                 </div>
 
-                <div className="flex justify-between border-t border-slate-100 pt-6">
+                <div className="flex justify-between border-t border-ink/12 pt-6">
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="rounded-xl border border-slate-300 bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-700 hover:bg-slate-50 transition-colors"
+                    className="border border-ink/20 bg-white px-6 py-3.5 text-[12px] uppercase tracking-[0.18em] text-ink/70 transition-colors hover:bg-ink hover:text-ivory"
                   >
                     ← Back
                   </button>
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="rounded-xl bg-burgundy px-8 py-3 text-xs font-bold uppercase tracking-widest text-white hover:bg-burgundy-hover shadow-md transition-colors"
+                    className="bg-burgundy px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-burgundy-hover"
                   >
-                    Calculate Estimate →
+                    Calculate estimate →
                   </button>
                 </div>
               </motion.div>
@@ -551,21 +544,21 @@ export function PriceCalculator() {
                 className="space-y-8"
               >
                 <div className="text-center">
-                  <span className="inline-block rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-mono font-bold uppercase tracking-wider text-emerald-800">
-                    Estimate Calculated
+                  <span className="inline-block border border-burgundy/30 px-3.5 py-1 text-[12px] uppercase tracking-[0.16em] text-burgundy">
+                    Estimate calculated
                   </span>
-                  <h3 className="mt-3 font-serif text-3xl font-normal text-slate-900 md:text-4xl">
+                  <h3 className="mt-4 font-serif text-3xl font-light text-ink md:text-4xl">
                     Where should we share your itemized estimate?
                   </h3>
-                  <p className="mx-auto mt-2 max-w-[50ch] text-sm text-slate-600">
+                  <p className="mx-auto mt-3 max-w-[50ch] text-sm font-light leading-relaxed text-ink/60">
                     Enter your contact details to instantly view the calculated investment range and receive an itemized copy on WhatsApp.
                   </p>
                 </div>
 
                 <form onSubmit={handleFormSubmit} className="mx-auto max-w-lg space-y-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
-                      Your Full Name *
+                    <label className="block text-[12px] uppercase tracking-[0.16em] text-ink/70">
+                      Your full name *
                     </label>
                     <input
                       type="text"
@@ -573,13 +566,13 @@ export function PriceCalculator() {
                       placeholder="e.g. Ramesh Varma"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="mt-1.5 w-full rounded-xl border-2 border-slate-200 bg-white p-3.5 text-sm text-slate-800 outline-none focus:border-burgundy shadow-sm"
+                      className="mt-2 w-full border border-ink/12 bg-white p-3.5 text-sm text-ink outline-none transition-colors focus:border-burgundy"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
-                      WhatsApp / Phone Number *
+                    <label className="block text-[12px] uppercase tracking-[0.16em] text-ink/70">
+                      WhatsApp / phone number *
                     </label>
                     <input
                       type="tel"
@@ -587,105 +580,107 @@ export function PriceCalculator() {
                       placeholder="+91 98765 43210"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="mt-1.5 w-full rounded-xl border-2 border-slate-200 bg-white p-3.5 text-sm text-slate-800 outline-none focus:border-burgundy shadow-sm"
+                      className="mt-2 w-full border border-ink/12 bg-white p-3.5 text-sm text-ink outline-none transition-colors focus:border-burgundy"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
-                      Email Address (Optional)
+                    <label className="block text-[12px] uppercase tracking-[0.16em] text-ink/70">
+                      Email address (optional)
                     </label>
                     <input
                       type="email"
                       placeholder="ramesh@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="mt-1.5 w-full rounded-xl border-2 border-slate-200 bg-white p-3.5 text-sm text-slate-800 outline-none focus:border-burgundy shadow-sm"
+                      className="mt-2 w-full border border-ink/12 bg-white p-3.5 text-sm text-ink outline-none transition-colors focus:border-burgundy"
                     />
                   </div>
 
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full rounded-xl bg-burgundy py-4 text-xs font-bold uppercase tracking-[0.2em] text-white hover:bg-burgundy-hover shadow-lg transition-all"
+                      className="w-full bg-burgundy py-4 text-[12px] font-medium uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-burgundy-hover"
                     >
-                      View Full Estimated Price →
+                      View full estimated price →
                     </button>
                   </div>
 
-                  <p className="flex items-center justify-center gap-1.5 text-center text-[11px] text-slate-400">
-                    <IconLock className="h-3 w-3 inline text-slate-400" />
+                  <p className="flex items-center justify-center gap-1.5 text-center text-[12px] font-light text-ink/50">
+                    <IconLock className="h-3.5 w-3.5 text-ink/50" />
                     <span>Zero spam. Handled confidentially for your design and architectural review.</span>
                   </p>
                 </form>
 
-                <div className="flex justify-start border-t border-slate-100 pt-4">
+                <div className="flex justify-start border-t border-ink/12 pt-4">
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="rounded-xl border border-slate-300 bg-white px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-slate-700 hover:bg-slate-50 transition-colors"
+                    className="border border-ink/20 bg-white px-6 py-3 text-[12px] uppercase tracking-[0.18em] text-ink/70 transition-colors hover:bg-ink hover:text-ivory"
                   >
-                    ← Modify Inputs
+                    ← Modify inputs
                   </button>
                 </div>
               </motion.div>
             )}
 
-            {/* STEP 5: FINAL RESULT DISPLAY (Bright & Glowing) */}
+            {/* STEP 5: FINAL RESULT DISPLAY */}
             {submitted && (
               <motion.div
                 key="step5-result"
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
                 className="space-y-8"
               >
                 <div className="text-center">
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 shadow-sm">
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-burgundy/30 text-burgundy">
                     <IconCheck className="h-7 w-7" />
                   </div>
-                  <h3 className="mt-3 font-serif text-3xl font-normal text-slate-900 md:text-5xl">
-                    Your Turnkey Price Estimate
+                  <h3 className="mt-4 font-serif text-3xl font-light text-ink md:text-4xl">
+                    Your turnkey price estimate
                   </h3>
-                  <p className="mt-1 text-sm font-medium text-slate-600">
-                    Prepared for <strong className="text-slate-900">{name}</strong> • {selectedTypeObj.label} ({sqft.toLocaleString()} sq.ft) in {location}
+                  <p className="mt-2 text-sm font-light text-ink/60">
+                    Prepared for <strong className="font-medium text-ink">{name}</strong> • {selectedTypeObj.label} (
+                    {sqft.toLocaleString()} sq.ft) in {location}
                   </p>
                 </div>
 
-                {/* Bright Radiant Price Result Display */}
-                <div className="relative overflow-hidden rounded-3xl border-2 border-amber-300 bg-gradient-to-br from-amber-50 via-white to-amber-50/50 p-8 sm:p-12 text-center shadow-xl">
-                  <div className="inline-block rounded-full bg-burgundy/10 px-4 py-1 text-xs font-mono font-bold uppercase tracking-widest text-burgundy mb-2">
-                    Estimated Investment Range
+                {/* Price Result Display */}
+                <div className="relative overflow-hidden bg-dark p-8 text-center text-ivory sm:p-12">
+                  <div className="inline-block border border-ivory/25 px-4 py-1 text-[12px] uppercase tracking-[0.18em] text-burgundy-light">
+                    Estimated investment range
                   </div>
 
-                  <div className="mt-3 font-serif text-4xl sm:text-6xl md:text-7xl font-normal text-burgundy tracking-tight">
-                    {formatLakhs(lowEst)} <span className="text-2xl sm:text-4xl text-slate-400 font-sans">–</span> {formatLakhs(highEst)}
+                  <div className="mt-4 font-serif text-4xl font-light tracking-tight text-ivory sm:text-6xl">
+                    {formatLakhs(lowEst)}{" "}
+                    <span className="text-2xl font-sans text-ivory/40 sm:text-4xl">–</span> {formatLakhs(highEst)}
                   </div>
 
-                  <p className="mt-3 text-xs sm:text-sm font-medium text-slate-600">
-                    Estimated benchmark: ₹{minRate.toFixed(0)} to ₹{maxRate.toFixed(0)} per sq.ft based on <strong>{selectedTierObj.name}</strong>
+                  <p className="mt-3 text-[12px] font-light text-ivory/60">
+                    Estimated benchmark: ₹{minRate.toFixed(0)} to ₹{maxRate.toFixed(0)} per sq.ft based on{" "}
+                    <strong className="font-medium text-ivory/85">{selectedTierObj.name}</strong>
                   </p>
 
                   {/* Included / Excluded Breakdown */}
-                  <div className="mt-10 grid grid-cols-1 gap-6 border-t-2 border-amber-200/60 pt-8 text-left sm:grid-cols-2">
-                    <div className="rounded-2xl bg-white p-5 border border-slate-100 shadow-sm">
-                      <h5 className="text-xs font-mono font-bold uppercase tracking-wider text-burgundy flex items-center gap-1.5">
-                        <IconCheck className="h-3.5 w-3.5 text-burgundy" />
-                        <span>Included in AKHOM Turnkey Contract</span>
+                  <div className="mt-10 grid grid-cols-1 gap-6 border-t border-ivory/15 pt-8 text-left sm:grid-cols-2">
+                    <div className="border border-ivory/15 p-5">
+                      <h5 className="flex items-center gap-2 text-[12px] uppercase tracking-[0.14em] text-burgundy-light">
+                        <IconCheck className="h-3.5 w-3.5 text-burgundy-light" />
+                        <span>Included in AKHOM turnkey contract</span>
                       </h5>
-                      <ul className="mt-3 space-y-2 text-xs text-slate-700">
+                      <ul className="mt-3 space-y-2 text-[12px] font-light text-ivory/70">
                         <li>• 100% In-house factory joinery & custom woodwork from Hyderabad workshop</li>
                         <li>• Complete civil, MEP, false ceiling & ambient architectural lighting execution</li>
                         <li>• Locked line-by-line pricing with dedicated site engineer supervision</li>
                         <li>• Comprehensive 10-year hardware & material warranty coverage</li>
                       </ul>
                     </div>
-                    <div className="rounded-2xl bg-white p-5 border border-slate-100 shadow-sm">
-                      <h5 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                        <span className="font-bold">✕</span>
-                        <span>Excluded / Optional Add-Ons</span>
+                    <div className="border border-ivory/15 p-5">
+                      <h5 className="text-[12px] uppercase tracking-[0.14em] text-ivory/50">
+                        Excluded / optional add-ons
                       </h5>
-                      <ul className="mt-3 space-y-2 text-xs text-slate-500">
+                      <ul className="mt-3 space-y-2 text-[12px] font-light text-ivory/50">
                         <li>• Standalone loose decor items & soft furnishings</li>
                         <li>• Consumer electronic appliances and televisions</li>
                         <li>• Society / municipal architectural approvals</li>
@@ -701,10 +696,10 @@ export function PriceCalculator() {
                     href={`https://wa.me/919704352346?text=Hi%20AKHOM%2C%20I%20used%20the%20price%20calculator%20for%20my%20${encodeURIComponent(selectedTypeObj.label)}%20(${sqft}%20sqft)%20in%20${encodeURIComponent(location)}.%20Estimated%20range%3A%20${encodeURIComponent(formatLakhs(lowEst))}%20-%20${encodeURIComponent(formatLakhs(highEst))}.%20I%27d%20like%20to%20discuss%20with%20an%20architect.`}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-burgundy px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white hover:bg-burgundy-hover sm:w-auto shadow-lg transition-transform hover:-translate-y-0.5"
+                    className="inline-flex w-full items-center justify-center gap-3 bg-burgundy px-8 py-4 text-[12px] font-medium uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-burgundy-hover sm:w-auto"
                   >
                     <IconMessage className="h-4 w-4" />
-                    Book Free 30-Min Consultation on WhatsApp
+                    Book free 30-min consultation on WhatsApp
                   </a>
                   <button
                     type="button"
@@ -712,14 +707,14 @@ export function PriceCalculator() {
                       setSubmitted(false);
                       setStep(1);
                     }}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-4 text-xs font-bold uppercase tracking-widest text-slate-700 hover:bg-slate-50 sm:w-auto transition-colors"
+                    className="inline-flex w-full items-center justify-center gap-2 border border-ink/20 bg-white px-6 py-4 text-[12px] uppercase tracking-[0.18em] text-ink/70 transition-colors hover:bg-ink hover:text-ivory sm:w-auto"
                   >
-                    Recalculate Estimate
+                    Recalculate estimate
                   </button>
                 </div>
 
                 {/* Disclaimer */}
-                <p className="text-center text-xs text-slate-400 max-w-xl mx-auto">
+                <p className="mx-auto max-w-xl text-center text-[12px] font-light text-ink/50">
                   * Indicative cost range based on verified materials and labor indices in Hyderabad. Final quotation is provided following a site visit and 3D architectural plan review.
                 </p>
               </motion.div>

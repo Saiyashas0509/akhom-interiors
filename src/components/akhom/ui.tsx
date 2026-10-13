@@ -1,235 +1,354 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import { IconX, IconMaximize } from "./icons";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion as useFramerReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type MotionStyle,
+  type Variants,
+} from "framer-motion";
+import { IconX } from "./icons";
+
+const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
+
+/** Respects the user's reduced-motion preference (SSR-safe). */
+export function useReducedMotion() {
+  const reduced = useFramerReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  return mounted ? !!reduced : false;
+}
 
 /**
- * Scroll-reveal wrapper: fades content up once it enters the viewport with subtle blur.
- * delay 1–3 staggers siblings without a JS animation library.
+ * Reveal: content eases up into place once, as it enters the viewport.
+ * `delay` 0–3 staggers siblings; direction sets the entry axis.
  */
 export function Reveal({
   children,
   className = "",
   delay = 0,
   direction = "up",
+  amount = 0.2,
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
   direction?: "up" | "left" | "right" | "none";
+  amount?: number;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setVisible(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry?.isIntersecting) {
-          setVisible(true);
-          io.disconnect();
-        }
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  const transformOff = {
-    up: "translate-y-10 scale-[0.98]",
-    left: "-translate-x-10",
-    right: "translate-x-10",
-    none: "",
+  const reduced = useReducedMotion();
+  const offset = {
+    up: { y: 26, x: 0 },
+    left: { x: -26, y: 0 },
+    right: { x: 26, y: 0 },
+    none: { x: 0, y: 0 },
   }[direction];
 
   return (
-    <div
-      ref={ref}
-      className={`${className} transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-[transform,opacity,filter] ${
-        visible
-          ? "translate-y-0 translate-x-0 scale-100 opacity-100 blur-0"
-          : `${transformOff} opacity-0 blur-[4px]`
-      }`}
-      style={{ transitionDelay: `${delay * 90}ms` }}
+    <motion.div
+      className={className}
+      initial={reduced ? { opacity: 0 } : { opacity: 0, filter: "blur(6px)", ...offset }}
+      whileInView={{ opacity: 1, x: 0, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, amount }}
+      transition={{
+        duration: 0.9,
+        delay: Math.min(delay, 6) * 0.09,
+        ease: EASE_OUT_EXPO,
+      }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
-/** Respects the user's reduced-motion preference. */
-export function useReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const on = () => setReduced(mq.matches);
-    mq.addEventListener("change", on);
-    return () => mq.removeEventListener("change", on);
-  }, []);
-  return reduced;
-}
-
 /**
- * Parallax: drifts its children as the element travels through the viewport.
- * `speed` in px of total travel (negative moves against the scroll).
+ * Parallax: drifts its children as the element travels through the viewport,
+ * driven by Motion's scroll progress (never a window scroll listener).
+ * `speed` in px of total travel; negative counter-scrolls.
  */
 export function Parallax({
   children,
   className = "",
   speed = 60,
   scale = 1,
+  spring = true,
 }: {
   children: ReactNode;
   className?: string;
   speed?: number;
   scale?: number;
+  spring?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inner = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
-
-  useEffect(() => {
-    if (reduced) return;
-    const el = ref.current;
-    const target = inner.current;
-    if (!el || !target) return;
-
-    let raf = 0;
-    let active = false;
-
-    const update = () => {
-      raf = 0;
-      const r = el.getBoundingClientRect();
-      const vh = window.innerHeight || 1;
-      // -1 (entering from below) → 1 (leaving at top)
-      const p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2)));
-      target.style.transform = `translate3d(0, ${(p * speed).toFixed(2)}px, 0) scale(${scale})`;
-    };
-
-    const onScroll = () => {
-      if (!active || raf) return;
-      raf = requestAnimationFrame(update);
-    };
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        active = !!entries[0]?.isIntersecting;
-        if (active) onScroll();
-      },
-      { rootMargin: "20% 0px" }
-    );
-    io.observe(el);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    update();
-    return () => {
-      io.disconnect();
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, [speed, scale, reduced]);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const rawY = useTransform(scrollYProgress, [0, 1], [speed, -speed]);
+  const smoothY = useSpring(rawY, { stiffness: 140, damping: 30, mass: 0.4 });
+  const y = reduced || !spring ? rawY : smoothY;
 
   return (
     <div ref={ref} className={`overflow-hidden ${className}`}>
-      <div ref={inner} className="h-full w-full will-change-transform">
+      <motion.div
+        className="h-full w-full will-change-transform"
+        style={reduced ? { scale } : { y, scale }}
+      >
         {children}
-      </div>
+      </motion.div>
     </div>
   );
 }
 
-/** Word-by-word mask reveal for editorial headlines. */
+/**
+ * SplitLines / SplitWords: a masked, per-word rise for editorial headlines.
+ * Keeps the same `as` + style API as the original TextReveal.
+ */
 export function TextReveal({
   text,
   className = "",
   style,
   as: Tag = "h2",
   delay = 0,
+  once = true,
 }: {
   text: string;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   as?: "h1" | "h2" | "h3" | "p";
   delay?: number;
+  once?: boolean;
 }) {
-  const ref = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") return setVisible(true);
-    const io = new IntersectionObserver(
-      (e) => {
-        if (e[0]?.isIntersecting) {
-          setVisible(true);
-          io.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
+  const reduced = useReducedMotion();
   const words = text.split(" ");
+
+  const container: Variants = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.055, delayChildren: delay } },
+  };
+  const word: Variants = {
+    hidden: reduced ? { opacity: 0 } : { y: "108%" },
+    show: {
+      y: "0%",
+      opacity: 1,
+      transition: { duration: 0.95, ease: EASE_OUT_EXPO },
+    },
+  };
+
+  const MotionTag = motion[Tag] as typeof motion.h2;
+
   return (
-    <Tag ref={ref as never} className={className} style={style}>
+    <MotionTag
+      className={className}
+      {...(style ? { style: style as MotionStyle } : {})}
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once, amount: 0.5 }}
+    >
       {words.map((w, i) => (
-        <span key={`${w}-${i}`} className="inline-block overflow-hidden align-bottom">
-          <span
-            className="inline-block will-change-transform"
-            style={{
-              transform: visible ? "translateY(0)" : "translateY(105%)",
-              opacity: visible ? 1 : 0,
-              transition: `transform 900ms cubic-bezier(0.22,1,0.36,1) ${delay + i * 55}ms, opacity 600ms ease ${delay + i * 55}ms`,
-            }}
-          >
+        <span key={`${w}-${i}`} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
+          <motion.span className="inline-block will-change-transform" variants={word}>
             {w}
-          </span>
+          </motion.span>
           {i < words.length - 1 ? <span>&nbsp;</span> : null}
         </span>
       ))}
-    </Tag>
+    </MotionTag>
   );
 }
 
-/** Thin bronze bar across the top showing page scroll progress. */
-export function ScrollProgress() {
-  const [p, setP] = useState(0);
-  useEffect(() => {
-    let raf = 0;
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        const h = document.documentElement.scrollHeight - window.innerHeight;
-        setP(h > 0 ? window.scrollY / h : 0);
-      });
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
+/**
+ * Magnetic: an element that leans toward the pointer, then springs home.
+ * Pointer physics live on motion values, never in React state.
+ */
+export function Magnetic({
+  children,
+  className = "",
+  strength = 0.32,
+  radius = 90,
+}: {
+  children: ReactNode;
+  className?: string;
+  strength?: number;
+  radius?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 180, damping: 16, mass: 0.35 });
+  const sy = useSpring(y, { stiffness: 180, damping: 16, mass: 0.35 });
+
+  const onMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (reduced) return;
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const dx = e.clientX - (r.left + r.width / 2);
+    const dy = e.clientY - (r.top + r.height / 2);
+    const dist = Math.hypot(dx, dy);
+    const falloff = Math.max(0, 1 - dist / (radius + r.width / 2));
+    x.set(dx * strength * falloff);
+    y.set(dy * strength * falloff);
+  };
+  const reset = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
-    <div className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[2px] bg-transparent">
+    <motion.div
+      ref={ref}
+      className={className}
+      style={reduced ? {} : { x: sx, y: sy }}
+      onPointerMove={onMove}
+      onPointerLeave={reset}
+      onBlur={reset}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/**
+ * Stagger / StaggerItem: a container that sequences its children in on scroll.
+ * Use with <StaggerItem> for each child.
+ */
+export function Stagger({
+  children,
+  className = "",
+  gap = 0.08,
+  delay = 0,
+  once = true,
+  amount = 0.2,
+}: {
+  children: ReactNode;
+  className?: string;
+  gap?: number;
+  delay?: number;
+  once?: boolean;
+  amount?: number;
+}) {
+  const reduced = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      variants={{
+        hidden: {},
+        show: { transition: { staggerChildren: reduced ? 0 : gap, delayChildren: delay } },
+      }}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once, amount }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function StaggerItem({
+  children,
+  className = "",
+  y = 22,
+}: {
+  children: ReactNode;
+  className?: string;
+  y?: number;
+}) {
+  const reduced = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      variants={{
+        hidden: reduced ? { opacity: 0 } : { opacity: 0, y },
+        show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE_OUT_EXPO } },
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/** A hairline rule that draws in from the left when it enters view. */
+export function RevealRule({ className = "" }: { className?: string }) {
+  const reduced = useReducedMotion();
+  return (
+    <motion.div
+      className={`h-px origin-left bg-current ${className}`}
+      initial={reduced ? { scaleX: 1 } : { scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true, amount: 0.8 }}
+      transition={{ duration: 1.1, ease: EASE_OUT_EXPO }}
+    />
+  );
+}
+
+/**
+ * Marquee: a single horizontal scroll of repeated content. Content is
+ * duplicated in markup so a 50% translate loops seamlessly.
+ */
+export function Marquee({
+  children,
+  className = "",
+  duration = 42,
+  reverse = false,
+}: {
+  children: ReactNode;
+  className?: string;
+  duration?: number;
+  reverse?: boolean;
+}) {
+  return (
+    <div className={`marquee relative overflow-hidden ${className}`}>
       <div
-        className="h-full origin-left bg-gradient-to-r from-burgundy to-burgundy-light shadow-[0_0_8px_rgba(125,38,82,0.8)]"
-        style={{ transform: `scaleX(${p})`, transition: "transform 120ms linear" }}
-      />
+        className="marquee-track"
+        style={
+          {
+            "--marquee-duration": `${duration}s`,
+            animationDirection: reverse ? "reverse" : "normal",
+          } as CSSProperties
+        }
+      >
+        <div className="flex shrink-0 items-center">{children}</div>
+        <div className="flex shrink-0 items-center" aria-hidden="true">
+          {children}
+        </div>
+      </div>
     </div>
+  );
+}
+
+/** Thin progress bar across the top, bound to page scroll progress. */
+export function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.3 });
+  return (
+    <motion.div
+      className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-burgundy to-burgundy-light"
+      style={{ scaleX }}
+      aria-hidden="true"
+    />
+  );
+}
+
+/** Fixed film-grain layer. Purely decorative, never on a scrolling container. */
+export function GrainOverlay({ opacity = 0.05 }: { opacity?: number }) {
+  return (
+    <div
+      className="grain pointer-events-none fixed inset-0 z-[55] mix-blend-overlay"
+      style={{ opacity }}
+      aria-hidden="true"
+    />
   );
 }
 
@@ -268,13 +387,14 @@ export function LightboxModal({
   if (!isOpen) return null;
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 backdrop-blur-md transition-all duration-300"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 backdrop-blur-md"
     >
-      {/* Close button */}
       <button
         type="button"
         onClick={onClose}
@@ -284,12 +404,17 @@ export function LightboxModal({
         <IconX className="h-6 w-6" />
       </button>
 
-      <div className="relative flex max-h-[90vh] max-w-[92vw] flex-col overflow-hidden border border-ivory/15 bg-ink shadow-2xl md:flex-row md:max-h-[85vh] md:max-w-[85vw]">
+      <motion.div
+        initial={{ opacity: 0, y: 18, scale: 0.985 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
+        className="relative flex max-h-[90vh] max-w-[92vw] flex-col overflow-hidden border border-ivory/15 bg-ink shadow-2xl md:max-h-[85vh] md:max-w-[85vw] md:flex-row"
+      >
         <div className="relative flex-1 bg-black/40">
           <img
             src={imageSrc}
             alt={title || "Project preview"}
-            className="h-full w-full max-h-[60vh] object-contain md:max-h-[85vh]"
+            className="h-full max-h-[60vh] w-full object-contain md:max-h-[85vh]"
           />
         </div>
         {(title || subtitle || description) && (
@@ -298,19 +423,14 @@ export function LightboxModal({
               <p className="text-[12px] uppercase tracking-[0.24em] text-burgundy-light">{subtitle}</p>
             )}
             {title && (
-              <h3 className="mt-3 font-serif text-2xl font-light tracking-tight text-ivory">
-                {title}
-              </h3>
+              <h3 className="mt-3 font-serif text-2xl font-light tracking-tight text-ivory">{title}</h3>
             )}
             {description && (
-              <p className="mt-4 text-sm font-light leading-relaxed text-ivory/70">
-                {description}
-              </p>
+              <p className="mt-4 text-sm font-light leading-relaxed text-ivory/70">{description}</p>
             )}
           </div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
-
