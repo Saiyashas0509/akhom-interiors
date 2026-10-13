@@ -45,14 +45,14 @@ export function Nav({ solid = false }: { solid?: boolean } = {}) {
   return (
     <>
       <ScrollProgress />
-      <header
-        className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ${
-          scrolled
-            ? "border-ink/10 bg-ivory/85 text-ink backdrop-blur-xl backdrop-saturate-150"
-            : "border-transparent text-ivory"
-        }`}
-      >
-        <div className="mx-auto flex h-[72px] max-w-[1600px] items-center justify-between px-6 md:h-[80px] md:px-10 lg:px-14">
+      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 md:px-6 md:pt-4">
+        <div
+          className={`mx-auto flex h-[60px] max-w-[1520px] items-center justify-between rounded-2xl border px-4 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-500 md:h-[68px] md:px-8 ${
+            scrolled
+              ? "border-ink/10 bg-ivory/80 text-ink shadow-soft backdrop-blur-xl backdrop-saturate-150"
+              : "border-transparent text-ivory"
+          }`}
+        >
           <Logo variant={scrolled ? "dark" : "light"} />
 
           <nav className="hidden items-center gap-9 lg:flex" aria-label="Primary">
@@ -74,7 +74,7 @@ export function Nav({ solid = false }: { solid?: boolean } = {}) {
             <Magnetic className="hidden md:block" strength={0.2} radius={70}>
               <Link
                 to="/contact"
-                className={`group relative inline-flex items-center overflow-hidden border px-6 py-3 text-[12px] font-medium uppercase tracking-[0.2em] transition-colors duration-500 ${
+                className={`group relative inline-flex items-center overflow-hidden rounded-full border px-6 py-2.5 text-[12px] font-medium uppercase tracking-[0.18em] transition-colors duration-500 ${
                   onDark
                     ? "border-ivory/35 text-ivory hover:border-burgundy hover:bg-burgundy"
                     : "border-ink/20 text-ink hover:border-burgundy hover:bg-burgundy hover:text-ivory"
@@ -171,7 +171,7 @@ export function Nav({ solid = false }: { solid?: boolean } = {}) {
                 <Link
                   to="/contact"
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center justify-center gap-2 bg-burgundy px-7 py-4 text-[12px] font-medium uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-burgundy-hover"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-burgundy px-7 py-4 text-[12px] font-medium uppercase tracking-[0.18em] text-ivory transition-colors hover:bg-burgundy-hover"
                 >
                   Book a Consultation
                   <IconArrowRight className="h-3.5 w-3.5" />

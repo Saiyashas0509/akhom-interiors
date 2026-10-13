@@ -73,7 +73,7 @@ function Index() {
                 >
                   Built with intention.
                   <br />
-                  <em className="font-light italic text-burgundy">Finished with permanence.</em>
+                  <em className="font-normal not-italic text-burgundy">Finished with permanence.</em>
                 </h2>
               </Reveal>
             </div>
@@ -99,7 +99,7 @@ function Index() {
           <div className="mx-auto mt-16 grid max-w-[1500px] grid-cols-1 gap-8 md:mt-24 md:grid-cols-2 md:gap-6">
             <Reveal>
               <Link to="/residential" className="group block">
-                <div className="relative overflow-hidden bg-stone/40">
+                <div className="relative overflow-hidden rounded-2xl bg-stone/40">
                   <img
                     src={residentialImg}
                     alt="Sunlit residential living room with walnut joinery, honed stone floor and warm architectural lighting"
@@ -130,7 +130,7 @@ function Index() {
 
             <Reveal delay={1}>
               <Link to="/corporate" className="group block">
-                <div className="relative overflow-hidden bg-stone/40">
+                <div className="relative overflow-hidden rounded-2xl bg-stone/40">
                   <img
                     src={corporateImg}
                     alt="Contemporary corporate reception with fluted timber, fluted glass partitions and stone console"
@@ -237,8 +237,8 @@ function Index() {
         <Glimpses />
 
         {/* 5 · In-House craft band */}
-        <section className="relative overflow-hidden bg-dark text-ivory">
-          <div className="grid grid-cols-1 md:grid-cols-2">
+        <section className="bg-ivory px-4 py-4 md:px-6 md:py-6">
+          <div className="grid grid-cols-1 overflow-hidden rounded-3xl bg-dark text-ivory md:grid-cols-2">
             <Parallax
               className="aspect-[4/3] w-full overflow-hidden md:aspect-auto md:h-full md:min-h-[520px]"
               speed={-26}
@@ -260,7 +260,7 @@ function Index() {
                   style={{ fontSize: "clamp(30px, 3.8vw, 56px)", lineHeight: 1, letterSpacing: "-0.03em" }}
                 >
                   Made for the room,{" "}
-                  <em className="font-light italic text-burgundy-light">not the catalogue.</em>
+                  <em className="font-normal not-italic text-burgundy-light">not the catalogue.</em>
                 </h2>
                 <p className="mt-6 max-w-[46ch] text-sm font-light leading-relaxed text-ivory/70 md:text-[15px]">
                   Wardrobes, architectural panelling, bespoke tables, and traditional teak mandirs

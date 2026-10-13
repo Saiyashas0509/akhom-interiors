@@ -61,7 +61,7 @@ export function Hero() {
             </motion.span>
           </span>
           <span className="block overflow-hidden pb-[0.06em]">
-            <motion.span variants={line} className="block italic font-light will-change-transform">
+            <motion.span variants={line} className="block text-ivory/90 will-change-transform">
               Thoughtful spaces.
             </motion.span>
           </span>
@@ -79,7 +79,7 @@ export function Hero() {
           <Magnetic strength={0.22} radius={90}>
             <Link
               to="/contact"
-              className="group relative inline-flex items-center gap-3 overflow-hidden bg-burgundy px-8 py-4 text-[12px] font-medium uppercase tracking-[0.22em] text-ivory transition-colors duration-500 hover:bg-burgundy-hover"
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-burgundy px-8 py-4 text-[12px] font-medium uppercase tracking-[0.18em] text-ivory transition-colors duration-500 hover:bg-burgundy-hover"
             >
               <span className="sheen" aria-hidden="true" />
               <span className="relative z-10">Book a Consultation</span>

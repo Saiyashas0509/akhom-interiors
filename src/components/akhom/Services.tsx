@@ -100,7 +100,7 @@ export function Services() {
         </Reveal>
 
         {/* Hairline matrix: a single ivory surface scored by rules, not a row of boxes. */}
-        <div className="mt-14 grid grid-cols-1 gap-px bg-ink/10 md:mt-20 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-ink/10 md:mt-20 md:grid-cols-2 lg:grid-cols-4">
           {SERVICES.map((s) => (
             <div
               key={s.n}
@@ -137,7 +137,7 @@ export function Services() {
         <Reveal>
           <div className="mt-16">
             <RevealRule className="text-ink/15" />
-            <p className="mt-6 text-[12px] uppercase tracking-[0.2em] text-ink/50">
+            <p className="mt-6 text-[12px] uppercase tracking-[0.16em] text-ink/50">
               Pricing and timelines are agreed per project.
             </p>
           </div>

@@ -40,7 +40,7 @@ export function SiteFooter() {
               Timeless designs. Thoughtful spaces. Residential, commercial, healthcare and hospitality interiors,
               designed and built with in-house craft in Hyderabad.
             </p>
-            <div className="mt-8 flex items-center gap-5 text-[12px] uppercase tracking-[0.2em] text-ivory/50">
+            <div className="mt-8 flex items-center gap-5 text-[12px] uppercase tracking-[0.16em] text-ivory/50">
               <a
                 href="https://www.instagram.com"
                 target="_blank"
@@ -72,7 +72,7 @@ export function SiteFooter() {
 
           {COLS.map((c) => (
             <div key={c.h} className="md:col-span-2">
-              <p className="text-[12px] font-medium uppercase tracking-[0.22em] text-burgundy-light">{c.h}</p>
+              <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-burgundy-light">{c.h}</p>
               <ul className="mt-5 space-y-3">
                 {c.items.map((i) => (
                   <li key={i.label}>
@@ -86,7 +86,7 @@ export function SiteFooter() {
           ))}
 
           <div className="md:col-span-3">
-            <p className="text-[12px] font-medium uppercase tracking-[0.22em] text-burgundy-light">Contact</p>
+            <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-burgundy-light">Contact</p>
             <ul className="mt-5 space-y-3 text-[13px] font-light text-ivory/70">
               <li>Hyderabad, Telangana</li>
               <li>
@@ -113,7 +113,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-ivory/10 pt-8 text-[12px] uppercase tracking-[0.2em] text-ivory/40 md:flex-row md:items-center">
+        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-ivory/10 pt-8 text-[12px] uppercase tracking-[0.16em] text-ivory/40 md:flex-row md:items-center">
           <p>© 2026 AKHOM INTERIORS. All rights reserved.</p>
           <div className="flex flex-wrap gap-6">
             <Link to="/privacy" className="hover:text-ivory transition-colors">Privacy Policy</Link>

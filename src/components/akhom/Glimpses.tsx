@@ -64,7 +64,7 @@ function Figure({ item, i }: { item: Item; i: number }) {
   return (
     <Reveal delay={Math.min(i, 3)} className={item.span}>
       <figure className="group">
-        <Parallax className={`${item.ratio} w-full overflow-hidden bg-stone/40`} speed={item.speed} scale={1.12}>
+        <Parallax className={`${item.ratio} w-full overflow-hidden rounded-2xl bg-stone/40`} speed={item.speed} scale={1.12}>
           <motion.img
             src={item.img}
             alt={item.alt}
@@ -93,7 +93,7 @@ export function Glimpses() {
         {MATERIALS.map((m) => (
           <span
             key={m}
-            className="mx-7 inline-flex items-center gap-7 text-[12px] uppercase tracking-[0.24em] text-ink/55"
+            className="mx-7 inline-flex items-center gap-7 text-[12px] uppercase tracking-[0.18em] text-ink/55"
           >
             {m}
             <span className="h-1 w-1 rounded-full bg-burgundy/50" />
@@ -110,7 +110,7 @@ export function Glimpses() {
                 className="display mt-4 text-ink"
                 style={{ fontSize: "clamp(30px, 4.2vw, 62px)", lineHeight: 1, letterSpacing: "-0.03em" }}
               >
-                Fragments of <em className="font-light italic text-burgundy">crafted spaces.</em>
+                Fragments of <em className="font-normal not-italic text-burgundy">crafted spaces.</em>
               </h2>
             </div>
             <Link
