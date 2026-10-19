@@ -25,7 +25,7 @@ export function PageShell({
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-screen overflow-x-clip bg-ivory">
+    <div className="min-h-screen overflow-x-clip bg-transparent">
       <Nav solid />
       <main>
         <div className="glass-stage px-3 pt-[88px] md:px-6 md:pt-[100px]">

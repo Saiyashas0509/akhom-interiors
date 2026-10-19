@@ -23,7 +23,7 @@ export const Route = createFileRoute("/price-calculator")({
 
 function PriceCalculatorPage() {
   return (
-    <div className="flex min-h-screen flex-col overflow-x-clip bg-ivory text-ink">
+    <div className="flex min-h-screen flex-col overflow-x-clip bg-transparent text-ink">
       <Nav solid />
 
       <main className="glass-stage flex-1 pt-24 md:pt-28">

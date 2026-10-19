@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen overflow-x-clip bg-ivory">
+    <div className="min-h-screen overflow-x-clip bg-transparent">
       <Nav solid />
       <main>
         <HeroSlideshow />

@@ -19,7 +19,7 @@ export const Route = createFileRoute("/terms")({
 
 function TermsPage() {
   return (
-    <div className="min-h-screen overflow-x-clip bg-ivory text-ink">
+    <div className="min-h-screen overflow-x-clip bg-transparent text-ink">
       <Nav solid={true} />
       <main className="glass-stage px-3 pb-10 pt-28 md:px-6 md:pt-32">
         <div className="glass mx-auto max-w-[900px] rounded-[32px] p-7 md:p-12">
