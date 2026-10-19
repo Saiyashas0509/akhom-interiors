@@ -19,22 +19,22 @@ export const Route = createFileRoute("/terms")({
 
 function TermsPage() {
   return (
-    <div className="min-h-screen bg-ivory text-ink">
+    <div className="min-h-screen overflow-x-clip bg-ivory text-ink">
       <Nav solid={true} />
-      <main className="px-6 pt-36 pb-24 md:px-10 lg:px-14">
-        <div className="mx-auto max-w-[900px]">
-          <p className="eyebrow text-burgundy">Legal Terms</p>
+      <main className="glass-stage px-3 pb-10 pt-28 md:px-6 md:pt-32">
+        <div className="glass mx-auto max-w-[900px] rounded-[32px] p-7 md:p-12">
+          <p className="eyebrow text-ink">Legal Terms</p>
           <h1
             className="display mt-4 text-ink"
             style={{ fontSize: "clamp(36px, 5vw, 64px)", lineHeight: 1 }}
           >
             Terms of Service
           </h1>
-          <p className="mt-4 text-xs font-mono uppercase tracking-widest text-ink/50">
+          <p className="mt-4 text-xs font-mono uppercase tracking-widest text-ink">
             Last Updated: September 2026 • AKHOM INTERIORS, Hyderabad
           </p>
 
-          <div className="mt-12 space-y-10 text-[15px] font-light leading-relaxed text-ink/80">
+          <div className="mt-12 space-y-10 text-[15px] font-light leading-relaxed text-ink">
             <section>
               <h2 className="font-serif text-2xl font-normal text-ink">1. Scope of Website</h2>
               <p className="mt-3">
@@ -72,7 +72,7 @@ function TermsPage() {
           </div>
 
           <div className="mt-14 border-t border-ink/12 pt-8">
-            <Link to="/" className="text-[12px] uppercase tracking-[0.2em] text-burgundy hover:underline">
+            <Link to="/" className="text-[12px] uppercase tracking-[0.2em] text-ink hover:underline">
               ← Return to Homepage
             </Link>
           </div>

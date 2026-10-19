@@ -6,40 +6,40 @@ import renovationImg from "@/assets/renovation.jpg";
 export function Renovation() {
   return (
     <section className="bg-stone/30 px-6 py-24 md:px-10 md:py-32 lg:px-14">
-      <div className="mx-auto max-w-[1500px]">
+      <div className="mx-auto max-w-[1600px]">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-6">
             <Reveal>
-              <div className="flex items-center gap-2 text-burgundy">
+              <div className="flex items-center gap-2 text-ink">
                 <IconBrush className="h-4 w-4" />
-                <p className="section-index text-burgundy">RENOVATION & REMODELLING</p>
+                <p className="section-index text-ink">RENOVATION & REMODELLING</p>
               </div>
               <h2
                 className="display mt-4 max-w-[16ch] text-ink"
                 style={{ fontSize: "clamp(32px, 4.4vw, 64px)", lineHeight: 0.98, letterSpacing: "-0.03em" }}
               >
-                Transforming spaces <em className="font-light italic text-burgundy">without compromise.</em>
+                Transforming spaces <em className="font-light italic text-ink">without compromise.</em>
               </h2>
-              <p className="mt-6 max-w-[48ch] text-[14px] font-light leading-relaxed text-ink/80 md:text-base">
+              <p className="mt-6 max-w-[48ch] text-[14px] font-light leading-relaxed text-ink md:text-base">
                 Whether revamping an existing villa, upgrading luxury bathrooms and kitchens, or reconfiguring a corporate floor plate, our renovation team executes with meticulous dust control, phased scheduling, and in-house joinery craftsmanship.
               </p>
 
               <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div className="border-l-2 border-burgundy pl-4">
                   <h4 className="font-serif text-lg font-medium text-ink">Full-Home Transformations</h4>
-                  <p className="mt-1 text-xs text-ink/70">Complete strip-out to bespoke luxury handover.</p>
+                  <p className="mt-1 text-xs text-ink">Complete strip-out to bespoke luxury handover.</p>
                 </div>
                 <div className="border-l-2 border-burgundy pl-4">
                   <h4 className="font-serif text-lg font-medium text-ink">Modular Kitchens & Bath Suites</h4>
-                  <p className="mt-1 text-xs text-ink/70">Custom stone surfaces and concealed MEP systems.</p>
+                  <p className="mt-1 text-xs text-ink">Custom stone surfaces and concealed MEP systems.</p>
                 </div>
                 <div className="border-l-2 border-burgundy pl-4">
                   <h4 className="font-serif text-lg font-medium text-ink">Spatial Reconfiguration</h4>
-                  <p className="mt-1 text-xs text-ink/70">Optimising walls, partitions, and daylight flow.</p>
+                  <p className="mt-1 text-xs text-ink">Optimising walls, partitions, and daylight flow.</p>
                 </div>
                 <div className="border-l-2 border-burgundy pl-4">
                   <h4 className="font-serif text-lg font-medium text-ink">In-House Joinery Replacement</h4>
-                  <p className="mt-1 text-xs text-ink/70">New wardrobes and custom wall panelling.</p>
+                  <p className="mt-1 text-xs text-ink">New wardrobes and custom wall panelling.</p>
                 </div>
               </div>
 
@@ -53,7 +53,7 @@ export function Renovation() {
                 </Link>
                 <Link
                   to="/services"
-                  className="text-[12px] uppercase tracking-[0.18em] text-ink/75 hover:text-burgundy transition-colors"
+                  className="text-[12px] uppercase tracking-[0.18em] text-ink hover:opacity-70 transition-colors"
                 >
                   Explore Renovation Services →
                 </Link>

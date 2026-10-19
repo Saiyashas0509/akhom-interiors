@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/akhom/PageShell";
-import heroResidential from "@/assets/hero-residential.jpg";
+const heroResidential = "/images/curated/page-residential.jpg";
 import { Segments } from "@/components/akhom/Segments";
 import { CustomCraft } from "@/components/akhom/CustomCraft";
 import { FaqSection } from "@/components/akhom/FaqSection";
@@ -35,7 +35,7 @@ function ResidentialPage() {
       italic="how you actually live."
       intro="Villas, luxury penthouses, and private estates across Hyderabad — planned, detailed and executed by one unified in-house team."
       image={heroResidential}
-      imageAlt="Villa living room at dusk with fluted timber wall and full-height glazing"
+      imageAlt="Bedroom with upholstered bed, cove lighting and balcony view at dusk"
       meta={["Luxury Villas", "Apartments", "Farmhouses", "Custom Mandirs"] as const}
     >
       <Segments heading={false} only="residential" />

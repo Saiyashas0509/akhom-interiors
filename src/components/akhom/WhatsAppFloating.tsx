@@ -1,13 +1,14 @@
 import { useState } from "react";
+import { WHATSAPP_URL } from "@/lib/contact";
 
 export function WhatsAppFloating() {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+    <div className="fixed bottom-4 right-4 z-50 flex items-center gap-3 md:bottom-6 md:right-6">
       {/* Tooltip on desktop */}
       <div
-        className={`hidden sm:block rounded-full bg-dark/90 px-4 py-2 text-[12px] uppercase tracking-[0.16em] text-ivory backdrop-blur-md transition-all duration-300 shadow-xl border border-ivory/15 ${
+        className={`glass-strong hidden rounded-full px-4 py-2 text-[13px] text-ink transition-all duration-500 sm:block ${
           hovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2 pointer-events-none"
         }`}
       >
@@ -15,19 +16,17 @@ export function WhatsAppFloating() {
       </div>
 
       <a
-        href="https://wa.me/919704352346?text=Hi%20AKHOM%2C%20I%27d%20like%20to%20discuss%20my%20space."
+        href={`${WHATSAPP_URL}?text=Hi%20AKHOM%2C%20I%27d%20like%20to%20discuss%20my%20space.`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp with AKHOM Interiors"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_30px_rgba(37,211,102,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_40px_rgba(37,211,102,0.6)] focus:outline-none"
+        className="group relative flex h-12 w-12 items-center md:h-14 md:w-14 justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_-8px_rgba(37,211,102,0.55)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105"
       >
-        {/* Soft pulse glow ring */}
-        <span className="absolute -inset-1.5 animate-ping rounded-full bg-[#25D366]/30 duration-1000" />
 
         <svg
-          className="relative h-7 w-7 fill-current"
+          className="relative h-6 w-6 fill-current md:h-7 md:w-7"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >

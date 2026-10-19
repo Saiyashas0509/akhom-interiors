@@ -1,6 +1,9 @@
 import { useState } from "react";
-import { IconTeam, IconSofa, IconReceipt, IconHandshake, IconArrowUpRight } from "./icons";
+import { AnimatePresence, motion } from "framer-motion";
+import { IconTeam, IconSofa, IconReceipt, IconHandshake, IconChevronDown } from "./icons";
 import { Reveal } from "./ui";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 const REASONS = [
   {
@@ -11,7 +14,7 @@ const REASONS = [
   {
     icon: IconSofa,
     t: "Custom furniture, made for the room",
-    d: "Bespoke furniture, cabinetry, doors and panelling are built to the millimetre of your plan. Nothing is forced to fit a standard size after the fact.",
+    d: "Furniture, cabinetry, doors and panelling are built to the millimetre of your plan. Nothing is forced to fit a standard size after the fact.",
   },
   {
     icon: IconReceipt,
@@ -21,7 +24,7 @@ const REASONS = [
   {
     icon: IconHandshake,
     t: "We stay after handover",
-    d: "Post-handover support is part of the engagement, not a favour. Adjustments, touch-ups and questions get a response, not a new invoice by default.",
+    d: "Post-handover support is part of the engagement. Adjustments, touch-ups and questions get a response, not a new invoice by default.",
   },
 ];
 
@@ -29,59 +32,62 @@ export function WhyAkhom() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="why" className="bg-ink px-6 py-24 text-ivory md:px-10 md:py-36 lg:px-14">
-      <div className="mx-auto max-w-[1600px]">
-        <Reveal>
-          <p className="eyebrow text-ivory/45">Why Akhom</p>
-          <h2 className="display mt-6 max-w-[18ch]" style={{ fontSize: "clamp(34px, 4.4vw, 68px)", lineHeight: 0.98, letterSpacing: "-0.03em" }}>
-            The things clients mention a year later.
+    <section id="why" className="glass-stage px-4 py-20 md:px-8 md:py-28">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 lg:grid-cols-12">
+        <Reveal className="lg:col-span-5">
+          <p className="eyebrow text-ink">Why AKHOM</p>
+          <h2 className="display mt-4 max-w-[16ch] text-ink" style={{ fontSize: "clamp(32px, 4vw, 56px)" }}>
+            What clients remember a year later.
           </h2>
+          <img
+            src="/images/curated/why.jpg"
+            alt="Fluted laminate wardrobe with brushed metal handles"
+            className="mt-10 hidden aspect-[4/5] w-full rounded-[32px] object-cover shadow-lift lg:block"
+            loading="lazy"
+            decoding="async"
+          />
         </Reveal>
 
-        <div className="mt-14 border-t border-ivory/15 md:mt-20">
+        <div className="space-y-3 lg:col-span-7 lg:pt-4">
           {REASONS.map((r, i) => {
             const active = open === i;
             return (
-              <Reveal key={r.t} delay={((i % 3) + 1) as 1 | 2 | 3}>
-                <button
-                  onClick={() => setOpen(i)}
-                  className="group grid w-full grid-cols-[auto_1fr_auto] items-baseline gap-x-6 border-b border-ivory/15 py-8 text-left md:gap-x-12 md:py-10"
-                >
-                  <span className="flex flex-col items-start gap-3">
-                    <span className="text-[12px] font-mono tracking-[0.2em] text-burgundy-light">0{i + 1}</span>
-                    <div className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${
-                      active
-                        ? "border-burgundy-light bg-burgundy/30 text-burgundy-light shadow-[0_0_15px_rgba(125,38,82,0.4)] scale-110"
-                        : "border-ivory/20 bg-ivory/[0.04] text-ivory/50 group-hover:border-burgundy-light/50 group-hover:text-burgundy-light"
-                    }`}>
+              <Reveal key={r.t} delay={i}>
+                <div className={`rounded-[28px] transition-colors duration-500 ${active ? "glass-strong" : "glass"}`}>
+                  <button
+                    type="button"
+                    aria-expanded={active}
+                    onClick={() => setOpen(i)}
+                    className="flex w-full items-center gap-5 p-6 text-left md:p-7"
+                  >
+                    <span
+                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition-colors duration-500 ${
+                        active ? "bg-ink text-ivory" : "bg-stone text-ink"
+                      }`}
+                    >
                       <r.icon className="h-5 w-5" />
-                    </div>
-                  </span>
-                  <span>
-                    <span
-                      className={`block font-serif font-light transition-colors duration-300 ${
-                        active ? "text-ivory" : "text-ivory/75 group-hover:text-ivory"
-                      }`}
-                      style={{ fontSize: "clamp(26px, 3.4vw, 52px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}
-                    >
-                      {r.t}
                     </span>
-                    <span
-                      className={`block overflow-hidden transition-all duration-500 ease-out ${
-                        active ? "mt-4 max-h-40 opacity-100" : "max-h-0 opacity-0"
-                      }`}
-                    >
-                      <span className="block max-w-[62ch] text-sm font-light leading-relaxed text-ivory/60">
-                        {r.d}
-                      </span>
-                    </span>
-                  </span>
-                  <IconArrowUpRight
-                    className={`h-4 w-4 transition-all duration-300 ${
-                      active ? "rotate-90 text-burgundy-light" : "text-ivory/40 group-hover:text-ivory/70"
-                    }`}
-                  />
-                </button>
+                    <span className="flex-1 font-serif text-xl text-ink md:text-2xl">{r.t}</span>
+                    <IconChevronDown
+                      className={`h-4 w-4 text-ink transition-transform duration-500 ${active ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {active && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.6, ease: EASE }}
+                        className="overflow-hidden"
+                      >
+                        <p className="max-w-[60ch] px-6 pb-7 pl-[5.25rem] text-[15px] font-light leading-relaxed text-ink md:px-7 md:pl-[5.75rem]">
+                          {r.d}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </Reveal>
             );
           })}

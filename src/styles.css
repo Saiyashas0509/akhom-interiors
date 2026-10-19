@@ -6,13 +6,13 @@
 
 /*
  * AKHOM INTERIORS Design System
- * Final Colour Palette:
- * Burgundy #7D2652 | Dark #141212 | Ivory #F4F0EA | Stone #E6DFD6 | Light Burgundy #D6A6BC | Hover #621D40
+ * Warm beige palette:
+ * Cream #F5EFE6 | Sand #E8DCCB | Linen #DCCBB3 | Espresso #2B2420 | Burgundy accent #7D2652 | Champagne #D8C2A2
  */
 
 @theme inline {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Poppins", "Jost", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Poppins", "Marcellus", "Cormorant Garamond", Georgia, serif;
 
   --color-burgundy: var(--burgundy);
   --color-burgundy-hover: var(--burgundy-hover);
@@ -22,6 +22,7 @@
   --color-stone: var(--stone);
   --color-ivory: var(--ivory);
   --color-taupe: var(--taupe);
+  --color-linen: var(--linen);
   --color-bronze: var(--burgundy);
   --color-olive: var(--olive);
 
@@ -57,18 +58,19 @@
   --radius: 0.75rem;
   --image-radius: 20px;
   --surface-radius: 24px;
-  --shadow-soft: 0 1px 2px rgba(20, 18, 18, 0.05), 0 24px 48px -28px rgba(20, 18, 18, 0.3);
-  --shadow-lift: 0 2px 6px rgba(20, 18, 18, 0.06), 0 40px 80px -44px rgba(20, 18, 18, 0.35);
+  --shadow-soft: 0 1px 2px rgba(64, 44, 26, 0.05), 0 24px 48px -28px rgba(64, 44, 26, 0.28);
+  --shadow-lift: 0 2px 6px rgba(64, 44, 26, 0.06), 0 40px 80px -44px rgba(64, 44, 26, 0.32);
 
   /* Brand Palette - High Legibility & Crisp Contrast */
   --burgundy: #7D2652;
   --burgundy-hover: #621D40;
-  --burgundy-light: #D6A6BC;
-  --dark: #141212;
-  --ink: #141212;
-  --ivory: #F4F0EA;
-  --stone: #E6DFD6;
-  --taupe: #4A423B;
+  --burgundy-light: #D8C2A2;
+  --dark: #111111;
+  --ink: #111111;
+  --ivory: #F5EFE6;
+  --stone: #E8DCCB;
+  --linen: #DCCBB3;
+  --taupe: #7A6855;
   --olive: #4C5248;
 
   /* Motion language - restrained, architectural */
@@ -93,8 +95,8 @@
   --accent-foreground: #FFFFFF;
   --destructive: oklch(0.505 0.14 27);
   --destructive-foreground: #FFFFFF;
-  --border: rgba(20, 18, 18, 0.12);
-  --input: rgba(20, 18, 18, 0.12);
+  --border: rgba(43, 36, 32, 0.12);
+  --input: rgba(43, 36, 32, 0.12);
   --ring: var(--burgundy);
 }
 
@@ -123,8 +125,18 @@
     border-color: var(--color-border);
   }
 
-  html {
-    scroll-behavior: smooth;
+  /* Lenis drives smooth scrolling; native smooth-scroll would fight it. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
   }
 
   body {
@@ -135,6 +147,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -153,9 +166,9 @@
 
 @utility display {
   font-family: var(--font-serif);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.022em;
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: 0;
 }
 
 /* Curved, Apple-like image frames — consistent radius for all content imagery. */
@@ -189,16 +202,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--dark);
+  background: var(--ivory);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--burgundy);
-  border-radius: 2px;
+  background: var(--linen);
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--burgundy-hover);
+  background: var(--taupe);
 }
 
 @keyframes pulseGlow {
@@ -348,5 +361,95 @@
   .marquee-track {
     animation: none !important;
     transform: none !important;
+  }
+}
+
+/*
+ * Apple "Liquid Glass" surface system.
+ * Translucent layers with heavy blur + saturation, a bright inner rim and soft depth.
+ */
+:root {
+  --glass-bg: rgba(255, 251, 245, 0.55);
+  --glass-bg-strong: rgba(255, 251, 245, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --glass-rim: inset 0 1px 0 rgba(255, 255, 255, 0.85), inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+  --glass-shadow: 0 1px 1px rgba(64, 44, 26, 0.04), 0 22px 60px -24px rgba(64, 44, 26, 0.26);
+  --glass-dark-bg: rgba(43, 36, 32, 0.4);
+  --glass-dark-border: rgba(255, 255, 255, 0.18);
+}
+
+@utility glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-rim), var(--glass-shadow);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+}
+
+@utility glass-strong {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-rim), var(--glass-shadow);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  backdrop-filter: blur(30px) saturate(190%);
+}
+
+@utility glass-dark {
+  background: var(--glass-dark-bg);
+  border: 1px solid var(--glass-dark-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 20px 60px -24px rgba(0, 0, 0, 0.55);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(160%);
+}
+
+/* Soft ambient wash behind glass sections so the blur has colour to refract. */
+@utility glass-stage {
+  background:
+    radial-gradient(60% 50% at 10% 15%, rgba(220, 203, 179, 0.75), transparent 70%),
+    radial-gradient(50% 45% at 90% 10%, rgba(255, 252, 247, 0.95), transparent 70%),
+    radial-gradient(55% 55% at 72% 95%, rgba(196, 170, 138, 0.38), transparent 70%),
+    var(--ivory);
+}
+
+/* Glass form fields */
+@utility glass-field {
+  width: 100%;
+  border-radius: 14px;
+  background: rgba(255, 252, 247, 0.65);
+  border: 1px solid rgba(43, 36, 32, 0.1);
+  padding: 0.9rem 1rem;
+  font-size: 15px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 200ms, box-shadow 200ms, background 200ms;
+}
+
+.glass-field:focus {
+  background: #fffdf9;
+  border-color: var(--taupe);
+  box-shadow: 0 0 0 4px rgba(122, 104, 85, 0.14);
+}
+
+/* Ken Burns drift for the hero slideshow */
+@keyframes kenburns {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+}
+
+.kenburns {
+  animation: kenburns 9s ease-out forwards;
+}
+
+/* Lighter blur on phones: same look, far less GPU work on budget devices. */
+@media (max-width: 767px) {
+  .glass,
+  .glass-strong {
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(14px) saturate(160%);
+  }
+
+  .glass-dark {
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    backdrop-filter: blur(12px) saturate(140%);
   }
 }

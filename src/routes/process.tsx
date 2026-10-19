@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/akhom/PageShell";
-import heroProcess from "@/assets/hero-process.jpg";
-import { Process } from "@/components/akhom/Process";
+const heroProcess = "/images/curated/page-process.jpg";
+import { ProcessScroll } from "@/components/akhom/ProcessScroll";
 import { FinalCta } from "@/components/akhom/FinalCta";
 
-const TITLE = "Seven Stages Delivery Process — AKHOM INTERIORS Hyderabad";
+const TITLE = "How We Work — AKHOM INTERIORS Hyderabad";
 const DESCRIPTION =
-  "Consultation, concept, design development, materials, execution, quality audit, and handover — the structured seven-stage delivery process of AKHOM INTERIORS.";
+  "Consultation, design, materials, execution and handover — how AKHOM Interiors delivers your space, step by step.";
 
 export const Route = createFileRoute("/process")({
   head: () => ({
@@ -33,10 +33,10 @@ function ProcessPage() {
       italic="not an estimate."
       intro="Every stage has a dedicated owner, an architectural drawing package, and committed milestones. You always know what is occurring on site this week."
       image={heroProcess}
-      imageAlt="New walnut joinery under protective film with a plumb line and chalk marks on plaster"
-      meta={["Seven stages", "One team", "Fixed dates"] as const}
+      imageAlt="Floating TV unit against a plaster feature wall with concealed lighting"
+      meta={["Consultation", "Design", "Execution", "Handover"] as const}
     >
-      <Process />
+      <ProcessScroll />
       <FinalCta />
     </PageShell>
   );

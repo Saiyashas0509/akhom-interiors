@@ -1,50 +1,40 @@
 import { Parallax, Reveal } from "./ui";
-import customCraftImg from "@/assets/custom-craft.jpg";
+
+const CRAFTS = ["Bespoke furniture", "Cabinetry & storage", "Doors & panelling", "Pooja units"] as const;
 
 export function CustomCraft() {
   return (
-    <section className="relative overflow-hidden bg-ink text-ivory">
-      <div className="absolute inset-0">
-        <Parallax className="h-full w-full" speed={-70} scale={1.18}>
+    <section className="glass-stage px-4 py-20 md:px-8 md:py-28">
+      <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[40px]">
+        <Parallax className="absolute inset-0" speed={-50} scale={1.16}>
           <img
-            src={customCraftImg}
-            alt="Craftsman's hands fitting a walnut dovetail joint in the Akhom workshop"
-            className="h-full w-full object-cover opacity-45"
+            src="/images/curated/craft.jpg"
+            alt="Pooja unit with lit oak shelves and brass lamps, made in the AKHOM workshop"
+            className="h-full w-full object-cover"
             loading="lazy"
             decoding="async"
           />
         </Parallax>
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/55 to-ink/30" />
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/50 via-ink/15 to-transparent" aria-hidden="true" />
 
-
-      <div className="relative mx-auto max-w-[1600px] px-6 py-28 md:px-10 md:py-44 lg:px-14">
-        <div className="max-w-[640px]">
+        <div className="relative p-5 py-24 md:p-12 md:py-32">
           <Reveal>
-            <p className="eyebrow text-ivory/50">Custom Craft</p>
-            <h2
-              className="display mt-6"
-              style={{ fontSize: "clamp(36px, 5vw, 80px)", lineHeight: 0.96, letterSpacing: "-0.03em" }}
-            >
-              If it can't be bought,
-              <br />
-              we'll make it.
-            </h2>
-          </Reveal>
-          <Reveal delay={1}>
-            <p className="mt-8 max-w-[52ch] text-sm font-light leading-relaxed text-ivory/70 md:text-base">
-              A dining table sized to your family's Sundays. A wardrobe wall that disappears into the
-              panelling. Doors, partitions, stair balustrades, reception desks — drawn for your space
-              and built in our workshop, to the millimetre.
-            </p>
-            <div className="mt-10 grid grid-cols-2 gap-y-6 border-t border-ivory/15 pt-8 sm:grid-cols-4">
-              {["Bespoke furniture", "Cabinetry & storage", "Doors & panelling", "Joinery & partitions"].map(
-                (t) => (
-                  <p key={t} className="pr-4 text-[12px] uppercase tracking-[0.18em] text-ivory/70">
+            <div className="glass-dark max-w-[600px] rounded-[30px] p-7 text-ivory md:p-10">
+              <p className="eyebrow text-burgundy-light">Custom craft</p>
+              <h2 className="display mt-4" style={{ fontSize: "clamp(30px, 4vw, 56px)" }}>
+                If it can't be bought, we'll make it.
+              </h2>
+              <p className="mt-5 max-w-[48ch] text-[15px] font-light leading-relaxed text-ivory/80">
+                A dining table sized to your family. A wardrobe wall that disappears into the panelling.
+                Doors, partitions and pooja units — drawn for your space and built in our own workshop.
+              </p>
+              <ul className="mt-7 flex flex-wrap gap-2">
+                {CRAFTS.map((t) => (
+                  <li key={t} className="rounded-full border border-ivory/25 bg-white/10 px-4 py-1.5 text-[13px] text-ivory/85">
                     {t}
-                  </p>
-                )
-              )}
+                  </li>
+                ))}
+              </ul>
             </div>
           </Reveal>
         </div>

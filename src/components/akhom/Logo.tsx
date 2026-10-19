@@ -22,7 +22,7 @@ export function Logo({
   return (
     <Link
       to="/"
-      className={`inline-flex items-center group transition-transform duration-300 hover:scale-[1.02] ${className}`}
+      className={`inline-flex items-center py-1 group transition-transform duration-300 hover:scale-[1.02] ${className}`}
       aria-label="AKHOM INTERIORS — home"
     >
       <img

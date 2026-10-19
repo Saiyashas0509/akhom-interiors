@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/akhom/PageShell";
-import heroAbout from "@/assets/hero-about.jpg";
+const heroAbout = "/images/curated/page-about.jpg";
 import { Approach } from "@/components/akhom/Approach";
 import { WhyAkhom } from "@/components/akhom/WhyAkhom";
 import { FinalCta } from "@/components/akhom/FinalCta";
 
 const TITLE = "About AKHOM INTERIORS — Hyderabad Design & Build Studio";
 const DESCRIPTION =
-  "How AKHOM INTERIORS works: material honesty, textural narrative and a timeless architectural palette, delivered by one accountable Hyderabad studio.";
+  "AKHOM Interiors is a Hyderabad design and build studio — interiors, in-house joinery and site services delivered by one accountable team.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -34,7 +34,7 @@ function AboutPage() {
       italic="long before furnishing."
       intro="AKHOM INTERIORS is an architectural interior design and turnkey fit-out studio based in Hyderabad. Architectural drawings, material procurement, workshop joinery, and site execution remain under one roof."
       image={heroAbout}
-      imageAlt="Design studio interior with drawings pinned to the wall and material samples on an oak worktable"
+      imageAlt="Dresser niche with fluted glass partition and floating shelves"
       meta={["In-House Joinery", "Hyderabad Studio", "Design + Build"] as const}
     >
       <Approach />

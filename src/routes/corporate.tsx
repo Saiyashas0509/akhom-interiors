@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/akhom/PageShell";
-import heroCorporate from "@/assets/hero-corporate.jpg";
+const heroCorporate = "/images/curated/page-corporate.jpg";
 import { Segments } from "@/components/akhom/Segments";
 import { FinalCta } from "@/components/akhom/FinalCta";
 
@@ -33,7 +33,7 @@ function CorporatePage() {
       italic="that cannot afford delays."
       intro="Corporate offices, GCC campuses, healthcare facilities, and hospitality venues delivered on guaranteed handover dates — complete with civil, MEP and acoustic certification."
       image={heroCorporate}
-      imageAlt="Double-height corporate lobby with fluted stone wall and floating dark oak reception desk"
+      imageAlt="Office cabin with grey panelling and wide window"
       meta={["Offices & GCC", "Healthcare & Clinics", "Hotels & F&B", "Retail Flagships"] as const}
     >
       <Segments heading={false} only="corporate" />

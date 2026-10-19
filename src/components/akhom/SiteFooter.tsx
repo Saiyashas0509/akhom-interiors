@@ -1,82 +1,78 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
+import { PHONE_TEL, PHONE_DISPLAY, whatsappLink } from "@/lib/contact";
 
 const COLS = [
   {
     h: "Services",
     items: [
-      { label: "Residential Interiors", to: "/residential" },
-      { label: "Corporate & Commercial", to: "/corporate" },
-      { label: "Healthcare & Hospital", to: "/services" },
-      { label: "Hospitality Interiors", to: "/services" },
-      { label: "Turnkey Execution", to: "/services" },
-      { label: "Custom Joinery & Craft", to: "/services" },
-      { label: "Renovation & Remodelling", to: "/services" },
-      { label: "Add-on Services", to: "/services" },
-      { label: "Selected Work", to: "/projects" },
+      { label: "Residential Interiors", to: "/services", hash: "residential" },
+      { label: "Commercial & Office", to: "/services", hash: "commercial" },
+      { label: "Modular Kitchens", to: "/services", hash: "modular-kitchen" },
+      { label: "Wardrobes & Storage", to: "/services", hash: "wardrobes" },
+      { label: "Painting", to: "/services", hash: "painting" },
+      { label: "Civil Work", to: "/services", hash: "civil-work" },
+      { label: "Electrical", to: "/services", hash: "electrical" },
+      { label: "Bathroom", to: "/services", hash: "bathroom" },
     ],
   },
   {
     h: "Studio",
     items: [
-      { label: "Our Approach", to: "/about" },
-      { label: "Selected Work", to: "/projects" },
-      { label: "Seven Stages Process", to: "/process" },
-      { label: "Contact & Consultation", to: "/contact" },
+      { label: "About Us", to: "/about" },
+      { label: "Projects", to: "/projects" },
+      { label: "How We Work", to: "/", hash: "process" },
+      { label: "Free Estimate", to: "/price-calculator" },
+      { label: "Contact", to: "/contact" },
       { label: "Privacy Policy", to: "/privacy" },
       { label: "Terms of Service", to: "/terms" },
     ],
   },
 ] as const;
 
+const SOCIAL = [
+  { label: "Instagram", href: "https://www.instagram.com" },
+  { label: "LinkedIn", href: "https://www.linkedin.com" },
+  { label: "WhatsApp", href: whatsappLink() },
+] as const;
+
 export function SiteFooter() {
   return (
-    <footer className="border-t border-ivory/10 bg-dark px-6 pb-12 pt-16 text-ivory md:px-10 md:pt-24 lg:px-14">
-      <div className="mx-auto max-w-[1600px]">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Logo variant="light" size="md" />
-            <p className="mt-6 max-w-[42ch] text-[13px] font-light leading-relaxed text-ivory/70">
-              Timeless designs. Thoughtful spaces. Residential, commercial, healthcare and hospitality interiors,
-              designed and built with in-house craft in Hyderabad.
+    <footer className="glass-stage px-3 pb-6 pt-10 md:px-6">
+      <div className="glass mx-auto max-w-[1600px] rounded-[36px] px-6 pb-8 pt-12 md:px-12 md:pt-16">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <Logo variant="dark" size="md" />
+            <p className="mt-6 max-w-[40ch] text-[14px] font-light leading-relaxed text-ink">
+              Timeless designs. Thoughtful spaces. Homes, workplaces and site services — designed and
+              built with in-house craft in Hyderabad.
             </p>
-            <div className="mt-8 flex items-center gap-5 text-[12px] uppercase tracking-[0.16em] text-ivory/50">
-              <a
-                href="https://www.instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="transition-colors hover:text-burgundy-light"
-              >
-                Instagram
-              </a>
-              <span className="text-ivory/20">•</span>
-              <a
-                href="https://www.linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="transition-colors hover:text-burgundy-light"
-              >
-                LinkedIn
-              </a>
-              <span className="text-ivory/20">•</span>
-              <a
-                href="https://wa.me/919704352346?text=Hi%20AKHOM%2C%20I%27d%20like%20to%20discuss%20my%20space."
-                target="_blank"
-                rel="noreferrer"
-                className="transition-colors hover:text-burgundy-light"
-              >
-                WhatsApp
-              </a>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {SOCIAL.map((x) => (
+                <a
+                  key={x.label}
+                  href={x.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-ink/12 bg-white/60 px-4 py-2 text-[13px] text-ink transition-colors duration-500 hover:bg-white hover:text-ink"
+                >
+                  {x.label}
+                </a>
+              ))}
             </div>
           </div>
 
           {COLS.map((c) => (
             <div key={c.h} className="md:col-span-2">
-              <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-burgundy-light">{c.h}</p>
+              <p className="eyebrow text-ink">{c.h}</p>
               <ul className="mt-5 space-y-3">
                 {c.items.map((i) => (
                   <li key={i.label}>
-                    <Link to={i.to} className="text-[13px] font-light text-ivory/70 transition-colors hover:text-ivory">
+                    <Link
+                      to={i.to}
+                      {...("hash" in i ? { hash: i.hash } : {})}
+                      className="text-[14px] font-light text-ink transition-colors duration-300 hover:text-ink"
+                    >
                       {i.label}
                     </Link>
                   </li>
@@ -85,41 +81,36 @@ export function SiteFooter() {
             </div>
           ))}
 
-          <div className="md:col-span-3">
-            <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-burgundy-light">Contact</p>
-            <ul className="mt-5 space-y-3 text-[13px] font-light text-ivory/70">
+          <div className="md:col-span-4">
+            <p className="eyebrow text-ink">Contact</p>
+            <ul className="mt-5 space-y-3 text-[14px] font-light text-ink">
               <li>Hyderabad, Telangana</li>
               <li>
-                <a href="mailto:info@akhominteriors.com" className="transition-colors hover:text-ivory">
+                <a href="mailto:info@akhominteriors.com" className="transition-colors hover:text-ink">
                   info@akhominteriors.com
                 </a>
               </li>
               <li>
-                <a href="tel:+919177361122" className="transition-colors hover:text-ivory">
-                  +91 91773 61122
-                </a>
-              </li>
-              <li className="pt-2">
-                <a
-                  href="https://wa.me/919704352346?text=Hi%20AKHOM%2C%20I%27d%20like%20to%20discuss%20my%20space."
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-burgundy-light transition-colors hover:text-ivory"
-                >
-                  <span>WhatsApp Enquiries: +91 97043 52346</span>
+                <a href={`tel:${PHONE_TEL}`} className="transition-colors hover:text-ink">
+                  {PHONE_DISPLAY}
                 </a>
               </li>
             </ul>
+            <Link
+              to="/contact"
+              className="mt-6 inline-flex items-center rounded-full bg-ink px-6 py-3 text-[14px] text-ivory transition-colors duration-500 hover:bg-burgundy"
+            >
+              Book a Consultation
+            </Link>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-ivory/10 pt-8 text-[12px] uppercase tracking-[0.16em] text-ivory/40 md:flex-row md:items-center">
-          <p>© 2026 AKHOM INTERIORS. All rights reserved.</p>
-          <div className="flex flex-wrap gap-6">
-            <Link to="/privacy" className="hover:text-ivory transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-ivory transition-colors">Terms of Service</Link>
+        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-ink/10 pt-6 text-[13px] text-ink md:flex-row md:items-center">
+          <p>© {new Date().getFullYear()} AKHOM Interiors. All rights reserved.</p>
+          <div className="flex gap-5">
+            <Link to="/privacy" className="transition-colors hover:text-ink">Privacy Policy</Link>
+            <Link to="/terms" className="transition-colors hover:text-ink">Terms of Service</Link>
           </div>
-          <p>Design — Detail — Custom Craft — Execution</p>
         </div>
       </div>
     </footer>

@@ -13,15 +13,15 @@ export function Testimonials({ showQuotes = false }: { showQuotes?: boolean }) {
       <section className="border-t border-ink/10 bg-ivory px-6 py-20 text-ink md:px-10 md:py-28 lg:px-14">
         <div className="mx-auto max-w-[1200px] text-center">
           <Reveal>
-            <span className="section-index text-burgundy">STUDIO COMMITMENT</span>
-            <blockquote className="mx-auto mt-6 max-w-[36ch] font-serif text-2xl font-light italic leading-relaxed text-ink/90 sm:text-3xl md:text-4xl">
+            <span className="section-index text-ink">STUDIO COMMITMENT</span>
+            <blockquote className="mx-auto mt-6 max-w-[36ch] font-serif text-2xl font-light italic leading-relaxed text-ink sm:text-3xl md:text-4xl">
               "{COMMITMENT.quote}"
             </blockquote>
             <div className="mt-8">
               <p className="text-[12px] font-medium uppercase tracking-[0.2em] text-ink">
                 {COMMITMENT.author}
               </p>
-              <p className="mt-1 text-xs font-light tracking-wider text-ink/60">
+              <p className="mt-1 text-xs font-light tracking-wider text-ink">
                 {COMMITMENT.role}
               </p>
             </div>
@@ -35,15 +35,15 @@ export function Testimonials({ showQuotes = false }: { showQuotes?: boolean }) {
     <section className="border-t border-ink/10 bg-ivory px-6 py-20 text-ink md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-[1200px] text-center">
         <Reveal>
-          <span className="section-index text-burgundy">CLIENT PERSPECTIVES</span>
-          <blockquote className="mx-auto mt-6 max-w-[36ch] font-serif text-2xl font-light italic leading-relaxed text-ink/90 sm:text-3xl md:text-4xl">
+          <span className="section-index text-ink">CLIENT PERSPECTIVES</span>
+          <blockquote className="mx-auto mt-6 max-w-[36ch] font-serif text-2xl font-light italic leading-relaxed text-ink sm:text-3xl md:text-4xl">
             "{COMMITMENT.quote}"
           </blockquote>
           <div className="mt-8">
             <p className="text-[12px] font-medium uppercase tracking-[0.2em] text-ink">
               {COMMITMENT.author}
             </p>
-            <p className="mt-1 text-xs font-light tracking-wider text-ink/60">
+            <p className="mt-1 text-xs font-light tracking-wider text-ink">
               {COMMITMENT.role}
             </p>
           </div>

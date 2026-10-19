@@ -6,6 +6,7 @@ import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 import pujaCraft from "@/assets/puja-craft.jpg";
+import { WHATSAPP_URL, sendLead } from "@/lib/contact";
 
 const PORTFOLIO_ITEMS = [
   {
@@ -78,22 +79,30 @@ export function SelectedWork() {
   const filteredProjects =
     filter === "all" ? PORTFOLIO_ITEMS : PORTFOLIO_ITEMS.filter((p) => p.category === filter);
 
-  const handlePortfolioRequest = (e: React.FormEvent) => {
+  const [sendError, setSendError] = useState(false);
+
+  const handlePortfolioRequest = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!clientEmail.trim() || !clientPhone.trim()) return;
-    setRequestSent(true);
+    setSendError(false);
+    try {
+      await sendLead("Portfolio request", { Email: clientEmail, Phone: clientPhone, _replyto: clientEmail });
+      setRequestSent(true);
+    } catch {
+      setSendError(true);
+    }
   };
 
   return (
-    <section id="work" className="bg-ivory px-6 py-24 md:px-10 md:py-36 lg:px-14">
-      <div className="mx-auto max-w-[1600px]">
+    <section id="work" className="glass-stage px-4 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1400px]">
         <Reveal>
-          <div className="flex flex-wrap items-end justify-between gap-6 border-b border-ink/12 pb-8">
+          <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <span className="section-index text-burgundy">PORTFOLIO / CRAFT</span>
+              <p className="eyebrow text-ink">Selected work</p>
               <h2
                 className="display mt-4 max-w-[16ch] text-ink"
-                style={{ fontSize: "clamp(34px, 4.4vw, 68px)", lineHeight: 0.98, letterSpacing: "-0.03em" }}
+                style={{ fontSize: "clamp(32px, 4vw, 56px)" }}
               >
                 Rooms we've designed and built.
               </h2>
@@ -101,16 +110,16 @@ export function SelectedWork() {
             <button
               type="button"
               onClick={() => setPortfolioModalOpen(true)}
-              className="group inline-flex items-center gap-3 border border-burgundy bg-burgundy px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-ivory transition-all duration-300 hover:bg-burgundy-hover"
+              className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[14px] text-ivory transition-colors duration-500 hover:bg-burgundy"
             >
-              REQUEST OUR PORTFOLIO →
+              Request our portfolio <IconArrowRight className="h-3.5 w-3.5 transition-transform duration-500 group-hover:translate-x-1" />
             </button>
           </div>
         </Reveal>
 
         {/* Filter Bar (Type & Sectors per G1) */}
         <Reveal delay={1}>
-          <div className="mt-8 flex flex-wrap gap-2.5 pb-4">
+          <div className="glass mt-8 flex w-fit max-w-full gap-1 overflow-x-auto rounded-full p-1.5">
             {[
               { id: "all", label: "All Works" },
               { id: "residential", label: "Residential" },
@@ -121,10 +130,8 @@ export function SelectedWork() {
                 key={cat.id}
                 type="button"
                 onClick={() => setFilter(cat.id)}
-                className={`px-5 py-2 text-[12px] uppercase tracking-[0.16em] transition-all duration-300 ${
-                  filter === cat.id
-                    ? "bg-burgundy text-ivory font-medium shadow-sm"
-                    : "border border-ink/15 text-ink/70 hover:border-burgundy/50 hover:text-ink"
+                className={`whitespace-nowrap rounded-full px-5 py-2.5 text-[14px] transition-all duration-500 ${
+                  filter === cat.id ? "bg-ink text-ivory shadow-soft" : "text-ink hover:bg-white/70 hover:text-ink"
                 }`}
               >
                 {cat.label}
@@ -140,32 +147,31 @@ export function SelectedWork() {
               <div className="group block cursor-pointer" onClick={() => setSelectedProject(p)}>
                 <div className="relative">
                   <Parallax speed={i % 2 === 0 ? -36 : -52} scale={1.12}>
-                    <div className="relative overflow-hidden bg-stone/40">
+                    <div className="relative overflow-hidden rounded-[30px] bg-stone/40">
                       <img
                         src={p.img}
                         alt={p.alt}
-                        className="aspect-[4/5] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] md:aspect-[4/4.2]"
+                        className="aspect-[4/5] w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] md:aspect-[4/4.2]"
                         loading="lazy"
                         decoding="async"
                       />
-                      <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-full border border-ivory/30 bg-dark/80 px-3 py-1.5 text-[12px] uppercase tracking-[0.18em] text-ivory opacity-0 transition-opacity duration-300 group-hover:opacity-100 backdrop-blur-sm">
+                      <div className="glass-dark absolute right-4 top-4 flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[13px] text-ivory opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                         <IconMaximize className="h-3 w-3" />
                         View Full Screen
                       </div>
                     </div>
                   </Parallax>
                   {/* Caption card */}
-                  <div className="relative z-10 -mt-12 ml-5 max-w-[88%] border border-ink/10 bg-ivory p-6 shadow-[0_18px_50px_-24px_rgba(20,18,18,0.25)] md:-mt-16 md:ml-8">
+                  <div className="glass-strong relative z-10 -mt-12 ml-5 max-w-[88%] rounded-[26px] p-6 md:-mt-16 md:ml-8">
                     <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="font-serif text-2xl font-light text-ink">{p.name}</h3>
-                      <span className="text-[12px] font-mono tracking-[0.2em] text-burgundy">0{i + 1}</span>
+                      <h3 className="font-serif text-2xl text-ink">{p.name}</h3>
                     </div>
-                    <div className="mt-1 flex items-center gap-2 text-[12px] uppercase tracking-[0.18em] text-burgundy">
+                    <div className="mt-2 flex flex-wrap items-center gap-2 text-[13px] text-ink">
                       <span>{p.meta}</span>
                       <span>•</span>
-                      <span className="text-ink/60">{p.style}</span>
+                      <span className="text-ink">{p.style}</span>
                     </div>
-                    <p className="mt-4 text-[13px] font-light leading-relaxed text-ink/80">{p.narrative}</p>
+                    <p className="mt-4 text-[13px] font-light leading-relaxed text-ink">{p.narrative}</p>
                   </div>
                 </div>
               </div>
@@ -174,16 +180,16 @@ export function SelectedWork() {
         </div>
 
         {/* Request Our Portfolio Block (per B6) */}
-        <div className="mt-20 border border-burgundy/30 bg-burgundy/[0.04] p-8 md:p-12">
+        <div className="glass mt-20 rounded-[32px] p-8 md:p-12">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-center">
             <div className="md:col-span-8">
-              <span className="text-[12px] font-medium uppercase tracking-[0.22em] text-burgundy">
-                Confidential Client Portfolios
+              <span className="eyebrow text-ink">
+                Private client portfolios
               </span>
               <h3 className="mt-3 font-serif text-3xl font-light text-ink md:text-4xl">
                 Looking for specific sector case studies?
               </h3>
-              <p className="mt-3 max-w-[58ch] text-[14px] font-light leading-relaxed text-ink/75">
+              <p className="mt-3 max-w-[58ch] text-[14px] font-light leading-relaxed text-ink">
                 To respect our clients' privacy, our complete project folios for luxury villas, healthcare facilities, hospitality venues, and corporate fit-outs are shared via private presentation or PDF lookbook.
               </p>
             </div>
@@ -191,18 +197,18 @@ export function SelectedWork() {
               <button
                 type="button"
                 onClick={() => setPortfolioModalOpen(true)}
-                className="inline-flex items-center justify-center gap-3 bg-burgundy px-7 py-4 text-[12px] font-medium uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-burgundy-hover"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-4 text-[14px] text-ivory transition-colors duration-500 hover:bg-burgundy"
               >
                 Request Full Portfolio
                 <IconArrowRight className="h-3.5 w-3.5" />
               </button>
               <a
-                href="https://wa.me/919704352346?text=Hi%20AKHOM%2C%20I%27d%20like%20to%20view%20your%20complete%20portfolio."
+                href={`${WHATSAPP_URL}?text=Hi%20AKHOM%2C%20I%27d%20like%20to%20view%20your%20complete%20portfolio.`}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 border border-ink/25 px-6 py-3.5 text-[12px] font-medium uppercase tracking-[0.18em] text-ink transition-colors hover:border-burgundy hover:text-burgundy"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-white/60 px-6 py-3.5 text-[14px] text-ink transition-colors duration-500 hover:bg-white"
               >
-                <IconMessage className="h-4 w-4 text-burgundy" />
+                <IconMessage className="h-4 w-4 text-ink" />
                 Ask on WhatsApp
               </a>
             </div>
@@ -231,16 +237,16 @@ export function SelectedWork() {
               setRequestSent(false);
             }
           }}
-          className="fixed inset-0 z-[70] flex items-center justify-center bg-dark/80 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/40 p-4 backdrop-blur-md"
         >
-          <div className="relative w-full max-w-lg border border-ivory/20 bg-ivory p-8 shadow-2xl">
+          <div className="glass-strong relative w-full max-w-lg rounded-[32px] p-8">
             <button
               type="button"
               onClick={() => {
                 setPortfolioModalOpen(false);
                 setRequestSent(false);
               }}
-              className="absolute top-4 right-4 text-ink/60 hover:text-ink text-xl"
+              className="absolute top-4 right-4 text-ink hover:text-ink text-xl"
               aria-label="Close modal"
             >
               ✕
@@ -248,17 +254,17 @@ export function SelectedWork() {
 
             {requestSent ? (
               <div className="text-center py-6">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-burgundy/10 text-burgundy">
-                  <IconCheck className="h-7 w-7 text-burgundy" />
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-burgundy/10 text-ink">
+                  <IconCheck className="h-7 w-7 text-ink" />
                 </div>
                 <h4 className="mt-4 font-serif text-2xl font-light text-ink">Portfolio Access Sent</h4>
-                <p className="mt-3 text-sm text-ink/75">
+                <p className="mt-3 text-sm text-ink">
                   Thank you! Our studio team will share the requested sector lookbook and credentials deck to <strong>{clientEmail}</strong>.
                 </p>
                 <button
                   type="button"
                   onClick={() => setPortfolioModalOpen(false)}
-                  className="mt-6 bg-burgundy px-6 py-3 text-[12px] uppercase tracking-[0.18em] text-ivory hover:bg-burgundy-hover"
+                  className="mt-6 rounded-full bg-ink px-6 py-3 text-[14px] text-ivory hover:bg-burgundy"
                 >
                   Close
                 </button>
@@ -266,46 +272,52 @@ export function SelectedWork() {
             ) : (
               <form onSubmit={handlePortfolioRequest} className="space-y-5">
                 <div>
-                  <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-burgundy">
+                  <span className="text-[12px] font-medium uppercase tracking-[0.2em] text-ink">
                     Private Lookbook Access
                   </span>
                   <h4 className="mt-2 font-serif text-3xl font-light text-ink">Request Studio Portfolio</h4>
-                  <p className="mt-2 text-xs font-light text-ink/70">
+                  <p className="mt-2 text-xs font-light text-ink">
                     Receive our high-resolution design portfolio, project specifications, and execution case studies directly.
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-[12px] uppercase tracking-[0.16em] text-ink/70">Email Address *</label>
+                  <label className="block text-[12px] uppercase tracking-[0.16em] text-ink">Email Address *</label>
                   <input
                     type="email"
                     required
                     placeholder="name@example.com"
                     value={clientEmail}
                     onChange={(e) => setClientEmail(e.target.value)}
-                    className="mt-1.5 w-full border border-ink/20 bg-white px-3.5 py-2.5 text-sm outline-none focus:border-burgundy"
+                    className="glass-field mt-1.5"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[12px] uppercase tracking-[0.16em] text-ink/70">Phone Number *</label>
+                  <label className="block text-[12px] uppercase tracking-[0.16em] text-ink">Phone Number *</label>
                   <input
                     type="tel"
                     required
                     placeholder="+91 98765 43210"
                     value={clientPhone}
                     onChange={(e) => setClientPhone(e.target.value)}
-                    className="mt-1.5 w-full border border-ink/20 bg-white px-3.5 py-2.5 text-sm outline-none focus:border-burgundy"
+                    className="glass-field mt-1.5"
                   />
                 </div>
 
-                <p className="text-[12px] text-ink/55">
+                <p className="text-[12px] text-ink">
                   Delivered to info@akhominteriors.com. We respect your privacy and will never share your details.
                 </p>
 
+                {sendError && (
+                  <p className="rounded-2xl bg-red-50 px-4 py-3 text-[13px] text-red-700">
+                    Couldn't send just now — please try again or message us on WhatsApp.
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-burgundy py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] text-ivory hover:bg-burgundy-hover"
+                  className="w-full rounded-full bg-ink py-3.5 text-[14px] text-ivory transition-colors duration-500 hover:bg-burgundy"
                 >
                   Send Portfolio Deck
                 </button>

@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id": "gal-1",
     "src": "/images/gallery/gallery_001.jpg",
@@ -29,91 +29,91 @@
   },
   {
     "id": "gal-5",
-    "src": "/images/gallery/gallery_005.png",
+    "src": "/images/gallery/gallery_005.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "10"
   },
   {
     "id": "gal-6",
-    "src": "/images/gallery/gallery_006.png",
+    "src": "/images/gallery/gallery_006.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "11"
   },
   {
     "id": "gal-7",
-    "src": "/images/gallery/gallery_007.png",
+    "src": "/images/gallery/gallery_007.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "12"
   },
   {
     "id": "gal-8",
-    "src": "/images/gallery/gallery_008.png",
+    "src": "/images/gallery/gallery_008.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "13"
   },
   {
     "id": "gal-9",
-    "src": "/images/gallery/gallery_009.png",
+    "src": "/images/gallery/gallery_009.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "14"
   },
   {
     "id": "gal-10",
-    "src": "/images/gallery/gallery_010.png",
+    "src": "/images/gallery/gallery_010.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "16"
   },
   {
     "id": "gal-11",
-    "src": "/images/gallery/gallery_011.png",
+    "src": "/images/gallery/gallery_011.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "17"
   },
   {
     "id": "gal-12",
-    "src": "/images/gallery/gallery_012.png",
+    "src": "/images/gallery/gallery_012.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "18"
   },
   {
     "id": "gal-13",
-    "src": "/images/gallery/gallery_013.png",
+    "src": "/images/gallery/gallery_013.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "19"
   },
   {
     "id": "gal-14",
-    "src": "/images/gallery/gallery_014.png",
+    "src": "/images/gallery/gallery_014.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "2"
   },
   {
     "id": "gal-15",
-    "src": "/images/gallery/gallery_015.png",
+    "src": "/images/gallery/gallery_015.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "20"
   },
   {
     "id": "gal-16",
-    "src": "/images/gallery/gallery_016.png",
+    "src": "/images/gallery/gallery_016.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "3"
   },
   {
     "id": "gal-17",
-    "src": "/images/gallery/gallery_017.png",
+    "src": "/images/gallery/gallery_017.jpg",
     "categoryName": "Corporate & Fit-Outs",
     "categoryKey": "commercial",
     "title": "4"
@@ -134,21 +134,21 @@
   },
   {
     "id": "gal-20",
-    "src": "/images/gallery/gallery_020.png",
+    "src": "/images/gallery/gallery_020.jpg",
     "categoryName": "False Ceilings & Lighting",
     "categoryKey": "ceilings",
     "title": "1"
   },
   {
     "id": "gal-21",
-    "src": "/images/gallery/gallery_021.png",
+    "src": "/images/gallery/gallery_021.jpg",
     "categoryName": "False Ceilings & Lighting",
     "categoryKey": "ceilings",
     "title": "2"
   },
   {
     "id": "gal-22",
-    "src": "/images/gallery/gallery_022.png",
+    "src": "/images/gallery/gallery_022.jpg",
     "categoryName": "False Ceilings & Lighting",
     "categoryKey": "ceilings",
     "title": "3"
@@ -183,7 +183,7 @@
   },
   {
     "id": "gal-27",
-    "src": "/images/gallery/gallery_027.png",
+    "src": "/images/gallery/gallery_027.jpg",
     "categoryName": "False Ceilings & Lighting",
     "categoryKey": "ceilings",
     "title": "8"
@@ -316,7 +316,7 @@
   },
   {
     "id": "gal-46",
-    "src": "/images/gallery/gallery_046.png",
+    "src": "/images/gallery/gallery_046.jpg",
     "categoryName": "Curated Archives",
     "categoryKey": "archives",
     "title": "Modern Kitchen with Black Glass Loft Cabinets"
@@ -414,14 +414,14 @@
   },
   {
     "id": "gal-61",
-    "src": "/images/gallery/gallery_061.png",
+    "src": "/images/gallery/gallery_061.jpg",
     "categoryName": "Puja Mandirs & Sacred Craft",
     "categoryKey": "puja",
     "title": "3"
   },
   {
     "id": "gal-62",
-    "src": "/images/gallery/gallery_062.png",
+    "src": "/images/gallery/gallery_062.jpg",
     "categoryName": "Puja Mandirs & Sacred Craft",
     "categoryKey": "puja",
     "title": "4"
@@ -554,140 +554,140 @@
   },
   {
     "id": "gal-81",
-    "src": "/images/gallery/gallery_081.png",
+    "src": "/images/gallery/gallery_081.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "10"
   },
   {
     "id": "gal-82",
-    "src": "/images/gallery/gallery_082.png",
+    "src": "/images/gallery/gallery_082.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "11"
   },
   {
     "id": "gal-83",
-    "src": "/images/gallery/gallery_083.png",
+    "src": "/images/gallery/gallery_083.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "12"
   },
   {
     "id": "gal-84",
-    "src": "/images/gallery/gallery_084.png",
+    "src": "/images/gallery/gallery_084.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "13"
   },
   {
     "id": "gal-85",
-    "src": "/images/gallery/gallery_085.png",
+    "src": "/images/gallery/gallery_085.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "14"
   },
   {
     "id": "gal-86",
-    "src": "/images/gallery/gallery_086.png",
+    "src": "/images/gallery/gallery_086.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "15"
   },
   {
     "id": "gal-87",
-    "src": "/images/gallery/gallery_087.png",
+    "src": "/images/gallery/gallery_087.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "16"
   },
   {
     "id": "gal-88",
-    "src": "/images/gallery/gallery_088.png",
+    "src": "/images/gallery/gallery_088.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "17"
   },
   {
     "id": "gal-89",
-    "src": "/images/gallery/gallery_089.png",
+    "src": "/images/gallery/gallery_089.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "18"
   },
   {
     "id": "gal-90",
-    "src": "/images/gallery/gallery_090.png",
+    "src": "/images/gallery/gallery_090.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "19"
   },
   {
     "id": "gal-91",
-    "src": "/images/gallery/gallery_091.png",
+    "src": "/images/gallery/gallery_091.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "2"
   },
   {
     "id": "gal-92",
-    "src": "/images/gallery/gallery_092.png",
+    "src": "/images/gallery/gallery_092.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "20"
   },
   {
     "id": "gal-93",
-    "src": "/images/gallery/gallery_093.png",
+    "src": "/images/gallery/gallery_093.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "21"
   },
   {
     "id": "gal-94",
-    "src": "/images/gallery/gallery_094.png",
+    "src": "/images/gallery/gallery_094.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "3"
   },
   {
     "id": "gal-95",
-    "src": "/images/gallery/gallery_095.png",
+    "src": "/images/gallery/gallery_095.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "4"
   },
   {
     "id": "gal-96",
-    "src": "/images/gallery/gallery_096.png",
+    "src": "/images/gallery/gallery_096.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "5"
   },
   {
     "id": "gal-97",
-    "src": "/images/gallery/gallery_097.png",
+    "src": "/images/gallery/gallery_097.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "6"
   },
   {
     "id": "gal-98",
-    "src": "/images/gallery/gallery_098.png",
+    "src": "/images/gallery/gallery_098.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "7"
   },
   {
     "id": "gal-99",
-    "src": "/images/gallery/gallery_099.png",
+    "src": "/images/gallery/gallery_099.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "8"
   },
   {
     "id": "gal-100",
-    "src": "/images/gallery/gallery_100.png",
+    "src": "/images/gallery/gallery_100.jpg",
     "categoryName": "Villas & Residences",
     "categoryKey": "villas",
     "title": "9"

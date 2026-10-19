@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
+import { motion } from "framer-motion";
 import { Nav } from "./Nav";
 import { SiteFooter } from "./SiteFooter";
-import { Reveal } from "./ui";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function PageShell({
   eyebrow,
@@ -23,54 +25,59 @@ export function PageShell({
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-ivory">
+    <div className="min-h-screen overflow-x-clip bg-ivory">
       <Nav solid />
       <main>
-        <div className="px-4 pt-[84px] md:px-6 md:pt-[96px]">
-          <header className="relative isolate flex min-h-[68vh] items-end overflow-hidden rounded-2xl bg-ink text-ivory md:min-h-[78vh]">
+        <div className="glass-stage px-3 pt-[88px] md:px-6 md:pt-[100px]">
+          <header className="relative isolate mx-auto flex min-h-[48vh] max-w-[1600px] items-end overflow-hidden rounded-[32px] bg-stone md:min-h-[58vh]">
             {image ? (
               <>
-                <img
+                <motion.img
                   src={image}
                   alt={imageAlt ?? ""}
-                  className="absolute inset-0 -z-10 h-full w-full scale-105 object-cover"
+                  className="absolute inset-0 -z-10 h-full w-full object-cover"
+                  initial={{ scale: 1.12 }}
+                  animate={{ scale: 1.02 }}
+                  transition={{ duration: 2.4, ease: EASE }}
                   fetchPriority="high"
                   decoding="async"
                 />
-                <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/70 to-ink/40" />
+                <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink/55 via-ink/10 to-transparent" />
               </>
             ) : null}
 
-            <div className="mx-auto w-full max-w-[1600px] px-6 pb-14 pt-24 md:px-10 md:pb-20 md:pt-32 lg:px-14">
-              <Reveal>
+            <div className="w-full p-4 md:p-8">
+              <motion.div
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.3, delay: 0.25, ease: EASE }}
+                className="glass-dark max-w-[640px] rounded-[28px] p-6 text-ivory md:p-8"
+              >
                 <p className="eyebrow text-burgundy-light">{eyebrow}</p>
-                <h1
-                  className="display mt-6 max-w-[18ch] [text-shadow:0_2px_40px_rgba(0,0,0,0.55)]"
-                  style={{ fontSize: "clamp(40px, 7vw, 104px)", lineHeight: 0.96, letterSpacing: "-0.032em" }}
-                >
+                <h1 className="display mt-4" style={{ fontSize: "clamp(30px, 4vw, 56px)" }}>
                   {title}
                   {italic ? (
                     <>
-                      <br />
-                      <em className="font-normal not-italic text-burgundy-light">{italic}</em>
+                      {" "}
+                      <span className="text-burgundy-light">{italic}</span>
                     </>
                   ) : null}
                 </h1>
                 {intro ? (
-                  <p className="mt-8 max-w-[58ch] text-sm font-light leading-relaxed text-ivory/80 md:text-base">
+                  <p className="mt-5 max-w-[54ch] text-[15px] font-light leading-relaxed text-ivory/80 md:text-base">
                     {intro}
                   </p>
                 ) : null}
                 {meta?.length ? (
-                  <ul className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-ivory/15 pt-6">
+                  <ul className="mt-7 flex flex-wrap gap-2">
                     {meta.map((m) => (
-                      <li key={m} className="text-[12px] uppercase tracking-[0.16em] text-ivory/70">
+                      <li key={m} className="rounded-full border border-ivory/25 bg-white/10 px-4 py-1.5 text-[13px] text-ivory/85">
                         {m}
                       </li>
                     ))}
                   </ul>
                 ) : null}
-              </Reveal>
+              </motion.div>
             </div>
           </header>
         </div>

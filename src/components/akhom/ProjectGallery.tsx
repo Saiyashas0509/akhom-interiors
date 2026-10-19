@@ -2,19 +2,34 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Reveal, LightboxModal } from "./ui";
 import { IconArrowRight, IconMaximize, IconCheck, IconMessage } from "./icons";
-import galleryData from "@/data/gallery.json";
+import allGallery from "@/data/gallery.json";
+import { WHATSAPP_URL } from "@/lib/contact";
 
-// Segregated categories based on client's actual folder structures
+// Photos with site clutter (bottles, cloth, boxes, cables, tools), work-in-progress or collages
+// are kept out of the public gallery.
+const HIDDEN = new Set([
+  "003", "004", "007", "020", "021", "022", "023", "024", "025", "026", "028", "029", "030", "031", "032",
+  "033", "034", "035", "036", "037", "038", "040", "041", "042", "043", "044", "045", "047", "048", "049",
+  "051", "052", "053", "054", "055", "056", "057", "058", "059", "063", "064", "065", "066", "067", "068",
+  "069", "070", "071", "081", "082", "102", "105", "113", "121", "123",
+]);
+const galleryData = allGallery.filter((i) => !HIDDEN.has(i.src.match(/gallery_(\d+)/)?.[1] ?? ""));
+
+// Tab labels for the categories present in gallery.json; empty categories are not shown.
+const LABELS: Record<string, string> = {
+  villas: "Homes",
+  commercial: "Commercial",
+  ceilings: "Ceilings & Lighting",
+  puja: "Pooja Units",
+  archives: "More Interiors",
+};
+const labelFor = (key: string) => LABELS[key] ?? "Interiors";
+
 const CATEGORIES = [
-  { id: "all", label: "All Works", count: galleryData.length },
-  { id: "villas", label: "Villas & Penthouses", count: galleryData.filter((i) => i.categoryKey === "villas").length },
-  { id: "hd-folios", label: "Architectural Folios", count: galleryData.filter((i) => i.categoryKey === "hd-folios").length },
-  { id: "signature", label: "Signature Living & Work", count: galleryData.filter((i) => i.categoryKey === "signature").length },
-  { id: "rp-provencia", label: "RP Provencia Estate", count: galleryData.filter((i) => i.categoryKey === "rp-provencia").length },
-  { id: "puja", label: "Pooja Mandirs & Craft", count: galleryData.filter((i) => i.categoryKey === "puja").length },
-  { id: "ceilings", label: "False Ceilings & Lighting", count: galleryData.filter((i) => i.categoryKey === "ceilings").length },
-  { id: "turnkey", label: "Turnkey Execution", count: galleryData.filter((i) => i.categoryKey === "turnkey").length },
-  { id: "highlights", label: "Interior Highlights", count: galleryData.filter((i) => i.categoryKey === "highlights").length },
+  { id: "all", label: "All Works" },
+  ...Object.keys(LABELS)
+    .filter((key) => galleryData.some((i) => i.categoryKey === key))
+    .map((key) => ({ id: key, label: labelFor(key) })),
 ];
 
 export function ProjectGallery() {
@@ -39,32 +54,27 @@ export function ProjectGallery() {
   };
 
   return (
-    <section className="bg-ivory px-6 py-20 md:px-10 md:py-28 lg:px-14">
-      <div className="mx-auto max-w-[1600px]">
+    <section className="glass-stage px-4 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1400px]">
         {/* Gallery Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-ink/15 pb-8">
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.22em] text-burgundy font-semibold">
-              Complete Portfolio Gallery ({galleryData.length} Real Project Photographs)
-            </span>
+            <p className="eyebrow text-ink">Project gallery</p>
             <h2
-              className="mt-3 font-serif text-3xl font-light text-ink md:text-5xl"
-              style={{ letterSpacing: "-0.03em" }}
+              className="display mt-4 text-ink"
+              style={{ fontSize: "clamp(32px, 4vw, 56px)" }}
             >
-              Curated Architectural Archives
+              Real homes. Real handovers.
             </h2>
-            <p className="mt-3 max-w-[65ch] text-sm md:text-base font-light text-ink/75">
-              Explore all verified project shoots, bespoke villa joinery, custom teak mandirs, luxury ceilings, and turnkey corporate environments across Hyderabad.
+            <p className="mt-4 max-w-[60ch] text-[15px] font-light leading-relaxed text-ink">
+              Photographs from finished AKHOM projects across Hyderabad — kitchens, wardrobes, ceilings, pooja units and complete homes.
             </p>
           </div>
 
-          <div className="text-sm font-mono text-ink/60">
-            Showing <strong className="text-burgundy font-bold">{displayedItems.length}</strong> of {filteredItems.length} photos
-          </div>
         </div>
 
         {/* Category Pill Filters */}
-        <div className="mt-8 flex flex-wrap gap-2.5 pb-2">
+        <div className="glass mt-8 flex w-fit max-w-full gap-1 overflow-x-auto rounded-full p-1.5">
           {CATEGORIES.map((cat) => {
             const active = activeTab === cat.id;
             return (
@@ -72,20 +82,11 @@ export function ProjectGallery() {
                 key={cat.id}
                 type="button"
                 onClick={() => handleTabChange(cat.id)}
-                className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-medium uppercase tracking-[0.14em] transition-all duration-300 ${
-                  active
-                    ? "bg-burgundy text-white shadow-md ring-2 ring-burgundy/20"
-                    : "border border-ink/15 bg-white text-ink/75 hover:border-burgundy/50 hover:bg-white"
+                className={`whitespace-nowrap rounded-full px-5 py-2.5 text-[14px] transition-all duration-500 ${
+                  active ? "bg-ink text-ivory shadow-soft" : "text-ink hover:bg-white/70 hover:text-ink"
                 }`}
               >
-                <span>{cat.label}</span>
-                <span
-                  className={`rounded-full px-2 py-0.5 text-[10px] font-mono ${
-                    active ? "bg-white/20 text-white" : "bg-ink/5 text-ink/60"
-                  }`}
-                >
-                  {cat.count}
-                </span>
+                {cat.label}
               </button>
             );
           })}
@@ -101,43 +102,29 @@ export function ProjectGallery() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.35 }}
-                className="group relative cursor-pointer overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-sm hover:shadow-xl transition-all duration-500"
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative cursor-pointer overflow-hidden rounded-[26px] bg-stone shadow-soft transition-shadow duration-700 hover:shadow-lift"
                 onClick={() => setLightboxIndex(index)}
               >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-slate-100">
+                <div className="aspect-[4/3] w-full overflow-hidden">
                   <motion.img
                     src={item.src}
                     alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
                     loading="lazy"
                   />
                 </div>
 
                 {/* Hover overlay with maximize icon */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-white">
+                <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/55 via-transparent to-transparent p-4 text-ivory opacity-0 transition-opacity duration-700 group-hover:opacity-100">
                   <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-amber-300">
-                        {item.categoryName}
-                      </span>
-                      <h4 className="font-serif text-lg font-light text-white leading-snug mt-0.5">
-                        {item.title}
-                      </h4>
-                    </div>
-                    <div className="rounded-full bg-white/20 p-2 backdrop-blur-md">
-                      <IconMaximize className="h-4 w-4 text-white" />
+                    <span className="glass-dark rounded-full px-3.5 py-1.5 text-[13px]">{labelFor(item.categoryKey)}</span>
+                    <div className="glass-dark rounded-full p-2.5">
+                      <IconMaximize className="h-4 w-4 text-ivory" />
                     </div>
                   </div>
                 </div>
 
-                {/* Sub caption bar */}
-                <div className="p-4 border-t border-ink/5 flex items-center justify-between text-xs">
-                  <span className="truncate font-medium text-ink/80 text-[12px]">{item.title}</span>
-                  <span className="text-[10px] font-mono text-burgundy uppercase tracking-wider shrink-0 ml-2">
-                    {item.categoryName}
-                  </span>
-                </div>
               </motion.div>
             ))}
           </AnimatePresence>
@@ -149,34 +136,32 @@ export function ProjectGallery() {
             <button
               type="button"
               onClick={() => setVisibleCount((prev) => prev + 24)}
-              className="inline-flex items-center gap-3 rounded-full border-2 border-burgundy bg-transparent px-8 py-3.5 text-xs font-bold uppercase tracking-[0.2em] text-burgundy hover:bg-burgundy hover:text-white transition-all shadow-sm"
+              className="glass inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[14px] text-ink transition-colors duration-500 hover:bg-white"
             >
-              Load More Photographs ({filteredItems.length - visibleCount} remaining) ↓
+              Show more photographs
             </button>
           </div>
         )}
 
         {/* WhatsApp Inquiry Banner */}
-        <div className="mt-20 rounded-3xl border-2 border-burgundy/20 bg-gradient-to-r from-burgundy/[0.04] via-amber-50/50 to-burgundy/[0.04] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+        <div className="glass mt-20 flex flex-col items-start justify-between gap-6 rounded-[32px] p-8 md:flex-row md:items-center md:p-12">
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-burgundy font-bold">
-              Looking for a specific layout or floor plan?
-            </span>
-            <h3 className="mt-2 font-serif text-2xl md:text-3xl font-light text-ink">
-              Request High-Resolution PDF Lookbooks & Site Walkthroughs
+            <p className="eyebrow text-ink">Looking for a specific layout?</p>
+            <h3 className="mt-3 font-serif text-2xl text-ink md:text-3xl">
+              Ask for lookbooks and site walkthroughs
             </h3>
-            <p className="mt-2 text-xs md:text-sm text-ink/75 max-w-xl">
+            <p className="mt-2 max-w-xl text-[15px] font-light text-ink">
               We share confidential CAD drawings, 3D renders, and complete client portfolios upon request.
             </p>
           </div>
           <a
-            href="https://wa.me/919704352346?text=Hi%20AKHOM%2C%20I%20reviewed%20your%20project%20gallery.%20I%27d%20like%20to%20request%20the%20complete%20portfolio%20and%20case%20studies."
+            href={`${WHATSAPP_URL}?text=Hi%20AKHOM%2C%20I%20reviewed%20your%20project%20gallery.%20I%27d%20like%20to%20request%20the%20complete%20portfolio%20and%20case%20studies.`}
             target="_blank"
             rel="noreferrer"
-            className="shrink-0 inline-flex items-center gap-3 rounded-xl bg-burgundy px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white hover:bg-burgundy-hover shadow-md transition-all"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-ink px-7 py-4 text-[14px] text-ivory transition-colors duration-500 hover:bg-burgundy"
           >
             <IconMessage className="h-4 w-4" />
-            Connect with an Architect
+            Talk to a designer
           </a>
         </div>
       </div>
@@ -187,9 +172,9 @@ export function ProjectGallery() {
           isOpen={lightboxIndex !== null}
           onClose={() => setLightboxIndex(null)}
           imageSrc={activeImage.src}
-          title={activeImage.title}
-          subtitle={activeImage.categoryName}
-          description={`High-definition architectural photograph from ${activeImage.categoryName} archive. Turnkey interior execution and custom joinery by AKHOM INTERIORS.`}
+          title={labelFor(activeImage.categoryKey)}
+          subtitle="AKHOM project"
+          description="Designed and executed by AKHOM Interiors, Hyderabad."
         />
       )}
     </section>

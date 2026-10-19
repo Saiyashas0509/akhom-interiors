@@ -46,21 +46,21 @@ export function Reveal({
 }) {
   const reduced = useReducedMotion();
   const offset = {
-    up: { y: 26, x: 0 },
-    left: { x: -26, y: 0 },
-    right: { x: 26, y: 0 },
+    up: { y: 34, x: 0 },
+    left: { x: -34, y: 0 },
+    right: { x: 34, y: 0 },
     none: { x: 0, y: 0 },
   }[direction];
 
   return (
     <motion.div
       className={className}
-      initial={reduced ? { opacity: 0 } : { opacity: 0, filter: "blur(6px)", ...offset }}
+      initial={reduced ? { opacity: 0 } : { opacity: 0, filter: "blur(3px)", ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, amount }}
+      viewport={{ once: true, amount, margin: "0px 0px -8% 0px" }}
       transition={{
-        duration: 0.9,
-        delay: Math.min(delay, 6) * 0.09,
+        duration: 1.25,
+        delay: Math.min(delay, 6) * 0.12,
         ease: EASE_OUT_EXPO,
       }}
     >
@@ -334,7 +334,7 @@ export function ScrollProgress() {
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.3 });
   return (
     <motion.div
-      className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-burgundy to-burgundy-light"
+      className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-taupe to-burgundy-light"
       style={{ scaleX }}
       aria-hidden="true"
     />
@@ -393,13 +393,13 @@ export function LightboxModal({
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 backdrop-blur-md"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-ivory/80 backdrop-blur-xl"
     >
       <button
         type="button"
         onClick={onClose}
         aria-label="Close Lightbox"
-        className="absolute top-6 right-6 z-10 rounded-full border border-ivory/20 bg-ink/80 p-3 text-ivory/80 transition-colors hover:border-ivory hover:text-ivory"
+        className="glass-strong absolute right-6 top-6 z-10 rounded-full p-3 text-ink transition-transform duration-500 hover:rotate-90"
       >
         <IconX className="h-6 w-6" />
       </button>
@@ -408,9 +408,9 @@ export function LightboxModal({
         initial={{ opacity: 0, y: 18, scale: 0.985 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
-        className="relative flex max-h-[90vh] max-w-[92vw] flex-col overflow-hidden border border-ivory/15 bg-ink shadow-2xl md:max-h-[85vh] md:max-w-[85vw] md:flex-row"
+        className="glass-strong relative flex max-h-[90vh] max-w-[92vw] flex-col overflow-hidden rounded-[32px] p-2 md:max-h-[85vh] md:max-w-[85vw] md:flex-row"
       >
-        <div className="relative flex-1 bg-black/40">
+        <div className="relative flex-1 overflow-hidden rounded-[26px] bg-stone">
           <img
             src={imageSrc}
             alt={title || "Project preview"}
@@ -418,15 +418,15 @@ export function LightboxModal({
           />
         </div>
         {(title || subtitle || description) && (
-          <div className="flex w-full flex-col justify-center border-t border-ivory/15 bg-ink p-6 text-ivory md:w-80 md:border-t-0 md:border-l md:p-8">
+          <div className="flex w-full flex-col justify-center p-6 text-ink md:w-80 md:p-8">
             {subtitle && (
-              <p className="text-[12px] uppercase tracking-[0.24em] text-burgundy-light">{subtitle}</p>
+              <p className="eyebrow text-ink">{subtitle}</p>
             )}
             {title && (
-              <h3 className="mt-3 font-serif text-2xl font-light tracking-tight text-ivory">{title}</h3>
+              <h3 className="mt-3 font-serif text-2xl text-ink">{title}</h3>
             )}
             {description && (
-              <p className="mt-4 text-sm font-light leading-relaxed text-ivory/70">{description}</p>
+              <p className="mt-4 text-[15px] font-light leading-relaxed text-ink">{description}</p>
             )}
           </div>
         )}

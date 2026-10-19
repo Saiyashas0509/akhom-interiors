@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/akhom/PageShell";
-import heroContact from "@/assets/hero-contact.jpg";
+const heroContact = "/images/curated/page-contact.jpg";
 import { ConsultationForm } from "@/components/akhom/ConsultationForm";
 import { FinalCta } from "@/components/akhom/FinalCta";
+import { EstimateSection } from "@/components/akhom/EstimateSection";
 
-const TITLE = "Contact AKHOM INTERIORS — Schedule an Architectural Consultation";
+const TITLE = "Contact & Free Estimate — AKHOM Interiors Hyderabad";
 const DESCRIPTION =
-  "Book a 30-minute design consultation for your villa, penthouse, corporate office, or healthcare project in Hyderabad with AKHOM INTERIORS.";
+  "Book a free design consultation and get an instant interior estimate with AKHOM Silver, Gold or Platinum packages in Hyderabad.";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -29,14 +30,15 @@ function ContactPage() {
   return (
     <PageShell
       eyebrow="Consultation & Enquiries"
-      title="Thirty minutes"
-      italic="is usually enough."
+      title="Let's talk"
+      italic="about your space."
       intro="Share details about your property, requirements, and target timeline. Our lead design team will review your scope and provide structured feedback on how we can collaborate."
       image={heroContact}
-      imageAlt="Minimal meeting room with a stone table, leather chairs and a glowing sheer curtain"
+      imageAlt="Parallel kitchen beside a carved oak pooja wall"
       meta={["Hyderabad, Telangana", "Mon — Sat", "info@akhominteriors.com"] as const}
     >
       <ConsultationForm />
+      <EstimateSection />
       <FinalCta />
     </PageShell>
   );

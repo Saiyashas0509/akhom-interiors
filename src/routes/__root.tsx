@@ -9,8 +9,10 @@ import {
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { WhatsAppFloating } from "@/components/akhom/WhatsAppFloating";
+import { SmoothScroll } from "@/components/akhom/SmoothScroll";
 
 import appCss from "../styles.css?url";
+import { PHONE_TEL, WHATSAPP_URL } from "@/lib/contact";
 
 // JSON-LD Structured Data Schema per Launch Checklist G13
 const SCHEMA_DATA = {
@@ -24,7 +26,7 @@ const SCHEMA_DATA = {
       "logo": "https://akhominteriors.com/logo-light.png",
       "image": "https://akhominteriors.com/media/hero-poster.jpg",
       "description": "Architectural interior design and turnkey fit-out studio based in Hyderabad, Telangana. Residential villas, commercial, healthcare and hospitality interiors.",
-      "telephone": "+919177361122",
+      "telephone": PHONE_TEL,
       "email": "info@akhominteriors.com",
       "address": {
         "@type": "PostalAddress",
@@ -46,7 +48,7 @@ const SCHEMA_DATA = {
         }
       ],
       "sameAs": [
-        "https://wa.me/919704352346"
+        WHATSAPP_URL
       ]
     },
     {
@@ -140,7 +142,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "AKHOM INTERIORS" },
-      { name: "theme-color", content: "#141212" },
+      { name: "theme-color", content: "#F5EFE6" },
       { property: "og:site_name", content: "AKHOM INTERIORS" },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_IN" },
@@ -159,7 +161,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500;600&display=swap",
+      },
+      {
+        // Digits-only Poppins subset: listed first in the font stacks so every number renders in Poppins.
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&text=0123456789%E2%82%B9&display=swap",
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
@@ -180,6 +187,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  // The static SPA build mounts into <div id="root"> (src/main.tsx). Rendering a second
+  // <html>/<body> inside it nests documents and sends React's event dispatch into an
+  // endless loop (typing in any form froze the page), so only SSR gets the full document.
+  if (typeof document !== "undefined" && document.getElementById("root")) {
+    return (
+      <>
+        <HeadContent />
+        {children}
+      </>
+    );
+  }
+
   return (
     <html lang="en">
       <head>
@@ -198,6 +217,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <SmoothScroll />
       <Outlet />
       {/* Persistent floating WhatsApp widget across all views per G9 */}
       <WhatsAppFloating />

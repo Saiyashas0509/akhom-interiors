@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "@/components/akhom/Nav";
 import { SiteFooter } from "@/components/akhom/SiteFooter";
+import { PHONE_TEL, PHONE_DISPLAY } from "@/lib/contact";
 
 const TITLE = "Privacy Policy — AKHOM INTERIORS";
 const DESCRIPTION =
@@ -20,22 +21,22 @@ export const Route = createFileRoute("/privacy")({
 
 function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-ivory text-ink">
+    <div className="min-h-screen overflow-x-clip bg-ivory text-ink">
       <Nav solid={true} />
-      <main className="px-6 pt-36 pb-24 md:px-10 lg:px-14">
-        <div className="mx-auto max-w-[900px]">
-          <p className="eyebrow text-burgundy">Legal & Data Standards</p>
+      <main className="glass-stage px-3 pb-10 pt-28 md:px-6 md:pt-32">
+        <div className="glass mx-auto max-w-[900px] rounded-[32px] p-7 md:p-12">
+          <p className="eyebrow text-ink">Legal & Data Standards</p>
           <h1
             className="display mt-4 text-ink"
             style={{ fontSize: "clamp(36px, 5vw, 64px)", lineHeight: 1 }}
           >
             Privacy Policy
           </h1>
-          <p className="mt-4 text-xs font-mono uppercase tracking-widest text-ink/50">
+          <p className="mt-4 text-xs font-mono uppercase tracking-widest text-ink">
             Last Updated: September 2026 • AKHOM INTERIORS, Hyderabad
           </p>
 
-          <div className="mt-12 space-y-10 text-[15px] font-light leading-relaxed text-ink/80">
+          <div className="mt-12 space-y-10 text-[15px] font-light leading-relaxed text-ink">
             <section>
               <h2 className="font-serif text-2xl font-normal text-ink">1. Commitment to Client Confidentiality</h2>
               <p className="mt-3">
@@ -48,7 +49,7 @@ function PrivacyPage() {
               <p className="mt-3">
                 When you request a design consultation through our website or direct communication channels, we collect:
               </p>
-              <ul className="mt-2 list-disc pl-5 space-y-1.5 text-ink/75">
+              <ul className="mt-2 list-disc pl-5 space-y-1.5 text-ink">
                 <li>Your name, email address, and phone or WhatsApp contact number.</li>
                 <li>Project details including approximate area, project stage, location, and functional requirements.</li>
                 <li>Technical communication logs necessary to coordinate design meetings and site walkthroughs.</li>
@@ -60,7 +61,7 @@ function PrivacyPage() {
               <p className="mt-3">
                 Information provided is transmitted securely to our studio leads at <strong className="font-medium text-ink">info@akhominteriors.com</strong> (with internal copy to <strong className="font-medium text-ink">projects@akhominteriors.com</strong>). We use your data strictly to:
               </p>
-              <ul className="mt-2 list-disc pl-5 space-y-1.5 text-ink/75">
+              <ul className="mt-2 list-disc pl-5 space-y-1.5 text-ink">
                 <li>Schedule and prepare for your architectural consultation.</li>
                 <li>Deliver project proposals, material specifications, and design schedules.</li>
                 <li>Maintain warranty records and post-handover service documentation.</li>
@@ -84,19 +85,19 @@ function PrivacyPage() {
               </p>
               <div className="mt-4 border border-ink/15 bg-white/60 p-6 text-sm">
                 <p className="font-medium text-ink">AKHOM INTERIORS</p>
-                <p className="mt-1 text-ink/70">Hyderabad, Telangana</p>
+                <p className="mt-1 text-ink">Hyderabad, Telangana</p>
                 <p className="mt-1">
-                  Email: <a href="mailto:info@akhominteriors.com" className="text-burgundy underline">info@akhominteriors.com</a>
+                  Email: <a href="mailto:info@akhominteriors.com" className="text-ink underline">info@akhominteriors.com</a>
                 </p>
                 <p className="mt-1">
-                  Phone: <a href="tel:+919177361122" className="text-burgundy underline">+91 91773 61122</a>
+                  Phone: <a href={`tel:${PHONE_TEL}`} className="text-ink underline">{PHONE_DISPLAY}</a>
                 </p>
               </div>
             </section>
           </div>
 
           <div className="mt-14 border-t border-ink/12 pt-8">
-            <Link to="/" className="text-[12px] uppercase tracking-[0.2em] text-burgundy hover:underline">
+            <Link to="/" className="text-[12px] uppercase tracking-[0.2em] text-ink hover:underline">
               ← Return to Homepage
             </Link>
           </div>

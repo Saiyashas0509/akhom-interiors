@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/akhom/PageShell";
-import heroServices from "@/assets/hero-services.jpg";
+const heroServices = "/images/curated/page-services.jpg";
 import { Services } from "@/components/akhom/Services";
 import { FaqSection } from "@/components/akhom/FaqSection";
 import { FinalCta } from "@/components/akhom/FinalCta";
 
 const TITLE = "Interior Design & Fit-Out Services — AKHOM INTERIORS Hyderabad";
 const DESCRIPTION =
-  "Eight integrated interior architecture and turnkey execution services across residential, commercial, healthcare, hospitality and bespoke joinery in Hyderabad.";
+  "Residential and commercial interiors, modular kitchens, wardrobes, pooja units, painting, civil, electrical, bathroom and false ceiling services in Hyderabad.";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -30,12 +30,12 @@ function ServicesPage() {
   return (
     <PageShell
       eyebrow="Capabilities & Sectors"
-      title="Eight disciplines,"
+      title="Every service,"
       italic="one accountable team."
-      intro="From measured architectural drawings to turnkey execution, MEP engineering, and in-house workshop joinery — all held in one contract."
+      intro="Interiors, joinery and site services — painting, civil, electrical, bathrooms and ceilings — delivered by one accountable team."
       image={heroServices}
-      imageAlt="Joinery workshop bench with hand planes and timber stacked in daylight"
-      meta={["Residential", "Commercial", "Healthcare", "Hospitality"] as const}
+      imageAlt="Pantry kitchen with stone worktop and wide window"
+      meta={["Interiors", "Joinery & Craft", "Site Services"] as const}
     >
       <Services />
       <FaqSection title="Services & Execution FAQs" />

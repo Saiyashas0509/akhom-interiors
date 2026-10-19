@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "./ui";
 import { IconChevronDown } from "./icons";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export const FAQS = [
   {
@@ -28,50 +31,52 @@ export const FAQS = [
 export function FaqSection({ title = "Frequently Asked Questions" }: { title?: string }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const toggle = (i: number) => {
-    setOpenIndex(openIndex === i ? null : i);
-  };
-
   return (
-    <section className="bg-ivory px-6 py-20 text-ink md:px-10 md:py-28 lg:px-14">
-      <div className="mx-auto max-w-[1200px]">
+    <section className="glass-stage px-4 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1100px]">
         <Reveal>
-          <p className="eyebrow text-burgundy">Questions & Answers</p>
-          <h2
-            className="display mt-4 max-w-[18ch] text-ink"
-            style={{ fontSize: "clamp(30px, 4vw, 56px)", lineHeight: 1 }}
-          >
+          <p className="eyebrow text-ink">Questions & answers</p>
+          <h2 className="display mt-4 max-w-[20ch] text-ink" style={{ fontSize: "clamp(30px, 3.8vw, 52px)" }}>
             {title}
           </h2>
         </Reveal>
 
-        <div className="mt-12 divide-y divide-ink/12 border-t border-b border-ink/12">
+        <div className="mt-10 space-y-3">
           {FAQS.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
-              <div key={faq.q} className="py-6">
-                <button
-                  type="button"
-                  onClick={() => toggle(i)}
-                  className="flex w-full items-center justify-between text-left group"
-                >
-                  <span className="font-serif text-xl sm:text-2xl font-light text-ink group-hover:text-burgundy transition-colors pr-6">
-                    {faq.q}
-                  </span>
-                  <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/20 transition-transform duration-300 ${
-                      isOpen ? "rotate-180 border-burgundy text-burgundy" : "text-ink/60"
-                    }`}
+              <Reveal key={faq.q} delay={i}>
+                <div className={`rounded-[26px] transition-colors duration-500 ${isOpen ? "glass-strong" : "glass"}`}>
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    className="flex w-full items-center justify-between gap-6 p-6 text-left md:p-7"
                   >
-                    <IconChevronDown className="h-4 w-4" />
-                  </span>
-                </button>
-                {isOpen && (
-                  <div className="mt-4 pr-10 text-[14px] font-light leading-relaxed text-ink/75">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
+                    <span className="font-serif text-lg text-ink md:text-xl">{faq.q}</span>
+                    <span
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all duration-500 ${
+                        isOpen ? "rotate-180 bg-ink text-ivory" : "bg-stone text-ink"
+                      }`}
+                    >
+                      <IconChevronDown className="h-4 w-4" />
+                    </span>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.6, ease: EASE }}
+                        className="overflow-hidden"
+                      >
+                        <p className="max-w-[70ch] px-6 pb-7 text-[15px] font-light leading-relaxed text-ink md:px-7">{faq.a}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </Reveal>
             );
           })}
         </div>

@@ -38,12 +38,13 @@ export function Hero() {
       <div className="absolute inset-x-0 top-0 z-[1] h-44 bg-gradient-to-b from-ink/80 to-transparent" aria-hidden="true" />
       <div className="absolute inset-x-0 bottom-0 z-[1] h-2/3 bg-gradient-to-t from-ink via-ink/60 to-transparent" aria-hidden="true" />
 
-      <motion.div
-        variants={stage}
-        initial="hidden"
-        animate="show"
-        className="relative z-10 mx-auto flex w-full max-w-[1360px] flex-1 flex-col justify-center px-6 pt-28 pb-12 sm:px-10 md:pt-32 lg:px-14"
-      >
+      <div className="relative z-10 flex flex-1 items-center px-6 md:px-10 lg:px-14">
+        <motion.div
+          variants={stage}
+          initial="hidden"
+          animate="show"
+          className="mx-auto flex w-full max-w-[1600px] flex-col justify-center pt-28 pb-12 md:pt-32"
+        >
         <motion.p
           variants={fade}
           className="text-[12px] font-medium uppercase tracking-[0.28em] text-burgundy-light [text-shadow:0_2px_16px_rgba(11,11,11,0.8)]"
@@ -95,7 +96,8 @@ export function Hero() {
             <IconArrowUpRight className="h-3.5 w-3.5" />
           </Link>
         </motion.div>
-      </motion.div>
+        </motion.div>
+      </div>
 
       {/* Frosted base plate: location + the four disciplines, stated once. */}
       <motion.div
@@ -104,7 +106,8 @@ export function Hero() {
         transition={{ duration: 1, delay: 0.75, ease: EASE }}
         className="relative z-10 border-t border-ivory/15 bg-dark/40 backdrop-blur-xl"
       >
-        <div className="mx-auto flex max-w-[1360px] flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-14">
+        <div className="px-6 md:px-10 lg:px-14">
+          <div className="mx-auto flex max-w-[1600px] flex-col gap-4 py-5 sm:flex-row sm:items-center sm:justify-between">
           <span className="text-[12px] uppercase tracking-[0.24em] text-ivory/55">
             Hyderabad, Telangana
           </span>
@@ -119,6 +122,7 @@ export function Hero() {
                 <span>{d.t}</span>
               </Link>
             ))}
+          </div>
           </div>
         </div>
       </motion.div>

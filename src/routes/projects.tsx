@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/akhom/PageShell";
-import heroProjects from "@/assets/hero-projects.jpg";
+const heroProjects = "/images/curated/page-projects.jpg";
 import { SelectedWork } from "@/components/akhom/SelectedWork";
 import { ProjectGallery } from "@/components/akhom/ProjectGallery";
 import { FinalCta } from "@/components/akhom/FinalCta";
 
-const TITLE = "Selected Projects & Architectural Portfolios — AKHOM INTERIORS";
+const TITLE = "Projects — AKHOM Interiors Hyderabad";
 const DESCRIPTION =
-  "Curated architectural works, residential villas, commercial environments, healthcare suites, and custom workshop joinery by AKHOM INTERIORS in Hyderabad.";
+  "Finished homes, kitchens, wardrobes, pooja units and workplaces designed and built by AKHOM Interiors in Hyderabad.";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -34,7 +34,7 @@ function ProjectsPage() {
       italic="crafted with intention."
       intro="Our portfolio reflects our material discipline, in-house joinery capabilities, and meticulous architectural execution across Hyderabad."
       image={heroProjects}
-      imageAlt="Walnut sideboard against a honed travertine wall in warm directional light"
+      imageAlt="Living room with brass-framed partition, oak storage and layered ceiling lights"
       meta={["Residential", "Commercial", "Healthcare", "Workshop Craft"] as const}
     >
       <SelectedWork />

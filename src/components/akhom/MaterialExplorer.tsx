@@ -1,18 +1,23 @@
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "./ui";
-import { IconSparkles, IconLayers } from "./icons";
-import materialImg from "@/assets/material.jpg";
-import craftImg from "@/assets/craft.jpg";
-import glimpse1 from "@/assets/glimpse-1.jpg";
-import glimpse3 from "@/assets/glimpse-3.jpg";
-import glimpse4 from "@/assets/glimpse-4.jpg";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+const SHORT: Record<string, string> = {
+  travertine: "Stone",
+  walnut: "Walnut",
+  "fluted-oak": "Fluted Oak",
+  bronze: "Bronze",
+  plaster: "Plaster",
+};
 
 const MATERIALS = [
   {
     id: "travertine",
     name: "Travertine & Natural Stone",
     category: "Hard Surface",
-    image: glimpse3,
+    image: "/images/curated/slide-foyer-wash.jpg",
     description:
       "Honed Ivory Travertine and Marquina marble — selected block by block at the quarry to ensure veins line up across vanity faces and wall cladding.",
     specs: ["Honed matte finish", "Custom carved basins", "Sealed against patina"],
@@ -21,16 +26,16 @@ const MATERIALS = [
     id: "walnut",
     name: "Dark American Walnut",
     category: "Joinery & Panelling",
-    image: materialImg,
+    image: "/images/curated/svc-electrical.jpg",
     description:
-      "Richly grained solid walnut and hand-matched veneers. Used across principal headboards, wall slatted screens, and eleven-metre boardroom tables.",
+      "Richly grained walnut and hand-matched veneers for headboards, slatted screens, display walls and boardroom tables.",
     specs: ["Natural oil finish", "Book-matched grain", "Kiln-dried stability"],
   },
   {
     id: "fluted-oak",
     name: "Fluted White Oak",
     category: "Cabinetry & Kitchens",
-    image: glimpse4,
+    image: "/images/curated/svc-residential.jpg",
     description:
       "Precision-milled fluted oak panelling that catches raking daylight and adds vertical rhythms to kitchen islands and reception desks.",
     specs: ["Custom profile pitch", "Low-VOC matte lacquer", "Integrated shadow gaps"],
@@ -39,7 +44,7 @@ const MATERIALS = [
     id: "bronze",
     name: "Aged & Patinated Bronze",
     category: "Hardware & Metalwork",
-    image: craftImg,
+    image: "/images/curated/svc-pooja.jpg",
     description:
       "Knurled bronze handles, slim handrails, and flush inset strips drawn to accent timber junctions and age gracefully with touch.",
     specs: ["Hand-patinated finish", "Bespoke hardware casting", "Zero maintenance required"],
@@ -48,7 +53,7 @@ const MATERIALS = [
     id: "plaster",
     name: "Textured Mineral Plaster",
     category: "Wall Finishes",
-    image: glimpse1,
+    image: "/images/curated/svc-ceiling.jpg",
     description:
       "Lime-based Venetian plaster in custom stone and olive tones, hand-trowelled to give walls a soft, daylight-reflecting depth.",
     specs: ["Breathable mineral base", "Seamless curve transitions", "Hand-trowelled texture"],
@@ -61,94 +66,85 @@ export function MaterialExplorer() {
   const activeMat = MATERIALS.find((m) => m.id === activeId) ?? defaultMat;
 
   return (
-    <section className="bg-ink px-6 py-24 text-ivory md:px-10 md:py-36 lg:px-14">
-      <div className="mx-auto max-w-[1600px]">
+    <section className="glass-stage px-4 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1400px]">
         <Reveal>
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
-              <div className="flex items-center gap-2">
-                <IconSparkles className="h-3.5 w-3.5 text-burgundy-light" />
-                <p className="eyebrow text-ivory/45">Material Palette</p>
-              </div>
-              <h2
-                className="display mt-4 max-w-[16ch] text-ivory"
-                style={{ fontSize: "clamp(32px, 4.4vw, 64px)", lineHeight: 0.98 }}
-              >
+              <p className="eyebrow text-ink">Material palette</p>
+              <h2 className="display mt-4 max-w-[16ch] text-ink" style={{ fontSize: "clamp(32px, 4vw, 56px)" }}>
                 Materials that age well.
               </h2>
             </div>
-            <p className="max-w-[42ch] text-sm font-light leading-relaxed text-ivory/65">
-              Explore our core tactile library — every piece specified by name, texture, and origin before site work begins.
+            <p className="max-w-[42ch] text-[15px] font-light leading-relaxed text-ink">
+              Every finish is specified by name, texture and origin before site work begins.
             </p>
           </div>
         </Reveal>
 
-        {/* Tab Buttons per G18 */}
         <Reveal delay={1}>
-          <div className="mt-12 flex gap-2.5 overflow-x-auto pb-4 border-b border-ivory/15 sm:flex-wrap">
+          <div className="glass mt-10 flex w-fit max-w-full gap-1 overflow-x-auto rounded-full p-1.5">
             {MATERIALS.map((m) => (
               <button
                 key={m.id}
                 type="button"
+                aria-pressed={activeId === m.id}
                 onClick={() => setActiveId(m.id)}
-                className={`border px-5 py-3 text-[12px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${
-                  activeId === m.id
-                    ? "border-burgundy bg-burgundy text-ivory shadow-lg"
-                    : "border-ivory/20 bg-transparent text-ivory/70 hover:border-ivory/50 hover:text-ivory"
+                className={`whitespace-nowrap rounded-full px-5 py-2.5 text-[14px] transition-all duration-500 ${
+                  activeId === m.id ? "bg-ink text-ivory shadow-soft" : "text-ink hover:bg-white/70 hover:text-ink"
                 }`}
               >
-                {m.name.split(" ")[0]} {m.name.split(" ")[1] || ""}
+                {SHORT[m.id] ?? m.name}
               </button>
             ))}
           </div>
         </Reveal>
 
-        {/* Active Material Card */}
-        <Reveal delay={2} className="mt-10">
-          <div className="grid grid-cols-1 gap-10 overflow-hidden border border-ivory/15 bg-ivory/[0.03] p-6 backdrop-blur-md md:grid-cols-12 md:p-12">
-            <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink md:col-span-6 md:aspect-[4/3.2]">
-              <img
-                key={activeMat.id}
-                src={activeMat.image}
-                alt={activeMat.name}
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
-              />
-              <div className="absolute top-4 left-4 border border-ivory/20 bg-ink/80 px-3 py-1 text-[12px] uppercase tracking-[0.24em] text-burgundy-light">
+        <Reveal delay={2} className="mt-6">
+          <div className="glass grid grid-cols-1 gap-3 overflow-hidden rounded-[36px] p-3 md:grid-cols-12">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] bg-stone md:col-span-7">
+              <AnimatePresence initial={false}>
+                <motion.img
+                  key={activeMat.id}
+                  src={activeMat.image}
+                  alt={activeMat.name}
+                  initial={{ opacity: 0, scale: 1.06 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1, ease: EASE }}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </AnimatePresence>
+              <span className="glass-dark absolute left-4 top-4 rounded-full px-4 py-1.5 text-[13px] text-ivory">
                 {activeMat.category}
-              </div>
+              </span>
             </div>
 
-            <div className="flex flex-col justify-between md:col-span-6">
-              <div>
-                <span className="text-[12px] uppercase tracking-[0.26em] text-burgundy-light">
-                  Tactile Specification
-                </span>
-                <h3 className="mt-3 font-serif text-3xl font-light tracking-tight text-ivory md:text-4xl">
-                  {activeMat.name}
-                </h3>
-                <p className="mt-5 text-sm font-light leading-relaxed text-ivory/75 md:text-base">
-                  {activeMat.description}
-                </p>
-              </div>
-
-              <div className="mt-8 border-t border-ivory/15 pt-6">
-                <p className="text-[12px] uppercase tracking-[0.22em] text-ivory/45">
-                  Architectural Features
-                </p>
-                <ul className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeMat.id}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.6, ease: EASE }}
+                className="flex flex-col justify-center p-5 md:col-span-5 md:p-8"
+              >
+                <h3 className="font-serif text-3xl text-ink md:text-4xl">{activeMat.name}</h3>
+                <p className="mt-4 text-[15px] font-light leading-relaxed text-ink">{activeMat.description}</p>
+                <ul className="mt-6 space-y-2.5 border-t border-ink/10 pt-6">
                   {activeMat.specs.map((spec) => (
-                    <li key={spec} className="flex items-center gap-2 text-xs font-light text-ivory/80">
-                      <span className="h-1.5 w-1.5 rounded-full bg-burgundy-light shrink-0" />
+                    <li key={spec} className="flex items-center gap-3 text-[14px] text-ink">
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-taupe" />
                       {spec}
                     </li>
                   ))}
                 </ul>
-              </div>
-            </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </Reveal>
       </div>
     </section>
   );
 }
-

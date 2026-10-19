@@ -75,8 +75,8 @@ function Figure({ item, i }: { item: Item; i: number }) {
           />
         </Parallax>
         <figcaption className="mt-3 flex items-baseline gap-4 border-t border-ink/12 pt-3">
-          <span className="section-index text-burgundy">{String(i + 1).padStart(2, "0")}</span>
-          <span className="truncate text-[12px] uppercase tracking-[0.16em] text-ink/70">
+          <span className="section-index text-ink">{String(i + 1).padStart(2, "0")}</span>
+          <span className="truncate text-[12px] uppercase tracking-[0.16em] text-ink">
             {item.caption}
           </span>
         </figcaption>
@@ -93,7 +93,7 @@ export function Glimpses() {
         {MATERIALS.map((m) => (
           <span
             key={m}
-            className="mx-7 inline-flex items-center gap-7 text-[12px] uppercase tracking-[0.18em] text-ink/55"
+            className="mx-7 inline-flex items-center gap-7 text-[12px] uppercase tracking-[0.18em] text-ink"
           >
             {m}
             <span className="h-1 w-1 rounded-full bg-burgundy/50" />
@@ -101,21 +101,21 @@ export function Glimpses() {
         ))}
       </Marquee>
 
-      <div className="mx-auto mt-16 max-w-[1500px] px-6 md:mt-20 md:px-10 lg:px-14">
+      <div className="mx-auto mt-16 max-w-[1600px] px-6 md:mt-20 md:px-10 lg:px-14">
         <Reveal>
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-6 border-b border-ink/12 pb-6 md:flex md:justify-between">
             <div className="min-w-0">
-              <span className="section-index text-burgundy">MATERIAL / DETAIL</span>
+              <span className="section-index text-ink">MATERIAL / DETAIL</span>
               <h2
                 className="display mt-4 text-ink"
                 style={{ fontSize: "clamp(30px, 4.2vw, 62px)", lineHeight: 1, letterSpacing: "-0.03em" }}
               >
-                Fragments of <em className="font-normal not-italic text-burgundy">crafted spaces.</em>
+                Fragments of <em className="font-normal not-italic text-ink">crafted spaces.</em>
               </h2>
             </div>
             <Link
               to="/projects"
-              className="group hidden shrink-0 items-center gap-3 border-b border-burgundy/40 pb-1 text-[12px] uppercase tracking-[0.2em] text-ink transition-colors hover:border-burgundy hover:text-burgundy md:inline-flex"
+              className="group hidden shrink-0 items-center gap-3 border-b border-burgundy/40 pb-1 text-[12px] uppercase tracking-[0.2em] text-ink transition-colors hover:border-burgundy hover:opacity-70 md:inline-flex"
             >
               See Selected Work
               <IconArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -132,7 +132,7 @@ export function Glimpses() {
         <Reveal>
           <Link
             to="/projects"
-            className="group mt-10 inline-flex items-center gap-3 border-b border-burgundy/40 pb-1 text-[12px] uppercase tracking-[0.2em] text-ink transition-colors hover:border-burgundy hover:text-burgundy md:hidden"
+            className="group mt-10 inline-flex items-center gap-3 border-b border-burgundy/40 pb-1 text-[12px] uppercase tracking-[0.2em] text-ink transition-colors hover:border-burgundy hover:opacity-70 md:hidden"
           >
             See Selected Work
             <IconArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
